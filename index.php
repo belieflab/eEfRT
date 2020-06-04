@@ -185,6 +185,93 @@ file_put_contents($name, $data);
       post_trial_gap: 2000,
     };
     timeline.push(instructions_4);
+
+    var instructions_5 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">Completing the Easy or Hard task makes you eligible to receive money on that trial, but completion alone does NOT guarantee that you will win money.  </p> ' +
+      '<p style="color:white;">Press the space bar to continue.  </p> ' , 
+     
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_5);
+
+    var instructions_6 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">Some trials are less likely to give you money than others. </p> ' +
+      '<p style="color:white;">To help you decide which trials are more likely to give you money, you will be told the probability that you WILL receive money IF you complete the task at the beginning of each trial.   </p> ' +
+      '<p style="color:white;">Press the space bar to continue. </p>',
+
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_6);
+
+    var instructions_7 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">Some trials you will have an 88% receiving money if you complete the task.  </p> ' +
+      '<p style="color:white;">Some trials you will have a 50% chance receiving money if you complete the task.   </p> ' +
+      '<p style="color:white;">Some trials you will have a 12% chance of receiving money if you complete the task.   </p> ' +
+      '<p style="color:white;">Press the space bar to continue. </p>',
+      
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_7);
+
+    var instructions_8 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">At the beginning of each trial, you will have a choice between the Hard task and the Easy task.   </p> ' +
+      '<p style="color:white;">The amount you are eligible to win on the Hard task, and the probability of winning will be presented at the beginning of each trial.   </p> ' +
+      '<p style="color:white;">To choose the Hard task, press <u><strong>'+HardKey_uCase+'</strong></u> key.  </p> ' +
+      '<p style="color:white;">To choose the Easy task, press the '+EasyKey_uCase+'</strong></u> key.  </p> ' +
+      '<p style="color:white;">Press the space bar to continue. </p>',
+      
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_8);
+
+    var instructions_9 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">We cannot pay you based on every choice you make.  </p> ' +
+      '<p style="color:white;">However, at the end of the experiment, we will randomly select 4 trials (2 from each session) and add them to your payment.    </p> ' +
+      '<p style="color:white;">You won’t know which trials get added to your payment.   </p> ' +
+      '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
+      '<p style="color:white;">Press the space bar to continue. </p>',
+      
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_9);
+
+    var instructions_10 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + '</strong> minutes to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
+      '<p style="color:white;">If you choose all Easy tasks, you will probably get through approximately 40 trials, if you choose all Hard tasks, you will probably get through around 20 trials, so choose your Hard tasks carefully!    </p> ' +
+      '<p style="color:white;">Now you are ready to play the game.    </p> ' +
+      '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
+      '<p style="color:white;">Press the space bar to start. </p>',
+      
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_10);
+
+    var instructions_11 = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">Get your hands in position and press any key to start the practice trials. </p> ' ,
+      
+      choices: [32],
+      post_trial_gap: 2000,
+    };
+    timeline.push(instructions_11);
+
+
+
+
+
+
     /* START TRAINING TRIAL FOR PARTICIPANTS */
 // delayed discounting task: three variables: 1st= money now, 2nd= money later, 3rd= money days later
 // display the variables on the screen to the participant (write a for loop to iterate through)
