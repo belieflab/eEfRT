@@ -12,7 +12,8 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>EEfRT Task</title>
-    <!-- <script src="js/handedness.js"></script> import handedness function  -->
+    <script src="js/playTime.js"></script>
+    <script src="js/handedness.js"></script>
     <script src="jsPsych/jspsych.js"></script>
     <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="jsPsych/plugins/jspsych-image-keyboard-response.js"></script>
@@ -98,6 +99,8 @@ file_put_contents($name, $data);
 </body>
   
   <script>
+   
+
     /* create timeline */
     var timeline = [];
     // MinutesToPlay is the user's length of time on the experiment
@@ -111,25 +114,8 @@ file_put_contents($name, $data);
     let EasyKey_uCase; 
     let HardKey_uCase;
   
-   
-
-    if (MinutesToPlay == 20) {
-      alert("Great! You will play the experiment for "+MinutesToPlay +" minutes.")
-    } else {
-      alert("You did not enter a number, please refresh the browser and try again.");
-    }
-
-    function checkHandedness (){
-        if (handedness.toUpperCase() == 'RIGHT'){
-             EasyKey_uCase= 'L';  // 108
-             HardKey_uCase= 'S';  // 115
-             antihandedness= 'LEFT';
-        } else if (handedness.toUpperCase() == 'LEFT') {
-             EasyKey_uCase= 'S';  // 115
-             HardKey_uCase= 'L';  // 108
-             antihandedness= 'RIGHT';
-        } 
-     };
+    // run script to ask participant how much time they would like to play for
+    playTime();
     
 // let MinutesToPlay = 20;
     /* define welcome message trial */
@@ -427,11 +413,8 @@ function saveData(name, data){
 
 <footer>
 
-<!-- <script type="text/javascript" src="https://perceptionexperiments.net/SDU/Libraries/Timeout.js"></script> -->
-<!-- <script type="text/javascript" src="https://perceptionexperiments.net/SDU/Libraries/lodash.js"></script> -->
-<!-- <script type="text/javascript" src="https://perceptionexperiments.net/SDU/Libraries/seedrandom.js"></script> -->
 <script type="text/javascript" src="//code.jquery.com/jquery-git.js"></script>
-<!-- <script type="text/javascript" src="https://perceptionexperiments.net/SDU/Libraries/jquery.csv.js"></script> -->
+
 
 <script>
 // show page when loaded 

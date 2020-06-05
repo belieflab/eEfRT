@@ -1,3 +1,5 @@
+// pseudo-code for our handedness function
+
 // function handedness (){
 //     input("Are you right or left handed?");
 //     if participant response = right
@@ -10,16 +12,14 @@
 //     HardKey_uCase: L;
 // }
 
-function handedness (){
-   // participant_response=input("Are you right or left handed?");
-    if (participant_response == 'right'){
-        EasyKey_uCase= 108;  // l key
-        HardKey_uCase= 115;  // s key
-    } else if (participant_response == 'left') {
-        EasyKey_uCase= 115;  // s key
-        HardKey_uCase= 108;  // l key
-    }
-   
-}
-
-handedness()
+function checkHandedness(){
+    if (handedness.toUpperCase() == 'RIGHT'){
+         EasyKey_uCase = 'L';  // 108
+         HardKey_uCase = 'S';  // 115
+         antihandedness = 'LEFT';
+    } else if (handedness.toUpperCase() == 'LEFT') {
+         EasyKey_uCase = 'S';  // 115
+         HardKey_uCase = 'L';  // 108
+         antihandedness = 'RIGHT';
+    } 
+ }
