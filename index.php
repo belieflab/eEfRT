@@ -12,6 +12,7 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>EEfRT Task</title>
+    <script src="js/timer.js"></script> <!-- importing our timer function from timer.js file -->
     <script src="js/playTime.js"></script>
     <script src="js/handedness.js"></script>
     <script src="jsPsych/jspsych.js"></script>
@@ -19,6 +20,7 @@ file_put_contents($name, $data);
     <script src="jsPsych/plugins/jspsych-image-keyboard-response.js"></script>
     <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
   <body  style="background-color:black;">  
   
@@ -281,13 +283,18 @@ file_put_contents($name, $data);
       '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
       
     }
-   
+  
+  
+
+
+    
+  
 // this is where I call each item from the array above
     var practice_prompt_stimuli = [
-    {stimulus: practice_prompt_array[0], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: practice_prompt_array[1], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: practice_prompt_array[2], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus:practice_prompt_array[3], data: {test_part: 'c1_train', correct_response: '.'}},
+    {stimulus: practice_prompt_array[0], data: {test_part: 'practice', correct_response: ','}},
+    {stimulus: practice_prompt_array[1], data: {test_part: 'practice', correct_response: ','}},  
+    {stimulus: practice_prompt_array[2], data: {test_part: 'practice', correct_response: '.'}},  
+    {stimulus:practice_prompt_array[3], data: {test_part: 'practice', correct_response: '.'}},
     ]
     
     // var practice_prompt_array = [];
@@ -326,8 +333,16 @@ file_put_contents($name, $data);
       timeline_variables: practice_prompt_stimuli,
       randomize_order: false
     }
+  
+    // horizontal progress bar
+//     <div class="progress">
+//   <div class="progress-bar" role="progressbar" aria-valuenow="70"
+//   aria-valuemin="0" aria-valuemax="100" style="width:70%">
+//     <span class="sr-only">70% Complete</span>
+//   </div>
+// </div> 
 
-    timeline.push(practice_procedure);
+    // timeline.push(practice_procedure);
     var end_of_trial = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">You completed the task.   </p> ' +
@@ -340,12 +355,12 @@ file_put_contents($name, $data);
       post_trial_gap: 2000,
     
     };
-    timeline.push(end_of_trial)
+    // timeline.push(end_of_trial)
 
     /* END TRAINING TRIAL FOR PARTICIPANTS */
 
     // this is where the real trials begin with sheet 1 variables
-    var start_time = jsPsych.startTime();
+  
 
     let procedure = ["Lose",	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Win", 	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Win", 	"Win", 	"Lose",	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Win", 	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Win", 	"Win", 	"Win", 	"Lose",	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Win", 	"Lose",	"Win", 	"Win", 	"Win", 	"Lose",	"Win", 	"Win", 	"Lose",	"Win", 	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Win", 	"Win", 	"Win", 	"Win", 	"Lose",	"Lose",	"Win", 	"Lose",	"Win", 	"Lose",	"Lose"];
     
@@ -371,107 +386,108 @@ file_put_contents($name, $data);
       '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
       
     }
+    let progressBar= '<div class="w3-container"> <h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:25%"></div></div></div></div></div>'
   var test_prompt_stimuli = [
-    {stimulus: test_prompt_array[0], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[1], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[3], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[4], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[5], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[6], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[8], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[9], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[10], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[11], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[12], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[14], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[15], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[16], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[17], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[18], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[19], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[20], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[21], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[22], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[23], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[24], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[25], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[26], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[27], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[28], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[29], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[30], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[31], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[32], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[33], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[34], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[35], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[36], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[37], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[38], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[39], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[40], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[41], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[42], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[43], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[44], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[45], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[46], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[47], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[48], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[49], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[50], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[51], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[52], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[53], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[54], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[55], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[56], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[57], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[58], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[59], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[60], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[61], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[62], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[63], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[64], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[65], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[66], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[67], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[68], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[69], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[70], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[71], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[72], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[73], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[74], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[75], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[76], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[77], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[78], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[79], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[80], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[81], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[82], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[83], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[84], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[85], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[86], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[87], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[88], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[89], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[90], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[91], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[92], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[93], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[94], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[95], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[96], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[97], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[98], data: {test_part: 'c1_train', correct_response: ','}},
-    {stimulus: test_prompt_array[99], data: {test_part: 'c1_train', correct_response: ','}},  
-    {stimulus: test_prompt_array[100], data: {test_part: 'c1_train', correct_response: '.'}},  
-    {stimulus: test_prompt_array[101], data: {test_part: 'c1_train', correct_response: '.'}},
-    {stimulus: test_prompt_array[102], data: {test_part: 'c1_train', correct_response: ','}},
+    {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
+    {stimulus: test_prompt_array[1], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[3], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[4], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[5], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[6], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[8], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[9], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[10], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[11], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[12], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[14], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[15], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[16], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[17], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[18], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[19], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[20], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[21], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[22], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[23], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[24], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[25], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[26], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[27], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[28], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[29], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[30], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[31], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[32], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[33], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[34], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[35], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[36], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[37], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[38], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[39], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[40], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[41], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[42], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[43], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[44], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[45], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[46], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[47], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[48], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[49], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[50], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[51], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[52], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[53], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[54], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[55], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[56], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[57], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[58], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[59], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[60], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[61], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[62], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[63], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[64], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[65], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[66], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[67], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[68], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[69], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[70], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[71], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[72], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[73], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[74], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[75], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[76], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[77], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[78], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[79], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[80], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[81], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[82], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[83], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[84], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[85], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[86], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[87], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[88], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[89], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[90], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[91], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[92], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[93], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[94], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[95], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[96], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[97], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[98], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[99], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[100], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[101], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[102], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
     ]
 
 
@@ -484,13 +500,40 @@ file_put_contents($name, $data);
     }
   var test_prompt = {
     type: "html-keyboard-response",
-      stimulus: jsPsych.timelineVariable('stimulus'), //train_stimuli_array, //jsPsych.timelineVariable('stimulus'),
+    prompt: '<p style="color:white;" id="hardTimer">00:21</p>',
+    //progress: '<div class="w3-container"> <h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:25%"></div></div></div></div></div>',
+      // stimulus: jsPsych.timelineVariable( 'stimulus'), //train_stimuli_array, //jsPsych.timelineVariable('stimulus'),
+      // stimulus: jsPsych.timelineVariable( 'progress'),
       choices: [EasyKey_uCase.toLowerCase(), HardKey_uCase.toLowerCase()],
+      trial_duration: 22000,
       data: jsPsych.timelineVariable('data'),
-      on_finish: function(data){
-        data.C1_train = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
+      stimulus: function(){
+                var html= jsPsych.timelineVariable('stimulus', true)+
+                jsPsych.timelineVariable('progress', true);
+                return html;
+      }, 
+      
+      // stimulus: function(){
+      //           var html=“<img src=’“+jsPsych.timelineVariable(‘stimulus’, true)+“‘>” +
+      //           “<img src=’“+jsPsych.timelineVariable(‘progress’, true)+“’>“;
+      //           return html;
+      // },
+      // on_finish: function(data){
+      //   data.C1_train = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
+      // },
+  //     on_load: function timer(){ // initialize timer
+  //   var sec = 21; // set timer in seconds
+  //   var timer = setInterval(function(){
+  //   document.getElementById('hardTimer').innerHTML='00:'+sec;
+  //   sec--;  // decrement
+  //   if (sec < 0) {
+  //     jsPsych.endCurrentTimeline();
+  //     }
+  //   }, 1000);
+  // },
+  on_start: timer(),
   }
-}
+
 var test_procedure = {
       timeline: [fixation, test_prompt],
       timeline_variables: test_prompt_stimuli,
