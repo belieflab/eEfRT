@@ -1,0 +1,5 @@
+      stimulus: function(){
+                var html="<img src='"+jsPsych.timelineVariable('stimulus', true)+"'>" +
+                "<img src='"+jsPsych.timelineVariable('stimulus2', true)+"'>";
+                return html;
+      }, 
