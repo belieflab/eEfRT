@@ -278,7 +278,7 @@ file_put_contents($name, $data);
       '<p style="color:white;"> '+practiceEasy[i]+'   </p> ' +
       '<p style="color:white;">Hard is worth:    </p> ' +
       '<p style="color:white;"> '+practiceHard[i]+'    </p> ' +
-      '<p style="color:white;"> The probability of receiving money for both trials is ' +practiceProbability[i]+'%.   </p> ' +
+      '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ' +
       '<p style="color:white;">Ready?    </p> ' +
       '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
       
@@ -367,6 +367,7 @@ file_put_contents($name, $data);
     let hardAmount = [3.04,	1.42,	2.86,	3.22,	1.78,	1.96,	2.68,	1.78,	2.14,	2.50,	3.94,	2.32,	2.14,	1.42,	3.04,	1.24,	3.58,	2.32,	4.12,	4.12,	2.50,	3.94,	3.22,	4.12,	2.68,	3.40,	2.50,	3.76,	1.78,	1.42,	3.04,	3.40,	3.22,	1.24,	3.58,	3.76,	3.76,	2.14,	3.58,	1.60,	2.86,	2.68,	1.24,	1.96,	1.60,	2.86,	2.32,	3.40,	3.94,	1.96,	1.60,	2.59,	3.49,	3.85,	4.21,	4.03,	3.67,	3.67,	4.03,	2.77,	1.51,	1.87,	4.21,	1.33,	1.87,	1.51,	3.13,	3.13,	3.85,	2.59,	4.21,	2.95,	2.05,	2.77,	3.49,	1.87,	2.95,	3.13,	3.67,	1.69,	2.59,	2.41,	1.33,	3.31,	2.23,	2.23,	4.03,	1.33,	2.41,	3.31,	2.23,	3.85, 2.41,	3.31,	2.77,	2.05,	1.69,	3.49,	1.69,	2.95,	2.05,	1.51];
     
     let easyAmount = [1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,];
+    
     let testProbability = [12,	50,	50,	88,	12,	88,	50,	88,	50,	12,	50,	50,	12,	88,	88,	12,	88,	12,	50,	12,	50,	12,	12,	88,	88,	50,	88,	50,	50,	12,	50,	88,	50,	88,	12,	12,	88,	88,	50,	88,	12,	12,	50,	50,	12,	88,	88,	12,	88,	12,	50,	12,	88,	50,	88,	12,	50,	12,	88,	50,	88,	88,	50,	50,	50,	50,	88,	12,	12,	88,	12,	12,	88,	12,	50,	12,	50,	50,	88,	88,	50,	12,	88,	50,	12,	50,	50,	12,	88,	12,	88,	88,	50,	88,	88,	12,	12,	12,	50,	88,	50,	12,];
 
   var begin_experiment = {
@@ -374,22 +375,34 @@ file_put_contents($name, $data);
       stimulus: '<p style="color:white;">Get your hands in position and press any key to start the real trials.  </p> ' ,
       
   }
-  var test_prompt_array = [];
+  var test_prompt_array = []; // change to selection_array
     for (var i = 0; i <= 102; i++){
       test_prompt_array.push('<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. </p> ' +
       '<p style="color:white;">Easy is worth:    </p> ' +
       '<p style="color:white;"> '+ easyAmount[i]+'   </p> ' +
       '<p style="color:white;">Hard is worth:    </p> ' +
       '<p style="color:white;"> '+ hardAmount[i]+'    </p> ' +
-      '<p style="color:white;"> The probability of receiving money for both trials is ' +testProbability[i]+'%.   </p> ' +
-      '<p style="color:white;">Ready?    </p> ' +
-      '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+      '<p style="color:white;"> The probability of winning is ' +testProbability[i]+'%.   </p> ' )
+      
       
     }
-    let progressBar= '<div class="w3-container"> <h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:25%"></div></div></div></div></div>'
-  var test_prompt_stimuli = [
+   
+    let buttonPressingEasy_array = [];
+    for (var i = 0; i <= 102; i++){
+      buttonPressingEasy_array.push( '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+    }
+
+    let buttonPressingHard_array = [];
+      for (var i = 0; i <= 102; i++){
+        buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+      }
+    
+      let progressBar= '<div class="w3-container"> <h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:25%"></div></div></div></div></div>'
+  
+      var test_prompt_stimuli = [
     {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
-    {stimulus: test_prompt_array[1], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[1], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, 
+    {stimulus: test_prompt_array[2], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
     {stimulus: test_prompt_array[3], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
     {stimulus: test_prompt_array[4], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
     {stimulus: test_prompt_array[5], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
@@ -496,46 +509,57 @@ file_put_contents($name, $data);
       stimulus: '<div style="color:white; font-size:60px;">+</div>',
       choices: jsPsych.NO_KEYS,
       trial_duration: 1000,
-      data: {test_part: 'fixation'}
     }
-  var test_prompt = {
+
+    var ready = {
+      type: 'html-keyboard-response',
+      stimulus:'<p style="color:white;">Ready? </p> ',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+    }
+
+    var selection = {
+      type: 'html-keyboard-response',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+      stimulus:jsPsych.timelineVariable('stimulus'),
+    }    
+
+    var completion = {
+      type: 'html-keyboard-response',
+      stimulus:'<p style="color:white;">completion </p> ',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+    }
+
+    var feedback = {
+      type: 'html-keyboard-response',
+      stimulus:'<p style="color:white;"> feedback </p> ',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000, 
+    }
+  
+    var buttonPressingHard = {
     type: "html-keyboard-response",
-    prompt: '<p style="color:white;" id="hardTimer">00:21</p>',
-    //progress: '<div class="w3-container"> <h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:25%"></div></div></div></div></div>',
-      // stimulus: jsPsych.timelineVariable( 'stimulus'), //train_stimuli_array, //jsPsych.timelineVariable('stimulus'),
-      // stimulus: jsPsych.timelineVariable( 'progress'),
-      choices: [EasyKey_uCase.toLowerCase(), HardKey_uCase.toLowerCase()],
-      trial_duration: 22000,
-      data: jsPsych.timelineVariable('data'),
-      stimulus: function(){
-                var html= jsPsych.timelineVariable('stimulus', true)+
-                jsPsych.timelineVariable('progress', true);
-                return html;
-      }, 
-      
-      // stimulus: function(){
-      //           var html=“<img src=’“+jsPsych.timelineVariable(‘stimulus’, true)+“‘>” +
-      //           “<img src=’“+jsPsych.timelineVariable(‘progress’, true)+“’>“;
-      //           return html;
-      // },
-      // on_finish: function(data){
-      //   data.C1_train = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
-      // },
-  //     on_load: function timer(){ // initialize timer
-  //   var sec = 21; // set timer in seconds
-  //   var timer = setInterval(function(){
-  //   document.getElementById('hardTimer').innerHTML='00:'+sec;
-  //   sec--;  // decrement
-  //   if (sec < 0) {
-  //     jsPsych.endCurrentTimeline();
-  //     }
-  //   }, 1000);
-  // },
-  on_start: timer(),
+    prompt: '<p style="color:white;" id="hardTimer">00: </p>',
+    choices: [HardKey_uCase.toLowerCase()],
+    trial_duration: 22000,
+    data: jsPsych.timelineVariable('data'),
+    stimulus: jsPsych.timelineVariable('progress'),    
+    on_start: hardTimer(),
+  }
+  var buttonPressingEasy= {
+    type: "html-keyboard-response",
+    prompt: '<p style="color:white;" id="easyTimer">00: </p>',
+    choices: [EasyKey_uCase.toLowerCase()],
+    trial_duration: 8000,
+    data: jsPsych.timelineVariable('data'),
+    stimulus: jsPsych.timelineVariable('progress'), 
+    on_start: easyTimer(),
   }
 
 var test_procedure = {
-      timeline: [fixation, test_prompt],
+      timeline: [fixation, selection, ready, buttonPressingHard, completion, feedback],
       timeline_variables: test_prompt_stimuli,
       randomize_order: false
     }
