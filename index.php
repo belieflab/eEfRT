@@ -12,8 +12,9 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>EEfRT Task</title>
-    <script src="js/timer.js"></script> <!-- importing our timer function from timer.js file -->
     <script src="js/playTime.js"></script>
+    <script src="js/timer.js"></script> <!-- importing our timer function from timer.js file -->
+    <script src="js/progressBars.js"></script> 
     <script src="js/handedness.js"></script>
     <script src="jsPsych/jspsych.js"></script>
     <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
@@ -22,7 +23,8 @@ file_put_contents($name, $data);
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
-  <body  style="background-color:black;">  
+  <body  
+  style="background-color:black;">  
   
   <div class="loading centeredDiv">
     <h1 class="loading">Loading...</h1>
@@ -118,7 +120,7 @@ file_put_contents($name, $data);
   
     // run script to ask participant how much time they would like to play for
     playTime();
-    
+
 // let MinutesToPlay = 20;
     /* define welcome message trial */
     var welcome = {
@@ -397,8 +399,9 @@ file_put_contents($name, $data);
         buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
       }
     
-      let progressBar= '<div class="w3-container"> <h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:25%"></div></div></div></div></div>'
-  
+      // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
+    let progressBar ='<div class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:25%"></div></div><br><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:50%"></div></div><br><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:75%"></div></div></div>';
+      
       var test_prompt_stimuli = [
     {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
     {stimulus: test_prompt_array[1], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, 
@@ -541,17 +544,21 @@ file_put_contents($name, $data);
   
     var buttonPressingHard = {
     type: "html-keyboard-response",
-    prompt: '<p style="color:white;" id="hardTimer">00: </p>',
+    //prompt: '<p style="color:white;" id="hardTimer">00: </p>',
+    prompt: '<input type="text" onkeypress="move()">',
     choices: [HardKey_uCase.toLowerCase()],
+    response_ends_trial: false,
     trial_duration: 22000,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
-    on_start: hardTimer(),
+    // on_start: hardTimer(),
+    // on_start: move(),
   }
   var buttonPressingEasy= {
     type: "html-keyboard-response",
     prompt: '<p style="color:white;" id="easyTimer">00: </p>',
     choices: [EasyKey_uCase.toLowerCase()],
+    response_ends_trial: false,
     trial_duration: 8000,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'), 
@@ -638,7 +645,9 @@ function saveData(name, data){
     }
   </script>
 
-<footer>
+<footer> 
+
+   
 
 <script type="text/javascript" src="//code.jquery.com/jquery-git.js"></script>
 
