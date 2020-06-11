@@ -18,6 +18,7 @@ file_put_contents($name, $data);
     <script src="js/handedness.js"></script>
     <script src="jsPsych/jspsych.js"></script>
     <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jsPsych/plugins/jspsych-html-button-response.js"></script>
     <script src="jsPsych/plugins/jspsych-image-keyboard-response.js"></script>
     <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -515,10 +516,12 @@ file_put_contents($name, $data);
     }
 
     var ready = {
-      type: 'html-keyboard-response',
-      stimulus:'<p style="color:white;">Ready? </p> ',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 1000,
+      type: 'html-button-response',
+      prompt: '<p style="color:white;" id="counter"> </p>',
+      stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
+      button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
+      choices: [32],
+      // trial_duration: 1000,
     }
 
     var selection = {
@@ -544,8 +547,8 @@ file_put_contents($name, $data);
   
     var buttonPressingHard = {
     type: "html-keyboard-response",
-    //prompt: '<p style="color:white;" id="hardTimer">00: </p>',
-    prompt: '<input type="text" onkeypress="move()">',
+    // prompt: '<p style="color:white;" id="counter"> </p>',
+    prompt: '<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
     choices: [HardKey_uCase.toLowerCase()],
     response_ends_trial: false,
     trial_duration: 22000,
@@ -553,16 +556,17 @@ file_put_contents($name, $data);
     stimulus: jsPsych.timelineVariable('progress'),    
     // on_start: hardTimer(),
     // on_start: move(),
+    // on_start: countdownHard(0),
   }
   var buttonPressingEasy= {
     type: "html-keyboard-response",
-    prompt: '<p style="color:white;" id="easyTimer">00: </p>',
+    prompt: '<p style="color:white;" id="counter"> </p>',
     choices: [EasyKey_uCase.toLowerCase()],
     response_ends_trial: false,
     trial_duration: 8000,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'), 
-    on_start: easyTimer(),
+    // on_start: countdownEasy(0),
   }
 
 var test_procedure = {
