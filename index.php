@@ -401,7 +401,7 @@ file_put_contents($name, $data);
       }
     
       // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
-    let progressBar ='<div class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:25%"></div></div><br><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:50%"></div></div><br><div class="w3-light-grey"><div class="w3-grey" style="height:24px;width:75%"></div></div></div>';
+    let progressBar ='<div class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:25%"></div></div><br><div';
       
       var test_prompt_stimuli = [
     {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
