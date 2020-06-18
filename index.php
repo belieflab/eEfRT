@@ -401,7 +401,7 @@ file_put_contents($name, $data);
       }
     
       // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
-    let progressBar ='<div class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:25%"></div></div><br><div';
+    let progressBar ='<div  id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:25%"></div></div><br><div';
       
       var test_prompt_stimuli = [
     {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
@@ -519,7 +519,8 @@ file_put_contents($name, $data);
       type: 'html-button-response',
       prompt: '<p style="color:white;" id="counter"> </p>',
       stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
-      button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
+      // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
+      button_html: '<button id="nextButton" onclick="countdownHard(1)" onkeypress="countdownHard(1)">START</button>',
       choices: [32],
       // trial_duration: 1000,
     }
@@ -547,8 +548,9 @@ file_put_contents($name, $data);
   
     var buttonPressingHard = {
     type: "html-keyboard-response",
-    // prompt: '<p style="color:white;" id="counter"> </p>',
+    prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
     prompt: '<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
+    // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
     choices: [HardKey_uCase.toLowerCase()],
     response_ends_trial: false,
     trial_duration: 22000,
@@ -557,10 +559,12 @@ file_put_contents($name, $data);
     // on_start: hardTimer(),
     // on_start: move(),
     // on_start: countdownHard(0),
+   
   }
   var buttonPressingEasy= {
     type: "html-keyboard-response",
-    prompt: '<p style="color:white;" id="counter"> </p>',
+    // prompt: '<p style="color:white;" id="countdown"> </p>',
+    prompt: '<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
     choices: [EasyKey_uCase.toLowerCase()],
     response_ends_trial: false,
     trial_duration: 8000,
