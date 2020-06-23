@@ -401,7 +401,7 @@ file_put_contents($name, $data);
       }
     
       // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
-    let progressBar ='<div  id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:25%"></div></div><br><div';
+    let progressBar ='<div  id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div';
       
       var test_prompt_stimuli = [
     {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
@@ -548,12 +548,12 @@ file_put_contents($name, $data);
   
     var buttonPressingHard = {
     type: "html-keyboard-response",
-    prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: '<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
+    // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
+    prompt: '<input type="text" onkeypress="moveHard()">'+'<p style="color:white;" id="counter"> </p>',
     // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
     choices: [HardKey_uCase.toLowerCase()],
     response_ends_trial: false,
-    trial_duration: 22000,
+    trial_duration: 21000,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
     // on_start: hardTimer(),
@@ -564,10 +564,10 @@ file_put_contents($name, $data);
   var buttonPressingEasy= {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="countdown"> </p>',
-    prompt: '<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
+    prompt: '<input type="text" onkeypress="moveEasy()">'+'<p style="color:white;" id="counter"> </p>',
     choices: [EasyKey_uCase.toLowerCase()],
     response_ends_trial: false,
-    trial_duration: 8000,
+    trial_duration: 7000,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'), 
     // on_start: countdownEasy(0),
@@ -666,7 +666,18 @@ window.onload = function() {
   $(".loading").css({display: "none"});
   $(".consent").css({display: "block"});
   $(".buttonHolder").css({display: "block"});
+  
 };
+
+$("input").on("input", function () {
+    var $this = $(this);
+    if ($this.val().length >= parseInt($this.attr("maxlength"), 10)) {
+        var nextEmpty = $this.nextAll("input[value=''], input:not([value])")[0];
+        if (nextEmpty) {
+            nextEmpty.focus();
+        }
+    }
+});
 </script>
 </footer>
   </html>

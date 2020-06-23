@@ -17,8 +17,8 @@ function countdownEasy(minutes) {
                 countdown(mins-1);           
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
-                jsPsych.endCurrentTimeline();
-               // seconds = 10;
+                jsPsych.finishTrial('data');
+               seconds = 7;
             }
         }
     }
@@ -45,11 +45,12 @@ function countdownHard(minutes) {
                 countdown(mins-1);           
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
-                jsPsych.endCurrentTimeline();
-               // seconds = 10;
+                jsPsych.finishTrial('data');
+               seconds = 21;
             }
         }
     }
     tick();
 
 }
+
