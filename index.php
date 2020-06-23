@@ -336,15 +336,35 @@ file_put_contents($name, $data);
       type: 'html-keyboard-response',
       stimulus: '<div style="color:white; font-size:60px;">+</div>',
       choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+    }
+
+    var selection = {
+      type: 'html-keyboard-response',
+      choices: jsPsych.NO_KEYS,
       trial_duration: 2000,
-      data: {test_part: 'fixation'}
+      stimulus:jsPsych.timelineVariable('stimulus'),
+    }    
+
+    var completion = {
+      type: 'html-keyboard-response',
+      stimulus:'<p style="color:white;">completion </p> ',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 2000,
+    }
+
+    var feedback = {
+      type: 'html-keyboard-response',
+      stimulus:'<p style="color:white;"> feedback </p> ',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 2000, 
     }
 
 
     var trial_prompt = {
       type: "html-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'), //train_stimuli_array, //jsPsych.timelineVariable('stimulus'),
-      choices: [EasyKey_uCase.toLowerCase(), HardKey_uCase.toLowerCase()],
+      choices: [EasyKey_uCase.toUpperCase(), HardKey_uCase.toUpperCase()],
       data: jsPsych.timelineVariable('data'),
       on_finish: function(data){
         selection = String(jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press))
@@ -367,7 +387,7 @@ file_put_contents($name, $data);
     
     var ready = {
       type: 'html-button-response',
-      prompt: '<p style="color:white;" id="counter"> </p>',
+      prompt: '<p style="color:white;" id="counter">timer placeholder</p>',
       stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
       // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
       button_html: '<button id="ready" onclick="" >START</button>',
@@ -390,7 +410,7 @@ file_put_contents($name, $data);
     var buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: '<input type="text" onkeypress="">'+'<p style="color:white;" id="counter"> </p>',
+    prompt: '<input type="text" onkeypress="">'+'<p style="color:white;" id="counter">timer placeholder</p>',
     // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
@@ -416,10 +436,13 @@ file_put_contents($name, $data);
   
 
     timeline.push(practice_position);
+
+
+  
 // this is where the procedure loops over the timeline property below. the timeline variables are the stimuli.
     
     var practice_procedure = {
-      timeline: [fixation, trial_prompt, ready, buttonPressing],
+      timeline: [fixation, trial_prompt, ready, buttonPressing, completion, feedback],
       timeline_variables: practice_prompt_stimuli,
       randomize_order: false
     }
@@ -446,6 +469,17 @@ file_put_contents($name, $data);
     // timeline.push(end_of_trial)
 
     /* END TRAINING TRIAL FOR PARTICIPANTS */
+
+
+    var start_task = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' +
+      '<p style="color:white;">Press the space bar to continue. </p>',
+      choices: [32],
+      post_trial_gap: 5000,
+    };
+
+    timeline.push(start_task);
 
     // this is where the real trials begin with sheet 1 variables
   
@@ -592,65 +626,37 @@ file_put_contents($name, $data);
     ]
 
 
-    var fixation = {
-      type: 'html-keyboard-response',
-      stimulus: '<div style="color:white; font-size:60px;">+</div>',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 1000,
-    }
 
-   
-
-    var selection = {
-      type: 'html-keyboard-response',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 1000,
-      stimulus:jsPsych.timelineVariable('stimulus'),
-    }    
-
-    var completion = {
-      type: 'html-keyboard-response',
-      stimulus:'<p style="color:white;">completion </p> ',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 1000,
-    }
-
-    var feedback = {
-      type: 'html-keyboard-response',
-      stimulus:'<p style="color:white;"> feedback </p> ',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 1000, 
-    }
   
-    var buttonPressingHard = {
-    type: "html-keyboard-response",
-    // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: '<input type="text" onkeypress="moveHard()">'+'<p style="color:white;" id="counter"> </p>',
-    // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
-    choices: [HardKey_uCase.toLowerCase()],
-    response_ends_trial: false,
-    trial_duration: 21000,
-    data: jsPsych.timelineVariable('data'),
-    stimulus: jsPsych.timelineVariable('progress'),    
-    // on_start: hardTimer(),
-    // on_start: move(),
-    // on_start: countdownHard(0),
+  //   var buttonPressingHard = {
+  //   type: "html-keyboard-response",
+  //   // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
+  //   prompt: '<input type="text" onkeypress="moveHard()">'+'<p style="color:white;" id="counter"> </p>',
+  //   // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
+  //   choices: [HardKey_uCase.toLowerCase()],
+  //   response_ends_trial: false,
+  //   trial_duration: 21000,
+  //   data: jsPsych.timelineVariable('data'),
+  //   stimulus: jsPsych.timelineVariable('progress'),    
+  //   // on_start: hardTimer(),
+  //   // on_start: move(),
+  //   // on_start: countdownHard(0),
    
-  }
-  var buttonPressingEasy= {
-    type: "html-keyboard-response",
-    // prompt: '<p style="color:white;" id="countdown"> </p>',
-    prompt: '<input type="text" onkeypress="moveEasy()">'+'<p style="color:white;" id="counter"> </p>',
-    choices: [EasyKey_uCase.toLowerCase()],
-    response_ends_trial: false,
-    trial_duration: 7000,
-    data: jsPsych.timelineVariable('data'),
-    stimulus: jsPsych.timelineVariable('progress'), 
-    // on_start: countdownEasy(0),
-  }
+  // }
+  // var buttonPressingEasy= {
+  //   type: "html-keyboard-response",
+  //   // prompt: '<p style="color:white;" id="countdown"> </p>',
+  //   prompt: '<input type="text" onkeypress="moveEasy()">'+'<p style="color:white;" id="counter"> </p>',
+  //   choices: [EasyKey_uCase.toLowerCase()],
+  //   response_ends_trial: false,
+  //   trial_duration: 7000,
+  //   data: jsPsych.timelineVariable('data'),
+  //   stimulus: jsPsych.timelineVariable('progress'), 
+  //   // on_start: countdownEasy(0),
+  // }
 
 var test_procedure = {
-      timeline: [fixation, selection, ready, buttonPressingHard, completion, feedback],
+      timeline: [fixation, selection, ready, buttonPressing, completion, feedback],
       timeline_variables: test_prompt_stimuli,
       randomize_order: false
     }
