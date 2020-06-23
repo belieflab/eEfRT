@@ -22,7 +22,7 @@ file_put_contents($name, $data);
     <script src="jsPsych/plugins/jspsych-image-keyboard-response.js"></script>
     <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!-- styling for w3c progress bars -->
   </head>
   <body  
   style="background-color:black;">  
@@ -108,28 +108,36 @@ file_put_contents($name, $data);
 
     /* create timeline */
     var timeline = [];
+
+    // hard code playtime to 20 minutes
+    const MinutesToPlay = 20;
+
     // MinutesToPlay is the user's length of time on the experiment
-    let MinutesToPlay = parseInt(prompt("Enter time in minutes to play the game: "));
+    // let MinutesToPlay = parseInt(prompt("Enter time in minutes to play the game: "));
+
+
 
     // Ask participant handedness
     let handedness =prompt("Are you right or left handed?");
     
-    //const handedness=right;
+    // const handedness=right;
     let antihandedness;
     let EasyKey_uCase; 
     let HardKey_uCase;
+
+    // declare variable for the time to press
     let pressing_time;
   
     // run script to ask participant how much time they would like to play for
     playTime();
 
-// let MinutesToPlay = 20;
     /* define welcome message trial */
     var welcome = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Welcome to the experiment! Press any key to begin.</p>',
-      on_load:  checkHandedness (),
+      on_load: checkHandedness(),
     };
+
     timeline.push(welcome);
 
     /* define instructions trial */
@@ -141,10 +149,8 @@ file_put_contents($name, $data);
         '<p style="color:white;">You will play the game for exactly <strong>'+ MinutesToPlay + '</strong> minutes, after which you will be asked to stop.  </p>'+
         '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
         '<p style="color:white;"> Press the space bar to continue.</p>',
-       
       choices: [' '],
     };
-    // timeline.push(instructions_1);
 
     var instructions_2 = {
       type: "html-keyboard-response",
@@ -156,7 +162,6 @@ file_put_contents($name, $data);
       choices: [32],
       post_trial_gap: 2000
     };
-    // timeline.push(instructions_2);
 
     var instructions_3 = {
       type: "html-keyboard-response",
@@ -165,10 +170,7 @@ file_put_contents($name, $data);
       '<p style="color:white;">Press the space bar to continue. </p>' ,
       choices: [32],
       post_trial_gap: 2000,
-      
     };
-
-    // timeline.push(instructions_3);
     
     var instructions_4 = {
       type: "html-keyboard-response",
@@ -180,7 +182,6 @@ file_put_contents($name, $data);
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_4);
 
     var instructions_5 = {
       type: "html-keyboard-response",
@@ -190,18 +191,15 @@ file_put_contents($name, $data);
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_5);
 
     var instructions_6 = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Some trials are less likely to give you money than others. </p> ' +
       '<p style="color:white;">To help you decide which trials are more likely to give you money, you will be told the probability that you WILL receive money IF you complete the task at the beginning of each trial.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
-
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_6);
 
     var instructions_7 = {
       type: "html-keyboard-response",
@@ -209,11 +207,9 @@ file_put_contents($name, $data);
       '<p style="color:white;">Some trials you will have a 50% chance receiving money if you complete the task.   </p> ' +
       '<p style="color:white;">Some trials you will have a 12% chance of receiving money if you complete the task.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
-      
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_7);
 
     var instructions_8 = {
       type: "html-keyboard-response",
@@ -222,11 +218,9 @@ file_put_contents($name, $data);
       '<p style="color:white;">To choose the Hard task, press the <u><strong>'+HardKey_uCase+'</strong></u> key.  </p> ' +
       '<p style="color:white;">To choose the Easy task, press the <u><strong>'+EasyKey_uCase+'</strong></u> key.  </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
-      
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_8);
 
     var instructions_9 = {
       type: "html-keyboard-response",
@@ -235,11 +229,9 @@ file_put_contents($name, $data);
       '<p style="color:white;">You won’t know which trials get added to your payment.   </p> ' +
       '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
-      
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_9);
 
     var instructions_10 = {
       type: "html-keyboard-response",
@@ -248,23 +240,24 @@ file_put_contents($name, $data);
       '<p style="color:white;">Now you are ready to play the game.    </p> ' +
       '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
       '<p style="color:white;">Press the space bar to start. </p>',
-      
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_10);
 
     var instructions_11 = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Get your hands in position and press any key to start the practice trials. </p> ' ,
-      
       choices: [32],
       post_trial_gap: 2000,
     };
-    // timeline.push(instructions_11);
 
+    var instructions_procedure = {
+      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9, instructions_10, instructions_11],
+      // timeline_variables: practice_prompt_stimuli,
+      // randomize_order: false
+    }
 
-
+    // timeline.push(instructions_procedure);
 
     /* START TRAINING TRIAL FOR PARTICIPANTS */
 // delayed discounting task: three variables: 1st= money now, 2nd= money later, 3rd= money days later
@@ -279,10 +272,10 @@ file_put_contents($name, $data);
     for (var i = 0; i <= 3; i++){
       practice_prompt_array.push('<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. </p> ' +
       '<p style="color:white;">Easy is worth:    </p> ' +
-      '<p style="color:white;"> '+practiceEasy[i]+'   </p> ' +
+      '<p style="color:white;">$'+practiceEasy[i]+'   </p> ' +
       '<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key. </p> ' +
       '<p style="color:white;">Hard is worth:    </p> ' +
-      '<p style="color:white;"> '+practiceHard[i]+'    </p> ' +
+      '<p style="color:white;">$'+practiceHard[i]+'    </p> ' +
       '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ' ,)
       
       
@@ -297,10 +290,10 @@ file_put_contents($name, $data);
   
 // this is where I call each item from the array above
     var practice_prompt_stimuli = [
-    {stimulus: practice_prompt_array[0],progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
+    {stimulus: practice_prompt_array[0], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
     {stimulus: practice_prompt_array[1], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},  
     {stimulus: practice_prompt_array[2], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},  
-    {stimulus:practice_prompt_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
+    {stimulus: practice_prompt_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
     ]
     
     // var practice_prompt_array = [];
@@ -346,15 +339,7 @@ file_put_contents($name, $data);
       trial_duration: 2000,
       data: {test_part: 'fixation'}
     }
-    var ready = {
-      type: 'html-button-response',
-      prompt: '<p style="color:white;" id="counter"> </p>',
-      stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
-      // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
-      button_html: '<button id="nextButton" onclick="countdownHard(1)" >START</button>',
-      choices: [32],
-      // trial_duration: 1000,
-    }
+
 
     var trial_prompt = {
       type: "html-keyboard-response",
@@ -362,15 +347,16 @@ file_put_contents($name, $data);
       choices: [EasyKey_uCase.toLowerCase(), HardKey_uCase.toLowerCase()],
       data: jsPsych.timelineVariable('data'),
       on_finish: function(data){
-        selection = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
+        selection = String(jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press))
+        selection = selection.toUpperCase()
         console.log(selection)
-        if (selection='l'){
-          pressing_time= 7000
-          // document.getElementById("ready").onclick ="countdownEasy(1)";
-        } else { 
-          // document.getElementById("ready").onclick ="countdownHard(1)";
-          pressing_time= 21000 // for right handed only
-        }
+        // if (selection='l')
+        //   pressing_time= 7000;
+        //   document.getElementById("ready").setAttribute("onclick", "countdownEasy(1)");
+        // } else { 
+        //   document.getElementById("ready").setAttribute("onclick", "countdownHard(1)");
+        //   pressing_time= 21000; // for right handed only
+        // }
         
 
         //data.c1 = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
@@ -379,18 +365,51 @@ file_put_contents($name, $data);
     }
 
     
-
+    var ready = {
+      type: 'html-button-response',
+      prompt: '<p style="color:white;" id="counter"> </p>',
+      stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
+      // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
+      button_html: '<button id="ready" onclick="" >START</button>',
+      choices: [selection],
+      on_load:function(){
+        console.log(pressing_time)
+        console.log(selection)
+        if (selection==EasyKey_uCase){
+          pressing_time = 7000;
+          buttonPressing.trial_duration = 7000;
+          document.getElementById("ready").setAttribute("onclick", "countdownEasy(1)");
+        } else if (selection==HardKey_uCase){ 
+          pressing_time= 21000; // for right handed only
+          buttonPressing.trial_duration = 21000;
+          document.getElementById("ready").setAttribute("onclick", "countdownHard(1)");
+        }
+    }
+  }
 
     var buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: '<input type="text" onkeypress="moveHard()">'+'<p style="color:white;" id="counter"> </p>',
+    prompt: '<input type="text" onkeypress="">'+'<p style="color:white;" id="counter"> </p>',
     // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
     trial_duration: pressing_time,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
+    on_load:function(){
+        console.log(pressing_time)
+        console.log(selection)
+        if (pressing_time==21000){
+          // pressing_time = 7000;
+          // buttonPressing.trial_duration = pressing_time;
+          document.getElementById("counter").setAttribute("onkeypress", "moveHard()");
+        } else if (pressing_time==7000){ 
+          // pressing_time= 21000; // for right handed only
+          // buttonPressing.trial_duration = pressing_time;
+          document.getElementById("counter").setAttribute("onkeypress", "moveEasy()");
+        }
+    }
   
    
   }
@@ -405,6 +424,7 @@ file_put_contents($name, $data);
       randomize_order: false
     }
     timeline.push(practice_procedure);
+
     // var test_procedure = {
     //   timeline: [fixation, trial_prompt, ready, buttonPressingHard, completion, feedback],
     //   timeline_variables: test_prompt_stimuli,
@@ -447,9 +467,9 @@ file_put_contents($name, $data);
     for (var i = 0; i <= 102; i++){
       test_prompt_array.push('<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. </p> ' +
       '<p style="color:white;">Easy is worth:    </p> ' +
-      '<p style="color:white;"> '+ easyAmount[i]+'   </p> ' +
+      '<p style="color:white;">$'+ easyAmount[i]+'   </p> ' +
       '<p style="color:white;">Hard is worth:    </p> ' +
-      '<p style="color:white;"> '+ hardAmount[i]+'    </p> ' +
+      '<p style="color:white;">$'+ hardAmount[i]+'    </p> ' +
       '<p style="color:white;"> The probability of winning is ' +testProbability[i]+'%.   </p> ' )
       
       
@@ -672,7 +692,7 @@ var test_procedure = {
 
 function saveData(name, data){
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'test-self-deception.php'); // 'write_data.php' is the path to the php file described above.
+  xhr.open('POST', 'index.php'); // 'write_data.php' is the path to the php file described above.
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify({filename: name, filedata: data}));
 }
@@ -700,7 +720,7 @@ function saveData(name, data){
       jsPsych.init({
         timeline: timeline,
         show_progress_bar: true,
-        on_finish: function(){ saveData("full-self-deception_" + workerID, jsPsych.data.get().csv()); }
+        on_finish: function(){ saveData("eEfRT_" + workerID, jsPsych.data.get().csv()); }
         //on_finish: function(){
           //jsPsych.data.get().filter([{test_part: 'test'},{test_part: 'prediction'},{test_part: 'c2_test'}]).localSave("csv", `test-self-deception-data.csv`);
             //jsPsych.data.displayData(); 

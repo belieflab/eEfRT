@@ -9,7 +9,7 @@ function countdownEasy(minutes) {
         let current_minutes = mins-1
         seconds--;
         counter = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
-        if( seconds > 0 ) {
+        if(seconds > 0) {
             setTimeout(tick, 1000);
             console.log(seconds);
         } else {
