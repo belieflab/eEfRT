@@ -35,6 +35,18 @@ function moveEasy() { // function definition
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         }
     }
+
+function move() { // function definition
+    var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
+    width = parseInt(width.slice(0, -1)); // variable reassignment
+        if (width >= 100) {
+        width = document.getElementById("keyBar").style.width="0%";
+        jsPsych.finishTrial('data');  
+        } else {
+        width+=5;
+        width = document.getElementById("keyBar").style.width=String(width)+"%";
+        }
+    }
         
 function setInputFilter(textbox, inputFilter) {
     ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {

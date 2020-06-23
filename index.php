@@ -118,6 +118,7 @@ file_put_contents($name, $data);
     let antihandedness;
     let EasyKey_uCase; 
     let HardKey_uCase;
+    let pressing_time;
   
     // run script to ask participant how much time they would like to play for
     playTime();
@@ -279,25 +280,27 @@ file_put_contents($name, $data);
       practice_prompt_array.push('<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. </p> ' +
       '<p style="color:white;">Easy is worth:    </p> ' +
       '<p style="color:white;"> '+practiceEasy[i]+'   </p> ' +
+      '<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key. </p> ' +
       '<p style="color:white;">Hard is worth:    </p> ' +
       '<p style="color:white;"> '+practiceHard[i]+'    </p> ' +
-      '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ' +
-      '<p style="color:white;">Ready?    </p> ' +
-      '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+      '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ' ,)
+      
       
     }
   
-  
+    // '<p style="color:white;">Ready?    </p> ' +
+    //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
 
 
-    
+     // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
+     let progressBar ='<div  id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div';
   
 // this is where I call each item from the array above
     var practice_prompt_stimuli = [
-    {stimulus: practice_prompt_array[0], data: {test_part: 'practice', correct_response: ','}},
-    {stimulus: practice_prompt_array[1], data: {test_part: 'practice', correct_response: ','}},  
-    {stimulus: practice_prompt_array[2], data: {test_part: 'practice', correct_response: '.'}},  
-    {stimulus:practice_prompt_array[3], data: {test_part: 'practice', correct_response: '.'}},
+    {stimulus: practice_prompt_array[0],progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
+    {stimulus: practice_prompt_array[1], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},  
+    {stimulus: practice_prompt_array[2], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},  
+    {stimulus:practice_prompt_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
     ]
     
     // var practice_prompt_array = [];
@@ -310,13 +313,47 @@ file_put_contents($name, $data);
       
     // }
    
+    var practice_position = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
+      choices: [32],
+      // post_trial_gap: 2000,
+    };
+   
+    // var practice_fixation = {
+    //   type: "html-keyboard-response",
+    //   stimulus: '<p style="color:white;">+</p>' ,
+    //   // choices: [32],
+    //   post_trial_gap: 2000,
+    // };
 
+    var end_of_trial = {
+      type: "html-keyboard-response",
+      stimulus: '<p style="color:white;">You completed the task.   </p> ' +
+      '<p style="color:white;">No money this round    </p> ' +
+      '<p style="color:white;">Now you are ready to play the game.    </p> ' +
+      '<p style="color:white;">You did not complete the task.   </p> ' +
+      '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
+      
+      choices: [32],
+      post_trial_gap: 2000,
+    
+    };
     var fixation = {
       type: 'html-keyboard-response',
       stimulus: '<div style="color:white; font-size:60px;">+</div>',
       choices: jsPsych.NO_KEYS,
-      trial_duration: 1000,
+      trial_duration: 2000,
       data: {test_part: 'fixation'}
+    }
+    var ready = {
+      type: 'html-button-response',
+      prompt: '<p style="color:white;" id="counter"> </p>',
+      stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
+      // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
+      button_html: '<button id="nextButton" onclick="countdownHard(1)" >START</button>',
+      choices: [32],
+      // trial_duration: 1000,
     }
 
     var trial_prompt = {
@@ -325,27 +362,55 @@ file_put_contents($name, $data);
       choices: [EasyKey_uCase.toLowerCase(), HardKey_uCase.toLowerCase()],
       data: jsPsych.timelineVariable('data'),
       on_finish: function(data){
-        data.C1_train = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
+        selection = jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press)
+        console.log(selection)
+        if (selection='l'){
+          pressing_time= 7000
+          // document.getElementById("ready").onclick ="countdownEasy(1)";
+        } else { 
+          // document.getElementById("ready").onclick ="countdownHard(1)";
+          pressing_time= 21000 // for right handed only
+        }
+        
+
         //data.c1 = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
         
       }
     }
+
+    
+
+
+    var buttonPressing = {
+    type: "html-keyboard-response",
+    // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
+    prompt: '<input type="text" onkeypress="moveHard()">'+'<p style="color:white;" id="counter"> </p>',
+    // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
+    choices: [selection],
+    response_ends_trial: false,
+    trial_duration: pressing_time,
+    data: jsPsych.timelineVariable('data'),
+    stimulus: jsPsych.timelineVariable('progress'),    
+  
+   
+  }
+  
+
+    timeline.push(practice_position);
 // this is where the procedure loops over the timeline property below. the timeline variables are the stimuli.
+    
     var practice_procedure = {
-      timeline: [fixation, trial_prompt],
+      timeline: [fixation, trial_prompt, ready, buttonPressing],
       timeline_variables: practice_prompt_stimuli,
       randomize_order: false
     }
-  
-    // horizontal progress bar
-//     <div class="progress">
-//   <div class="progress-bar" role="progressbar" aria-valuenow="70"
-//   aria-valuemin="0" aria-valuemax="100" style="width:70%">
-//     <span class="sr-only">70% Complete</span>
-//   </div>
-// </div> 
+    timeline.push(practice_procedure);
+    // var test_procedure = {
+    //   timeline: [fixation, trial_prompt, ready, buttonPressingHard, completion, feedback],
+    //   timeline_variables: test_prompt_stimuli,
+    //   randomize_order: false
+    // }
 
-    // timeline.push(practice_procedure);
     var end_of_trial = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">You completed the task.   </p> ' +
@@ -400,8 +465,7 @@ file_put_contents($name, $data);
         buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
       }
     
-      // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
-    let progressBar ='<div  id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div';
+     
       
       var test_prompt_stimuli = [
     {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
@@ -515,15 +579,7 @@ file_put_contents($name, $data);
       trial_duration: 1000,
     }
 
-    var ready = {
-      type: 'html-button-response',
-      prompt: '<p style="color:white;" id="counter"> </p>',
-      stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
-      // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
-      button_html: '<button id="nextButton" onclick="countdownHard(1)" onkeypress="countdownHard(1)">START</button>',
-      choices: [32],
-      // trial_duration: 1000,
-    }
+   
 
     var selection = {
       type: 'html-keyboard-response',
