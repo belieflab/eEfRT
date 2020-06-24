@@ -388,11 +388,12 @@ file_put_contents($name, $data);
     var ready = {
       type: 'html-button-response',
       prompt: '<p style="color:white;" id="counter">timer placeholder</p>',
-      stimulus:'<p style="color:white;">Press the button when you are ready to begin. </p>',
+      stimulus:'<p style="color:white;">Press the space bar when you are ready to begin. </p>',
       // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
-      button_html: '<button id="ready" onclick="" >START</button>',
-      choices: [selection],
+      button_html: '<button id="ready" onclick="" style="outline:none;">START</button>',
+      choices: [32],
       on_load:function(){
+        document.getElementById("ready").focus(); //gives focus to the ready button
         console.log(pressing_time)
         console.log(selection)
         if (selection==EasyKey_uCase){
@@ -410,14 +411,15 @@ file_put_contents($name, $data);
     var buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: '<input type="text" onkeypress="">'+'<p style="color:white;" id="counter">timer placeholder</p>',
+    prompt: '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">'+'<p style="color:white;" id="counter">timer placeholder</p>',
     // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
     trial_duration: pressing_time,
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
-    on_load:function(){
+    on_load:function buttonPress(){
+        document.getElementById("tapTap").focus(); //gives focus to the text box
         console.log(pressing_time)
         console.log(selection)
         if (pressing_time==21000){
