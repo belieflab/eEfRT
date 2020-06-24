@@ -1,6 +1,6 @@
 function countdownEasy(minutes) {
     // jsPsych.endCurrentTimeline();
-    let seconds = 60;
+    let seconds = 7;
     let mins = minutes;
     function tick() {
         //This script expects an element with an ID = "counter". You can change that to what ever you want. 
@@ -18,8 +18,8 @@ function countdownEasy(minutes) {
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
                 jsPsych.finishTrial('data');
-               seconds = 60;
-               counter.innerHTML = "Time Remaining: 00:60";
+               seconds = 7;
+               counter.innerHTML = "Time Remaining: 00:07";
             }
         }
     }

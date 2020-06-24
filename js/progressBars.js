@@ -14,24 +14,25 @@
 
 function moveHard() { // function definition
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
-    width = parseInt(width.slice(0, -1)); // variable reassignment
-      if (width >= 100) {
+    width = parseFloat(width.slice(0, -1)); // variable reassignment
+      if (width >= 99) { // set to record 100 taps
         width = document.getElementById("keyBar").style.width="0%";
         jsPsych.finishTrial('data');  
       } else {
         width++;
+        console.log(width);
         width = document.getElementById("keyBar").style.width=String(width)+"%";
       }
     }
 
 function moveEasy() { // function definition
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
-    width = parseInt(width.slice(0, -1)); // variable reassignment
-        if (width >= 100) {
+    width = parseFloat(width.slice(0, -1)); // variable reassignment
+        if (width >= 96.57) { // set to record 30 taps
         width = document.getElementById("keyBar").style.width="0%";
         jsPsych.finishTrial('data');  
         } else {
-        width+=3.3333333333;
+        width+=3.33;
         console.log(width);
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         }
