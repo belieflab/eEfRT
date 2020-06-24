@@ -1,14 +1,14 @@
 function countdownEasy(minutes) {
     // jsPsych.endCurrentTimeline();
-    let seconds = 7;
+    let seconds = 60;
     let mins = minutes;
     function tick() {
         //This script expects an element with an ID = "counter". You can change that to what ever you want. 
-        let counter = document.getElementById("counter");
+        let counter = document.getElementById("timeRemaining");
         // let counter = '';
         let current_minutes = mins-1
         seconds--;
-        counter = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
+        counter.innerHTML = "Time Remaining: " + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
         if(seconds > 0) {
             setTimeout(tick, 1000);
             console.log(seconds);
@@ -18,7 +18,8 @@ function countdownEasy(minutes) {
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
                 jsPsych.finishTrial('data');
-               seconds = 7;
+               seconds = 60;
+               counter.innerHTML = "Time Remaining: 00:60";
             }
         }
     }
@@ -32,11 +33,11 @@ function countdownHard(minutes) {
     let mins = minutes;
     function tick() {
         //This script expects an element with an ID = "counter". You can change that to what ever you want. 
-        let counter = document.getElementById("counter");
+        let counter = document.getElementById("timeRemaining");
         // let counter = '';
         let current_minutes = mins-1
         seconds--;
-        counter = current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
+        counter.innerHTML = "Time Remaining: " + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
         if( seconds > 0 ) {
             setTimeout(tick, 1000);
             console.log(seconds);
@@ -47,6 +48,7 @@ function countdownHard(minutes) {
             else if (seconds == 0) { //ends experiment when timer reaches 0
                 jsPsych.finishTrial('data');
                seconds = 21;
+               counter.innerHTML = "Time Remaining: 00:21";
             }
         }
     }

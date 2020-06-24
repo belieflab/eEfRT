@@ -283,11 +283,11 @@ file_put_contents($name, $data);
   
     // '<p style="color:white;">Ready?    </p> ' +
     //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
-
+    let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>'
 
      // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
-     let progressBar ='<div  id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div';
-  
+     let progressBar = '<div id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div>';
+
 // this is where I call each item from the array above
     var practice_prompt_stimuli = [
     {stimulus: practice_prompt_array[0], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
@@ -383,17 +383,22 @@ file_put_contents($name, $data);
         
       }
     }
-
-    
     var ready = {
+      type: 'html-keyboard-response',
+      prompt: '<p id="timeRemaining" style="color:white;" id="counter">timer placeholder</p>',
+      stimulus:'<p style="color:white;">Ready?</p>',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 1000,
+  }
+    
+    var load = {
       type: 'html-button-response',
-      prompt: '<p style="color:white;" id="counter">timer placeholder</p>',
-      stimulus:'<p style="color:white;">Press the space bar when you are ready to begin. </p>',
-      // button_html: '<button id= "nextButton" onclick="countdownHard()" onkeypress="countdownHard()">begin</button>',
-      button_html: '<button id="ready" onclick="" style="outline:none;">START</button>',
+      prompt: '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>',
+      stimulus:'<p style="color:white;">Ready?</p>',
+      button_html: '<button id="ready" onclick="" style="outline:none; background-color:black">START</button>',
       choices: [32],
-      on_load:function(){
-        document.getElementById("ready").focus(); //gives focus to the ready button
+      // trial_duration: 1000,
+      on_load:function userSelection(){
         console.log(pressing_time)
         console.log(selection)
         if (selection==EasyKey_uCase){
@@ -405,14 +410,15 @@ file_put_contents($name, $data);
           buttonPressing.trial_duration = 21000;
           document.getElementById("ready").setAttribute("onclick", "countdownHard(1)");
         }
+        document.getElementById("ready").click(); //automatically clicks the hidden button after loading
     }
   }
 
     var buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">'+'<p style="color:white;" id="counter">timer placeholder</p>',
-    // prompt: '<p id="counter" style="text-align:center; color:white; font-size:30px"></p>', //this gets filled in with the countdown
+    prompt: timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
+    // stimulus: , //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
     trial_duration: pressing_time,
@@ -444,7 +450,7 @@ file_put_contents($name, $data);
 // this is where the procedure loops over the timeline property below. the timeline variables are the stimuli.
     
     var practice_procedure = {
-      timeline: [fixation, trial_prompt, ready, buttonPressing, completion, feedback],
+      timeline: [fixation, trial_prompt, ready, load, buttonPressing, completion, feedback],
       timeline_variables: practice_prompt_stimuli,
       randomize_order: false
     }
@@ -658,7 +664,7 @@ file_put_contents($name, $data);
   // }
 
 var test_procedure = {
-      timeline: [fixation, selection, ready, buttonPressing, completion, feedback],
+      timeline: [fixation, selection, ready, load, buttonPressing, completion, feedback],
       timeline_variables: test_prompt_stimuli,
       randomize_order: false
     }
