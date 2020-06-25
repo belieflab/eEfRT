@@ -132,6 +132,8 @@ file_put_contents($name, $data);
     let pressing_time;
 
     let outcomeIterator=0;
+
+    let newOutcome;
   
     // run script to ask participant how much time they would like to play for
     playTime();
@@ -435,16 +437,22 @@ file_put_contents($name, $data);
         if (feedbackLogic == 'You completed the task'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           // return true;
             if (selection==EasyKey_uCase){
-            // i = 0
-            outcome.innerHTML = 'You won $ '+practiceEasy[outcomeIterator];
+             newOutcome = outcomeIterator;
+            outcome.innerHTML = 'You won $ '+practiceEasy[newOutcome];
             outcomeIterator++
+             
             } else if (selection==HardKey_uCase){
-            // i = 0
-            outcome.innerHTML = 'You won $ '+practiceHard[outcomeIterator];
-            outcomeIterator++
+            newOutcome = outcomeIterator;
+             outcome.innerHTML = 'You won $ '+practiceHard[newOutcome];
+             outcomeIterator++
+              
+           
           }
         } else {
+          newOutcome = outcomeIterator
+          outcomeIterator++;
           outcome.innerHTML = outcomeLogic;
+          
           return false;
         }
 
