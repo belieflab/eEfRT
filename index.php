@@ -117,6 +117,9 @@ file_put_contents($name, $data);
 
     var feedbackLogic;
 
+    // user selection of hard or easy trials
+    var selection;
+
     // Ask participant handedness
     let handedness =prompt("Are you right or left handed?");
     
@@ -279,6 +282,10 @@ file_put_contents($name, $data);
       '<p style="color:white;">$'+practiceHard[i]+'    </p> ' +
       '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ',)
     }
+    let practice_feedback_array = [];
+        for (let i = 0; i <= 3; i++){
+        practice_feedback_array.push('<p id="feedbackGenerator" style="color:white;"></p>')
+    }
 
     let practice_outcome_array = [];
       practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">You won $ '+practiceEasy[0]+'</p>')
@@ -287,10 +294,7 @@ file_put_contents($name, $data);
       practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">You won $ '+practiceEasy[3]+'</p>')
 
     // the feedback array is populated after trial is completed or failed
-    let practice_feedback_array = [];
-    for (let i = 0; i <= 3; i++){
-    practice_feedback_array.push('<p id="feedbackGenerator" style="color:white;"></p>')
-    }
+
   
     // '<p style="color:white;">Ready?    </p> ' +
     //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
@@ -303,10 +307,10 @@ file_put_contents($name, $data);
 
 // this is where I call each item from the array above
     let practice_prompt_stimuli = [
-    {stimulus: practice_prompt_array[0], outcome: practice_outcome_array[0], feedback: practice_feedback_array[0], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
-    {stimulus: practice_prompt_array[1], outcome: practice_outcome_array[1], feedback: practice_feedback_array[1], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},  
-    {stimulus: practice_prompt_array[2], outcome: practice_outcome_array[2], feedback: practice_feedback_array[2], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},  
-    {stimulus: practice_prompt_array[3], outcome: practice_outcome_array[3], feedback: practice_feedback_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
+    {stimulus: practice_prompt_array[0], feedback: practice_feedback_array[0], outcome: practice_outcome_array[0], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
+    {stimulus: practice_prompt_array[1], feedback: practice_feedback_array[1], outcome: practice_outcome_array[1], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},  
+    {stimulus: practice_prompt_array[2], feedback: practice_feedback_array[2], outcome: practice_outcome_array[2], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},  
+    {stimulus: practice_prompt_array[3], feedback: practice_feedback_array[3], outcome: practice_outcome_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
     ]
 
     let practice_position = {
@@ -336,38 +340,6 @@ file_put_contents($name, $data);
       trial_duration: 1000,
     }
 
-    let selection = {
-      type: 'html-keyboard-response',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 2000,
-      stimulus:jsPsych.timelineVariable('stimulus'),
-    }    
-// feedbackLogic = '<div style="color:white; font-size:60px;">ass</div>';
-    let feedback = {
-      type: 'html-keyboard-response',
-      // stimulus:'<p style="color:white;"> feedback </p> ',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 2000, 
-      stimulus: jsPsych.timelineVariable('feedback'),  
-      // prompt: '<p id="feedbackGenerator" style="color:white;"></p>',
-      // stimulus: '<div style="color:white; font-size:60px;">ass</div>',
-      // stimulus: feedbackLogic,
-      data: jsPsych.timelineVariable('data'),  
-      on_load: function(){
-        let feedback = document.getElementById("feedbackGenerator");
-        feedback.innerHTML = feedbackLogic;
-      }
-    }
-
-    let outcome = {
-      type: 'html-keyboard-response',
-      // stimulus:'<p style="color:white;">completion </p> ',
-      choices: jsPsych.NO_KEYS,
-      trial_duration: 2000,
-      stimulus: jsPsych.timelineVariable('outcome'),  
-      data: jsPsych.timelineVariable('data'),  
-    }
-
     let trial = {
       type: "html-keyboard-response",
       stimulus: jsPsych.timelineVariable('stimulus'), //train_stimuli_array, //jsPsych.timelineVariable('stimulus'),
@@ -377,19 +349,9 @@ file_put_contents($name, $data);
         selection = String(jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press))
         selection = selection.toUpperCase()
         console.log(selection)
-        // if (selection='l')
-        //   pressing_time= 7000;
-        //   document.getElementById("ready").setAttribute("onclick", "countdownEasy(1)");
-        // } else { 
-        //   document.getElementById("ready").setAttribute("onclick", "countdownHard(1)");
-        //   pressing_time= 21000; // for right handed only
-        // }
-        
-
-        //data.c1 = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode(data.correct_response);
-        
       }
     }
+
     let ready = {
       type: 'html-keyboard-response',
       // prompt: '<p id="timeRemaining" style="color:white;" id="counter">timer placeholder</p>',
@@ -445,9 +407,48 @@ file_put_contents($name, $data);
           document.getElementById("counter").setAttribute("onkeypress", "moveEasy()");
         }
     }
-  
-   
   }
+
+    // let selection = {
+    //   type: 'html-keyboard-response',
+    //   choices: jsPsych.NO_KEYS,
+    //   trial_duration: 2000,
+    //   stimulus:jsPsych.timelineVariable('stimulus'),
+    // }    
+    let feedback = {
+      type: 'html-keyboard-response',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 2000, 
+      stimulus: jsPsych.timelineVariable('feedback'),  
+      data: jsPsych.timelineVariable('data'),  
+      on_load: function(){
+        let feedback = document.getElementById("feedbackGenerator");
+        feedback.innerHTML = feedbackLogic;
+      }
+    }
+
+    let outcome = {
+      type: 'html-keyboard-response',
+      // stimulus:'<p style="color:white;">completion </p> ',
+      choices: jsPsych.NO_KEYS,
+      trial_duration: 2000,
+      stimulus: jsPsych.timelineVariable('outcome'),  
+      data: jsPsych.timelineVariable('data'),  
+      on_load: function(){
+        let outcome = document.getElementById("outcomeGenerator");
+        if (feedbackLogic == 'You completed the task'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+          return true;
+        } else {
+          outcome.innerHTML = outcomeLogic;
+          return false;
+        }
+
+      }
+    }
+
+
+
+
   
 
     timeline.push(practice_position);
@@ -653,7 +654,7 @@ file_put_contents($name, $data);
   // }
 
 let test_procedure = {
-      timeline: [fixation, selection, ready, load, buttonPressing, feedback, outcome],
+      timeline: [fixation, trial, ready, load, buttonPressing, feedback, outcome],
       timeline_variables: test_prompt_stimuli,
       randomize_order: false
     }
