@@ -318,10 +318,14 @@ file_put_contents($name, $data);
     ]
 
     let practice_position = {
-      type: "html-keyboard-response",
+      type: 'html-button-response',
       stimulus: '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
+      
+      button_html: '<button id="startExp" onclick="experimentTimer(1)" style="outline:none; border:none; background-color:black">START</button>',
       choices: [32],
-      // post_trial_gap: 2000,
+      on_load: function(){
+        document.getElementById('startExp').focus();
+      }
     };
    
 
@@ -358,7 +362,7 @@ file_put_contents($name, $data);
 
     let ready = {
       type: 'html-keyboard-response',
-      // prompt: '<p id="timeRemaining" style="color:white;" id="counter">timer placeholder</p>',
+      
       stimulus:'<p style="color:white;">Ready?</p>',
       choices: jsPsych.NO_KEYS,
       trial_duration: 1000,

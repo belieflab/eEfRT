@@ -70,3 +70,34 @@ function countdownHard(minutes) {
 
 }
 
+function experimentTimer(minutes) {
+    // jsPsych.endCurrentTimeline();
+    let seconds = 60;
+    let mins = minutes;
+    function tick() {
+        //This script expects an element with an ID = "counter". You can change that to what ever you want. 
+        //let timer = document.getElementById("experimentTimer");
+        // let feedback = document.getElementById("feedbackGenerator");
+        // let counter = '';
+        let current_minutes = mins-1
+        seconds--;
+        timer = "Time Remaining: " + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
+        if( seconds > 0 ) {
+            setTimeout(tick, 1000);
+            console.log(seconds);
+        } else {
+            if(mins > 1){
+                countdown(mins-1);           
+            }
+            else if (seconds == 0) { //ends experiment when timer reaches 0
+                
+                console.log('Experiment complete')
+                jsPsych.endCurrentTimeline('complete');
+               
+            //    return [feedbackLogic, outcomeLogic];
+            }
+        }
+    }
+    tick();
+
+}
