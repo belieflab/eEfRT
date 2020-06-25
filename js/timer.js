@@ -5,7 +5,7 @@ function countdownEasy(minutes) {
     function tick() {
         //This script expects an element with an ID = "counter". You can change that to what ever you want. 
         let counter = document.getElementById("timeRemaining");
-        let feedback = document.getElementById("feedbackGenerator");
+        // let feedback = document.getElementById("feedbackGenerator");
         // let counter = '';
         let current_minutes = mins-1
         seconds--;
@@ -41,7 +41,7 @@ function countdownHard(minutes) {
     function tick() {
         //This script expects an element with an ID = "counter". You can change that to what ever you want. 
         let counter = document.getElementById("timeRemaining");
-        let feedback = document.getElementById("feedbackGenerator");
+        // let feedback = document.getElementById("feedbackGenerator");
         // let counter = '';
         let current_minutes = mins-1
         seconds--;
@@ -59,6 +59,7 @@ function countdownHard(minutes) {
                 // practice_feedback_array.push('<p style="color:white;">You <u>did not</u> complete the task</p> ');
                 // feedback.innerHTML = "FUCK YEAH";
                 console.log('incomplete')
+                jsPsych.finishTrial('failure');
                seconds = 21;
                counter.innerHTML = "Time Remaining: 00:21";
             //    return [feedbackLogic, outcomeLogic];

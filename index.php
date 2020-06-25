@@ -130,6 +130,8 @@ file_put_contents($name, $data);
 
     // declare variable for the time to press
     let pressing_time;
+
+    let outcomeIterator=0;
   
     // run script to ask participant how much time they would like to play for
     playTime();
@@ -288,10 +290,10 @@ file_put_contents($name, $data);
     }
 
     let practice_outcome_array = [];
-      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">You won $ '+practiceEasy[0]+'</p>')
-      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
-      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
-      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">You won $ '+practiceEasy[3]+'</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      practice_outcome_array.push('<p id="" style="color:white;">No money this round</p>')
+      practice_outcome_array.push('<p id="" style="color:white;">No money this round</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
 
     // the feedback array is populated after trial is completed or failed
 
@@ -409,12 +411,6 @@ file_put_contents($name, $data);
     }
   }
 
-    // let selection = {
-    //   type: 'html-keyboard-response',
-    //   choices: jsPsych.NO_KEYS,
-    //   trial_duration: 2000,
-    //   stimulus:jsPsych.timelineVariable('stimulus'),
-    // }    
     let feedback = {
       type: 'html-keyboard-response',
       choices: jsPsych.NO_KEYS,
@@ -437,7 +433,16 @@ file_put_contents($name, $data);
       on_load: function(){
         let outcome = document.getElementById("outcomeGenerator");
         if (feedbackLogic == 'You completed the task'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-          return true;
+          // return true;
+            if (selection==EasyKey_uCase){
+            // i = 0
+            outcome.innerHTML = 'You won $ '+practiceEasy[outcomeIterator];
+            outcomeIterator++
+            } else if (selection==HardKey_uCase){
+            // i = 0
+            outcome.innerHTML = 'You won $ '+practiceHard[outcomeIterator];
+            outcomeIterator++
+          }
         } else {
           outcome.innerHTML = outcomeLogic;
           return false;
