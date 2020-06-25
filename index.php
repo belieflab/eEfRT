@@ -115,7 +115,7 @@ file_put_contents($name, $data);
     // MinutesToPlay is the user's length of time on the experiment
     // let MinutesToPlay = parseInt(prompt("Enter time in minutes to play the game: "));
 
-    let feedbackLogic;
+    var feedbackLogic;
 
     // Ask participant handedness
     let handedness =prompt("Are you right or left handed?");
@@ -281,17 +281,16 @@ file_put_contents($name, $data);
     }
 
     let practice_outcome_array = [];
-      practice_outcome_array.push('<p style="color:white;">You won $ '+practiceEasy[0]+'</p>')
-      practice_outcome_array.push('<p style="color:white;">No money this round</p>')
-      practice_outcome_array.push('<p style="color:white;">No money this round</p>')
-      practice_outcome_array.push('<p style="color:white;">You won $ '+practiceEasy[3]+'</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">You won $ '+practiceEasy[0]+'</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">You won $ '+practiceEasy[3]+'</p>')
 
     // the feedback array is populated after trial is completed or failed
     let practice_feedback_array = [];
-    practice_feedback_array.push('<p id="feedback" style="color:white;">a</p>')
-    practice_feedback_array.push('<p id="feedback" style="color:white;">a</p>')
-    practice_feedback_array.push('<p id="feedback" style="color:white;">a</p>')
-    practice_feedback_array.push('<p id="feedback" style="color:white;">a</p>')
+    for (let i = 0; i <= 3; i++){
+    practice_feedback_array.push('<p id="feedbackGenerator" style="color:white;"></p>')
+    }
   
     // '<p style="color:white;">Ready?    </p> ' +
     //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
@@ -304,10 +303,10 @@ file_put_contents($name, $data);
 
 // this is where I call each item from the array above
     let practice_prompt_stimuli = [
-    {stimulus: practice_prompt_array[0], outcome: practice_outcome_array[0], feedback: practice_feedback_array[4], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
-    {stimulus: practice_prompt_array[1], outcome: practice_outcome_array[1], feedback: practice_feedback_array[5], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},  
-    {stimulus: practice_prompt_array[2], outcome: practice_outcome_array[2], feedback: practice_feedback_array[6], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},  
-    {stimulus: practice_prompt_array[3], outcome: practice_outcome_array[3], feedback: practice_feedback_array[7], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
+    {stimulus: practice_prompt_array[0], outcome: practice_outcome_array[0], feedback: practice_feedback_array[0], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
+    {stimulus: practice_prompt_array[1], outcome: practice_outcome_array[1], feedback: practice_feedback_array[1], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},  
+    {stimulus: practice_prompt_array[2], outcome: practice_outcome_array[2], feedback: practice_feedback_array[2], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},  
+    {stimulus: practice_prompt_array[3], outcome: practice_outcome_array[3], feedback: practice_feedback_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
     ]
 
     let practice_position = {
@@ -343,17 +342,21 @@ file_put_contents($name, $data);
       trial_duration: 2000,
       stimulus:jsPsych.timelineVariable('stimulus'),
     }    
-let ass = '<div style="color:white; font-size:60px;">ass</div>';
+// feedbackLogic = '<div style="color:white; font-size:60px;">ass</div>';
     let feedback = {
       type: 'html-keyboard-response',
       // stimulus:'<p style="color:white;"> feedback </p> ',
       choices: jsPsych.NO_KEYS,
       trial_duration: 2000, 
-      // stimulus: jsPsych.timelineVariable('feedback'),  
-      // stimulus: '<p id="feedbackGenerator" style="color:white;">dafdsafdafdas</p>',
+      stimulus: jsPsych.timelineVariable('feedback'),  
+      // prompt: '<p id="feedbackGenerator" style="color:white;"></p>',
       // stimulus: '<div style="color:white; font-size:60px;">ass</div>',
-      stimulus: ass,
+      // stimulus: feedbackLogic,
       data: jsPsych.timelineVariable('data'),  
+      on_load: function(){
+        let feedback = document.getElementById("feedbackGenerator");
+        feedback.innerHTML = feedbackLogic;
+      }
     }
 
     let outcome = {

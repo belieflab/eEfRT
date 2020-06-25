@@ -13,48 +13,46 @@
 
 
 function moveHard() { // function definition
+    let feedback = document.getElementById("feedbackGenerator");
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
       if (width >= 99) { // set to record 100 taps
-        feedbackLogic = '<p style="color:white;">You completed the task</p>';
+        feedback.innerHTML = "FUCK YEAH";
+        window.feedbackLogic = '<p style="color:white;">You completed the task</p>';
         practice_feedback_array.push('<p style="color:white;">You completed the task</p>');
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%"; // reset to 0
         jsPsych.finishTrial('success');  
+        return feedbackLogic;
       } else {
         width++;
         console.log(width);
         width = document.getElementById("keyBar").style.width=String(width)+"%";
       }
+
     }
 
+
 function moveEasy() { // function definition
+    let feedback = document.getElementById("feedbackGenerator");
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
         if (width >= 96.57) { // set to record 30 taps
-        feedbackLogic = '<p style="color:white;">You completed the task</p>';
+        feedback.innerHTML = "FUCK YEAH";
+        window.feedbackLogic = '<p style="color:white;">You completed the task</p>';
         practice_feedback_array.push('<p style="color:white;">You completed the task</p>');
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%";
         jsPsych.finishTrial('data');  
+        return feedbackLogic;
         } else {
         width+=3.33;
         console.log(width);
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         }
+
     }
 
-function move() { // function definition
-    var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
-    width = parseInt(width.slice(0, -1)); // variable reassignment
-        if (width >= 100) {
-        width = document.getElementById("keyBar").style.width="0%";
-        jsPsych.finishTrial('data');  
-        } else {
-        width+=5;
-        width = document.getElementById("keyBar").style.width=String(width)+"%";
-        }
-    }
         
 function setInputFilter(textbox, inputFilter) {
     ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
@@ -72,6 +70,3 @@ function setInputFilter(textbox, inputFilter) {
         });
     });
     }
-    
-// {/* <input type="text" onkeypress="myFunction()"></input>
-// object.onkeypress = move() */}

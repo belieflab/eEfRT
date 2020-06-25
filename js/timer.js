@@ -18,13 +18,14 @@ function countdownEasy(minutes) {
                 countdown(mins-1);           
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
-                feedbackLogic = '<p style="color:white;">You <u>did not</u> complete the task</p> ';
+                window.feedbackLogic = '<p style="color:white;">You <u>did not</u> complete the task</p> ';
                 practice_feedback_array.push('<p style="color:white;">You <u>did not</u> complete the task</p> ');
-                feedback.innerHTML = "FUCK YEAH";
+                // feedback.innerHTML = "FUCK YEAH";
                 console.log('incomplete')
                 jsPsych.finishTrial('failure');
                seconds = 7;
                counter.innerHTML = "Time Remaining: 00:07";
+               return feedbackLogic
             }
         }
     }
@@ -52,12 +53,13 @@ function countdownHard(minutes) {
                 countdown(mins-1);           
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
-                feedbackLogic = '<p style="color:white;">You <u>did not</u> complete the task</p> ';
+                window.feedbackLogic = '<p style="color:white;">You <u>did not</u> complete the task</p> ';
                 practice_feedback_array.push('<p style="color:white;">You <u>did not</u> complete the task</p> ');
-                feedback.innerHTML = "FUCK YEAH";
+                // feedback.innerHTML = "FUCK YEAH";
                 console.log('incomplete')
                seconds = 21;
                counter.innerHTML = "Time Remaining: 00:21";
+               return feedbackLogic
             }
         }
     }
