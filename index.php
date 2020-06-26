@@ -311,6 +311,8 @@ file_put_contents($name, $data);
 
      let feedbackGenerator = '<p id="feedbackGenerator" style="color:white;"></p>';
 
+     let fillUp = '<p id="fillUp" style="color:white;"></p>';
+
 // this is where I call each item from the array above
     let practice_prompt_stimuli = [
     {stimulus: practice_prompt_array[0], feedback: practice_feedback_array[0], outcome: practice_outcome_array[0], progress: progressBar, data: {test_part: 'practice', correct_response: ','}},
@@ -387,7 +389,7 @@ file_put_contents($name, $data);
     let buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
+    prompt: fillUp + feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
     // stimulus: , //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
@@ -395,6 +397,8 @@ file_put_contents($name, $data);
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
     on_load:function buttonPress(){
+        barFill = document.getElementById("fillUp");
+        barFill.innerHTML = 'Press the <u><strong>'+selection+'</strong></u> key until the bar fills up.';   
         document.getElementById("tapTap").focus(); //gives focus to the text box
         console.log(pressing_time)
         console.log(selection)
