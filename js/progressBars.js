@@ -17,13 +17,10 @@ function moveHard() { // function definition
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
       if (width >= 99) { // set to record 100 taps
-        // feedback.innerHTML = "FUCK YEAH";
         feedbackLogic = 'You completed the task';
-        // practice_feedback_array.push('<p style="color:white;">You completed the task</p>');
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%"; // reset to 0
         jsPsych.finishTrial('success');  
-        // return feedbackLogic;
       } else {
         width++;
         console.log(width);
@@ -38,13 +35,10 @@ function moveEasy() { // function definition
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
         if (width >= 96.57) { // set to record 30 taps
-        // feedback.innerHTML = "FUCK YEAH";
         feedbackLogic = 'You completed the task';
-        // practice_feedback_array.push('<p style="color:white;">You completed the task</p>');
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%";
         jsPsych.finishTrial('data');  
-        // return feedbackLogic;
         } else {
         width+=3.33;
         console.log(width);
