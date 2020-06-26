@@ -25,6 +25,7 @@
     // declare variable for the time to press
     let pressing_time;
 
+    // declare iterators for the practice and experiment outcome
     let practiceIterator=0;
     let experimentIterator=0;
   
@@ -153,8 +154,6 @@
 
     let instructions_procedure = {
       timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9, instructions_10, instructions_11],
-      // timeline_variables: practice_prompt_stimuli,
-      // randomize_order: false
     }
 
     // timeline.push(instructions_procedure);
@@ -248,12 +247,11 @@
 
     let ready = {
       type: 'html-keyboard-response',
-      
       stimulus:'<p style="color:white;">Ready?</p>',
       choices: jsPsych.NO_KEYS,
       trial_duration: 1000,
-  }
-    
+    }
+
     let load = {
       type: 'html-button-response',
       prompt: '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>',
