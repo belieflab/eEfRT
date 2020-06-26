@@ -285,6 +285,8 @@ file_put_contents($name, $data);
       '<p style="color:white;">Hard is worth:    </p> ' +
       '<p style="color:white;">$'+practiceHard[i]+'    </p> ' +
       '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ',)
+
+      
     }
     let practice_feedback_array = [];
         for (let i = 0; i <= 3; i++){
@@ -299,9 +301,6 @@ file_put_contents($name, $data);
 
     // the feedback array is populated after trial is completed or failed
 
-
-
-
   
     // '<p style="color:white;">Ready?    </p> ' +
     //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
@@ -311,8 +310,6 @@ file_put_contents($name, $data);
      let progressBar = '<div id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div>';
 
      let feedbackGenerator = '<p id="feedbackGenerator" style="color:white;"></p>';
-
-     let fillUp = '<p id="fillUp" style="color:white;"></p>';
 
 // this is where I call each item from the array above
     let practice_prompt_stimuli = [
@@ -390,7 +387,7 @@ file_put_contents($name, $data);
     let buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: fillUp + feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
+    prompt: feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
     // stimulus: , //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
@@ -398,8 +395,6 @@ file_put_contents($name, $data);
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
     on_load:function buttonPress(){
-        barFill = document.getElementById("fillUp");
-        barFill.innerHTML = 'Press the <u><strong>'+selection+'</strong></u> key until the bar fills up.';   
         document.getElementById("tapTap").focus(); //gives focus to the text box
         console.log(pressing_time)
         console.log(selection)
@@ -436,19 +431,21 @@ file_put_contents($name, $data);
       data: jsPsych.timelineVariable('data'),  
       on_load: function(){
         let outcome = document.getElementById("outcomeGenerator");
-        if (feedbackLogic == 'You completed the task' && outcome.innerHTML != 'No money this round'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+        if (feedbackLogic == 'You completed the task'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           // return true;
             if (selection==EasyKey_uCase){
             //  newOutcome = outcomeIterator;
             outcome.innerHTML = 'You won $ '+practiceEasy[outcomeIterator];
             outcomeIterator++
-            
+             
             } else if (selection==HardKey_uCase){
             // newOutcome = outcomeIterator;
              outcome.innerHTML = 'You won $ '+practiceHard[outcomeIterator];
              outcomeIterator++
+              
+           
           }
-        } else if (feedbackLogic == 'You completed the task' && outcome.innerHTML != 'No money this round') { // checks to insure 
+        } else if (outcome.innerHTML != 'No money this round') { // checks to insure 
           // newOutcome = outcomeIterator
           outcome.innerHTML = outcomeLogic;
           outcomeIterator++;
@@ -530,120 +527,233 @@ file_put_contents($name, $data);
       
     }
    
-    // let buttonPressingEasy_array = [];
-    // for (let i = 0; i <= 102; i++){
-    //   buttonPressingEasy_array.push( '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
-    // }
+    let test_feedback_array = [];
+        for (let i = 0; i <= 102; i++){
+        test_feedback_array.push('<p id="feedbackGenerator" style="color:white;"></p>')
+    }
+    let test_outcome_array = [];
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      test_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+   
+    
+    
+      let buttonPressingEasy_array = [];
+    for (let i = 0; i <= 102; i++){
+      buttonPressingEasy_array.push( '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+    }
 
-    // let buttonPressingHard_array = [];
-    //   for (let i = 0; i <= 102; i++){
-    //     buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
-    //   }
+    let buttonPressingHard_array = [];
+      for (let i = 0; i <= 102; i++){
+        buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+      }
     
      
       
       let test_prompt_stimuli = [
-    {stimulus: test_prompt_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
-    {stimulus: test_prompt_array[1], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, 
-    {stimulus: test_prompt_array[2], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[3], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[4], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[5], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[6], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[8], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[9], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[10], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[11], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[12], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[14], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[15], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[16], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[17], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[18], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[19], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[20], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[21], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[22], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[23], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[24], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[25], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[26], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[27], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[28], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[29], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[30], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[31], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[32], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[33], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[34], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[35], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[36], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[37], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[38], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[39], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[40], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[41], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[42], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[43], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[44], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[45], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[46], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[47], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[48], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[49], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[50], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[51], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[52], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[53], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[54], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[55], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[56], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[57], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[58], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[59], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[60], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[61], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[62], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[63], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[64], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[65], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[66], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[67], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[68], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[69], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[70], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[71], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[72], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[73], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[74], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[75], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[76], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[77], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[78], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[79], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[80], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[81], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[82], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[83], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[84], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[85], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[86], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[87], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[88], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[89], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[90], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[91], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[92], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[93], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[94], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[95], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[96], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[97], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[98], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[99], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
-    {stimulus: test_prompt_array[100], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
-    {stimulus: test_prompt_array[101], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
-    {stimulus: test_prompt_array[102], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[0], feedback: test_feedback_array[0], outcome:test_outcome_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, // added a new property to the object (progress)
+    {stimulus: test_prompt_array[1], feedback: test_feedback_array[1], outcome:test_outcome_array[1], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}}, 
+    {stimulus: test_prompt_array[2], feedback: test_feedback_array[2], outcome:test_outcome_array[2], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[3], feedback: test_feedback_array[3], outcome:test_outcome_array[3], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[4], feedback: test_feedback_array[4], outcome:test_outcome_array[4], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[5], feedback: test_feedback_array[5], outcome:test_outcome_array[5], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[6], feedback: test_feedback_array[6], outcome:test_outcome_array[6], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[7], feedback: test_feedback_array[7], outcome:test_outcome_array[7], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[8], feedback: test_feedback_array[8], outcome:test_outcome_array[8], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[9], feedback: test_feedback_array[9], outcome:test_outcome_array[9], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[10], feedback: test_feedback_array[10], outcome:test_outcome_array[10], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[11], feedback: test_feedback_array[11], outcome:test_outcome_array[11], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[12], feedback: test_feedback_array[12], outcome:test_outcome_array[12], feedback: test_feedback_array[0], outcome:test_outcome_array[0], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+   {stimulus: test_prompt_array[13], feedback: test_feedback_array[13], outcome:test_outcome_array[13], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[14], feedback: test_feedback_array[14], outcome:test_outcome_array[14], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[15], feedback: test_feedback_array[15], outcome:test_outcome_array[15], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[16], feedback: test_feedback_array[16], outcome:test_outcome_array[16], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[17], feedback: test_feedback_array[17], outcome:test_outcome_array[17], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[18], feedback: test_feedback_array[18], outcome:test_outcome_array[18], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[19], feedback: test_feedback_array[19], outcome:test_outcome_array[19], rogress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[20], feedback: test_feedback_array[20], outcome:test_outcome_array[20], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[21], feedback: test_feedback_array[21], outcome:test_outcome_array[21], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[22], feedback: test_feedback_array[22], outcome:test_outcome_array[22], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[23], feedback: test_feedback_array[23], outcome:test_outcome_array[23], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[24], feedback: test_feedback_array[24], outcome:test_outcome_array[24], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[25], feedback: test_feedback_array[25], outcome:test_outcome_array[25], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[26], feedback: test_feedback_array[26], outcome:test_outcome_array[26], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[27], feedback: test_feedback_array[27], outcome:test_outcome_array[27], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[28], feedback: test_feedback_array[28], outcome:test_outcome_array[28], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[29], feedback: test_feedback_array[29], outcome:test_outcome_array[29], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[30], feedback: test_feedback_array[30], outcome:test_outcome_array[30], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[31], feedback: test_feedback_array[31], outcome:test_outcome_array[31], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[32], feedback: test_feedback_array[32], outcome:test_outcome_array[32], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[33], feedback: test_feedback_array[33], outcome:test_outcome_array[33], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[34], feedback: test_feedback_array[34], outcome:test_outcome_array[34], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[35], feedback: test_feedback_array[35], outcome:test_outcome_array[35], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[36], feedback: test_feedback_array[36], outcome:test_outcome_array[36], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[37], feedback: test_feedback_array[37], outcome:test_outcome_array[37], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[38], feedback: test_feedback_array[38], outcome:test_outcome_array[38], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[39], feedback: test_feedback_array[39], outcome:test_outcome_array[39], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[40], feedback: test_feedback_array[40], outcome:test_outcome_array[40], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[41], feedback: test_feedback_array[41], outcome:test_outcome_array[41], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[42], feedback: test_feedback_array[42], outcome:test_outcome_array[42], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[43], feedback: test_feedback_array[43], outcome:test_outcome_array[43], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[44], feedback: test_feedback_array[44], outcome:test_outcome_array[44], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[45], feedback: test_feedback_array[45], outcome:test_outcome_array[45], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[46], feedback: test_feedback_array[46], outcome:test_outcome_array[46], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[47], feedback: test_feedback_array[47], outcome:test_outcome_array[47], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[48], feedback: test_feedback_array[48], outcome:test_outcome_array[48], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[49], feedback: test_feedback_array[49], outcome:test_outcome_array[49], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[50], feedback: test_feedback_array[50], outcome:test_outcome_array[50], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[51], feedback: test_feedback_array[51], outcome:test_outcome_array[51], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[52], feedback: test_feedback_array[52], outcome:test_outcome_array[52], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[53], feedback: test_feedback_array[53], outcome:test_outcome_array[53], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[54], feedback: test_feedback_array[54], outcome:test_outcome_array[54], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[55], feedback: test_feedback_array[55], outcome:test_outcome_array[55], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[56], feedback: test_feedback_array[56], outcome:test_outcome_array[56], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[57], feedback: test_feedback_array[57], outcome:test_outcome_array[57], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[58], feedback: test_feedback_array[58], outcome:test_outcome_array[58], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[59], feedback: test_feedback_array[59], outcome:test_outcome_array[59], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[60], feedback: test_feedback_array[60], outcome:test_outcome_array[60], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[61], feedback: test_feedback_array[61], outcome:test_outcome_array[61], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[62], feedback: test_feedback_array[62], outcome:test_outcome_array[62], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[63], feedback: test_feedback_array[63], outcome:test_outcome_array[63], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[64], feedback: test_feedback_array[64], outcome:test_outcome_array[64], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[65], feedback: test_feedback_array[65], outcome:test_outcome_array[65], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[66], feedback: test_feedback_array[66], outcome:test_outcome_array[66], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[67], feedback: test_feedback_array[67], outcome:test_outcome_array[67], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[68], feedback: test_feedback_array[68], outcome:test_outcome_array[68], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[69], feedback: test_feedback_array[69], outcome:test_outcome_array[69], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[70], feedback: test_feedback_array[70], outcome:test_outcome_array[70], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[71], feedback: test_feedback_array[71], outcome:test_outcome_array[71], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[72], feedback: test_feedback_array[72], outcome:test_outcome_array[72], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[73], feedback: test_feedback_array[73], outcome:test_outcome_array[73], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[74], feedback: test_feedback_array[74], outcome:test_outcome_array[74], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[75], feedback: test_feedback_array[75], outcome:test_outcome_array[75], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[76], feedback: test_feedback_array[76], outcome:test_outcome_array[76], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[77], feedback: test_feedback_array[77], outcome:test_outcome_array[77], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[78], feedback: test_feedback_array[78], outcome:test_outcome_array[78], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[79], feedback: test_feedback_array[79], outcome:test_outcome_array[79], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[80], feedback: test_feedback_array[80], outcome:test_outcome_array[80], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[81], feedback: test_feedback_array[81], outcome:test_outcome_array[81], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[82], feedback: test_feedback_array[82], outcome:test_outcome_array[82], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[83], feedback: test_feedback_array[83], outcome:test_outcome_array[83], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[84], feedback: test_feedback_array[84], outcome:test_outcome_array[84], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[85], feedback: test_feedback_array[85], outcome:test_outcome_array[85], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[86], feedback: test_feedback_array[86], outcome:test_outcome_array[86], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[87], feedback: test_feedback_array[87], outcome:test_outcome_array[87], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[88], feedback: test_feedback_array[88], outcome:test_outcome_array[88], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[89], feedback: test_feedback_array[89], outcome:test_outcome_array[89], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[90], feedback: test_feedback_array[90], outcome:test_outcome_array[90], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[91], feedback: test_feedback_array[91], outcome:test_outcome_array[91], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[92], feedback: test_feedback_array[92], outcome:test_outcome_array[92], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[93], feedback: test_feedback_array[93], outcome:test_outcome_array[93], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[94], feedback: test_feedback_array[94], outcome:test_outcome_array[94], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[95], feedback: test_feedback_array[95], outcome:test_outcome_array[95], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[96], feedback: test_feedback_array[96], outcome:test_outcome_array[96], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[97], feedback: test_feedback_array[97], outcome:test_outcome_array[97], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[98], feedback: test_feedback_array[98], outcome:test_outcome_array[98], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
+    {stimulus: test_prompt_array[99], feedback: test_feedback_array[99], outcome:test_outcome_array[99], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[100], feedback: test_feedback_array[100], outcome:test_outcome_array[100], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
+    {stimulus: test_prompt_array[101], feedback: test_feedback_array[101], outcome:test_outcome_array[101], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
+    {stimulus: test_prompt_array[102], feedback: test_feedback_array[102], outcome:test_outcome_array[102], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
     ]
 
 
@@ -681,7 +791,7 @@ let test_procedure = {
       timeline_variables: test_prompt_stimuli,
       randomize_order: false
     }
-
+    timeline.push(test_procedure);
     // timeline.push(test_procedure);
 
 /*   let debrief_block = {
