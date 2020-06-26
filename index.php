@@ -429,21 +429,19 @@ file_put_contents($name, $data);
       data: jsPsych.timelineVariable('data'),  
       on_load: function(){
         let outcome = document.getElementById("outcomeGenerator");
-        if (feedbackLogic == 'You completed the task'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+        if (feedbackLogic == 'You completed the task' && outcome.innerHTML != 'No money this round'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           // return true;
             if (selection==EasyKey_uCase){
             //  newOutcome = outcomeIterator;
             outcome.innerHTML = 'You won $ '+practiceEasy[outcomeIterator];
             outcomeIterator++
-             
+            
             } else if (selection==HardKey_uCase){
             // newOutcome = outcomeIterator;
              outcome.innerHTML = 'You won $ '+practiceHard[outcomeIterator];
              outcomeIterator++
-              
-           
           }
-        } else if (outcome.innerHTML != 'No money this round') { // checks to insure 
+        } else if (feedbackLogic == 'You completed the task' && outcome.innerHTML != 'No money this round') { // checks to insure 
           // newOutcome = outcomeIterator
           outcome.innerHTML = outcomeLogic;
           outcomeIterator++;
