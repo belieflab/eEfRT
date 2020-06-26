@@ -293,8 +293,8 @@ file_put_contents($name, $data);
 
     let practice_outcome_array = [];
       practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
-      practice_outcome_array.push('<p id="" style="color:white;">No money this round</p>')
-      practice_outcome_array.push('<p id="" style="color:white;">No money this round</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
+      practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;">No money this round</p>')
       practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
 
     // the feedback array is populated after trial is completed or failed
@@ -317,16 +317,7 @@ file_put_contents($name, $data);
     {stimulus: practice_prompt_array[3], feedback: practice_feedback_array[3], outcome: practice_outcome_array[3], progress: progressBar, data: {test_part: 'practice', correct_response: '.'}},
     ]
 
-    let practice_position = {
-      type: 'html-button-response',
-      stimulus: '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
-      
-      button_html: '<button id="startExp" onclick="experimentTimer(1)" style="outline:none; border:none; background-color:black">START</button>',
-      choices: [32],
-      on_load: function(){
-        document.getElementById('startExp').focus();
-      }
-    };
+
    
 
     let end_of_trial = {
@@ -441,23 +432,23 @@ file_put_contents($name, $data);
         if (feedbackLogic == 'You completed the task'){  // if else block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           // return true;
             if (selection==EasyKey_uCase){
-             newOutcome = outcomeIterator;
-            outcome.innerHTML = 'You won $ '+practiceEasy[newOutcome];
+            //  newOutcome = outcomeIterator;
+            outcome.innerHTML = 'You won $ '+practiceEasy[outcomeIterator];
             outcomeIterator++
              
             } else if (selection==HardKey_uCase){
-            newOutcome = outcomeIterator;
-             outcome.innerHTML = 'You won $ '+practiceHard[newOutcome];
+            // newOutcome = outcomeIterator;
+             outcome.innerHTML = 'You won $ '+practiceHard[outcomeIterator];
              outcomeIterator++
               
            
           }
-        } else {
-          newOutcome = outcomeIterator
-          outcomeIterator++;
+        } else if (outcome.innerHTML != 'No money this round') { // checks to insure 
+          // newOutcome = outcomeIterator
           outcome.innerHTML = outcomeLogic;
-          
-          return false;
+          outcomeIterator++;
+        } else {
+          outcomeIterator++;
         }
 
       }
@@ -465,7 +456,15 @@ file_put_contents($name, $data);
 
 
 
-
+    let practice_position = {
+      type: 'html-keyboard-response',
+      stimulus: '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
+      // button_html: '<button id="startExp" onclick="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
+      choices: [32],
+      // on_load: function(){
+      //   document.getElementById('startExp').focus();
+      // }
+    };
   
 
     timeline.push(practice_position);
@@ -487,11 +486,13 @@ file_put_contents($name, $data);
 
 
     let start_task = {
-      type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' +
-      '<p style="color:white;">Press the space bar to continue. </p>',
+      type: 'html-button-response',
+      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
+      button_html: '<button id="startExp" onclick="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
       choices: [32],
-      post_trial_gap: 5000,
+      on_load: function(){
+        document.getElementById('startExp').focus();
+      }
     };
 
     timeline.push(start_task);

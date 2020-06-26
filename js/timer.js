@@ -72,7 +72,7 @@ function countdownHard(minutes) {
 
 function experimentTimer(minutes) {
     // jsPsych.endCurrentTimeline();
-    let seconds = 60;
+    let seconds = 1200;
     let mins = minutes;
     function tick() {
         //This script expects an element with an ID = "counter". You can change that to what ever you want. 
