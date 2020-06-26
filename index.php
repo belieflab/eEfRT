@@ -299,6 +299,9 @@ file_put_contents($name, $data);
 
     // the feedback array is populated after trial is completed or failed
 
+
+
+
   
     // '<p style="color:white;">Ready?    </p> ' +
     //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
@@ -308,6 +311,8 @@ file_put_contents($name, $data);
      let progressBar = '<div id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%"></div></div><br><div>';
 
      let feedbackGenerator = '<p id="feedbackGenerator" style="color:white;"></p>';
+
+     let fillUp = '<p id="fillUp" style="color:white;"></p>';
 
 // this is where I call each item from the array above
     let practice_prompt_stimuli = [
@@ -385,7 +390,7 @@ file_put_contents($name, $data);
     let buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
+    prompt: fillUp + feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
     // stimulus: , //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
@@ -393,6 +398,8 @@ file_put_contents($name, $data);
     data: jsPsych.timelineVariable('data'),
     stimulus: jsPsych.timelineVariable('progress'),    
     on_load:function buttonPress(){
+        barFill = document.getElementById("fillUp");
+        barFill.innerHTML = 'Press the <u><strong>'+selection+'</strong></u> key until the bar fills up.';   
         document.getElementById("tapTap").focus(); //gives focus to the text box
         console.log(pressing_time)
         console.log(selection)
@@ -523,15 +530,15 @@ file_put_contents($name, $data);
       
     }
    
-    let buttonPressingEasy_array = [];
-    for (let i = 0; i <= 102; i++){
-      buttonPressingEasy_array.push( '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
-    }
+    // let buttonPressingEasy_array = [];
+    // for (let i = 0; i <= 102; i++){
+    //   buttonPressingEasy_array.push( '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+    // }
 
-    let buttonPressingHard_array = [];
-      for (let i = 0; i <= 102; i++){
-        buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
-      }
+    // let buttonPressingHard_array = [];
+    //   for (let i = 0; i <= 102; i++){
+    //     buttonPressingHard_array.push ('<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+    //   }
     
      
       
