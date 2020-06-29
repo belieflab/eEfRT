@@ -327,20 +327,13 @@
         if (feedbackLogic == 'You completed the task' && practiceOutcome[practiceIterator] == 'win'){ 
             if (selection==EasyKey_uCase){
             outcome.innerHTML = 'You won $ '+practiceEasy[practiceIterator];
-            practiceIterator++;
+            practiceIterator++
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won $ '+practiceHard[practiceIterator];
-             practiceIterator++;
+             practiceIterator++
           }
-        } else if (practiceOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-          if (feedbackLogic == 'You <u>did not</u> complete the task') {
-            practiceIterator++;
-            jsPsych.finishTrial('skip');
-          } else {
-            outcome.innerHTML = 'No money this round';
-            practiceIterator++;
-          }
-        } else {
+        } else if (experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+          outcome.innerHTML = 'No money this round';
           practiceIterator++;
         }
         }
@@ -415,27 +408,18 @@
 
             if (selection==EasyKey_uCase){
             outcome.innerHTML = 'You won $ '+easyAmount[experimentIterator];
-            experimentIterator++;
+            experimentIterator++
             
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won $ '+hardAmount[experimentIterator];
-             experimentIterator++;
+             experimentIterator++
             }
         } else if (experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-          if (feedbackLogic == 'You <u>did not</u> complete the task') {
-            experimentIterator++;
-            jsPsych.finishTrial('skip');
-          } else {
-            outcome.innerHTML = 'No money this round';
-            experimentIterator++;
-          }
-        } else {
+          outcome.innerHTML = 'No money this round';
           experimentIterator++;
         }
     }
   }
-
-
 
   let begin_experiment = {
     type: "html-keyboard-response",
