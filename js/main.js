@@ -467,7 +467,7 @@
     {stimulus: test_prompt_array[16], feedback: test_feedback_array[16], outcome: test_outcome_array[16], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
     {stimulus: test_prompt_array[17], feedback: test_feedback_array[17], outcome: test_outcome_array[17], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
     {stimulus: test_prompt_array[18], feedback: test_feedback_array[18], outcome: test_outcome_array[18], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
-    {stimulus: test_prompt_array[19], feedback: test_feedback_array[19], outcome: test_outcome_array[19], rogress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
+    {stimulus: test_prompt_array[19], feedback: test_feedback_array[19], outcome: test_outcome_array[19], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},  
     {stimulus: test_prompt_array[20], feedback: test_feedback_array[20], outcome: test_outcome_array[20], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},  
     {stimulus: test_prompt_array[21], feedback: test_feedback_array[21], outcome: test_outcome_array[21], progress: progressBar, data: {test_part: 'experiment', correct_response: '.'}},
     {stimulus: test_prompt_array[22], feedback: test_feedback_array[22], outcome: test_outcome_array[22], progress: progressBar, data: {test_part: 'experiment', correct_response: ','}},
