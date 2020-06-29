@@ -10,7 +10,7 @@ file_put_contents($name, $data);
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EEfRT Task</title>
+    <title>EEfRT</title>
     <script src="js/playTime.js"></script>
     <script src="js/timer.js"></script> <!-- importing our timer function from timer.js file -->
     <script src="js/progressBars.js"></script> 
