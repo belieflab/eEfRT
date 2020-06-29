@@ -278,7 +278,7 @@
     let buttonPressing = {
     type: "html-keyboard-response",
     // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
-    prompt: fillUp + feedbackGenerator + timeRemaining + '<input id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
+    prompt: fillUp + feedbackGenerator + timeRemaining + '<input autocomplete="autocomplete_off_hack_xfr4!k" id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeypress="">',
     // stimulus: , //this gets filled in with the countdown
     choices: [selection],
     response_ends_trial: false,
@@ -294,13 +294,13 @@
         if (pressing_time==21000){
           // pressing_time = 7000;
           // buttonPressing.trial_duration = pressing_time;
-          document.getElementById("counter").setAttribute("onkeypress", "moveHard()");
+          document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
         } else if (pressing_time==7000){ 
           // pressing_time= 21000; // for right handed only
           // buttonPressing.trial_duration = pressing_time;
-          document.getElementById("counter").setAttribute("onkeypress", "moveEasy()");
+          document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
         }
-    }
+    },
   }
 
     let feedback = {
