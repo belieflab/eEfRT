@@ -51,20 +51,14 @@ function moveEasy() { // function definition
 
     }
 
+    // this is for the js psych global progress bar
         
-function setInputFilter(textbox, inputFilter) {
-    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-        textbox.addEventListener(event, function() {
-        if (inputFilter(this.value)) {
-            this.oldValue = this.value;
-            this.oldSelectionStart = this.selectionStart;
-            this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-            this.value = this.oldValue;
-            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        } else {
-            this.value = "";
-        }
-        });
-    });
-    }
+    // function practiceTick() {
+    //     progress_bar += practice_tick;
+    //     jsPsych.setProgressBar(progress_bar);
+    //   }
+
+    //   function instructionTick() {
+    //     progress_bar += instruction_tick;
+    //     jsPsych.setProgressBar(progress_bar);
+    //   }

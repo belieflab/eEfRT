@@ -28,6 +28,14 @@
     // declare iterators for the practice and experiment outcome
     let practiceIterator=0;
     let experimentIterator=0;
+
+    // set the progress bar
+    let timer;
+    let timerFloat;
+    let progress_bar = 0.00;
+    let instruction_tick = 0.005;
+    let practice_tick = 0.01;
+    let experiment_tick = (1-progress_bar)/timerFloat;
   
     // run script to ask participant how much time they would like to play for
     playTime();
@@ -37,6 +45,10 @@
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Welcome to the experiment! Press any key to begin.</p>',
       on_load: checkHandedness(),
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     timeline.push(welcome);
@@ -51,6 +63,10 @@
         '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
         '<p style="color:white;"> Press the space bar to continue.</p>',
       choices: [' '],
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_2 = {
@@ -61,7 +77,10 @@
           '<p style="color:white;">For each trial you can choose to complete an Easy task, or a Hard task. </p> '+
           '<p style="color:white;">Press the space bar to continue.</p>',
       choices: [32],
-      post_trial_gap: 2000
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_3 = {
@@ -70,7 +89,10 @@
       '<p style="color:white;">You are eligible to win $1.00 for each time you complete the Easy task. </p> ' + 
       '<p style="color:white;">Press the space bar to continue. </p>' ,
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
     
     let instructions_4 = {
@@ -81,16 +103,21 @@
       '<p style="color:white;">Hard trials range from $1.20 to around $4.00. </p>' + 
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_5 = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Completing the Easy or Hard task makes you eligible to receive money on that trial, but completion alone does NOT guarantee that you will win money.  </p> ' +
       '<p style="color:white;">Press the space bar to continue.  </p> ' , 
-     
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_6 = {
@@ -99,7 +126,10 @@
       '<p style="color:white;">To help you decide which trials are more likely to give you money, you will be told the probability that you WILL receive money IF you complete the task at the beginning of each trial.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_7 = {
@@ -109,7 +139,10 @@
       '<p style="color:white;">Some trials you will have a 12% chance of receiving money if you complete the task.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_8 = {
@@ -120,7 +153,10 @@
       '<p style="color:white;">To choose the Easy task, press the <u><strong>'+EasyKey_uCase+'</strong></u> key.  </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_9 = {
@@ -131,7 +167,10 @@
       '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_10 = {
@@ -142,21 +181,27 @@
       '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
       '<p style="color:white;">Press the space bar to start. </p>',
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_11 = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Get your hands in position and press any key to start the practice trials. </p> ' ,
       choices: [32],
-      post_trial_gap: 2000,
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     let instructions_procedure = {
       timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9, instructions_10, instructions_11],
     }
 
-    // timeline.push(instructions_procedure);
+    timeline.push(instructions_procedure);
 
     /* START TRAINING TRIAL FOR PARTICIPANTS */
 // delayed discounting task: three variables: 1st= money now, 2nd= money later, 3rd= money days later
@@ -328,15 +373,21 @@
             if (selection==EasyKey_uCase){
             outcome.innerHTML = 'You won $ '+practiceEasy[practiceIterator];
             practiceIterator++
+            progress_bar += practice_tick;
+            jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won $ '+practiceHard[practiceIterator];
              practiceIterator++
+             progress_bar += practice_tick;
+             jsPsych.setProgressBar(progress_bar);
           }
         } else if (experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           outcome.innerHTML = 'No money this round';
           practiceIterator++;
+          progress_bar += practice_tick;
+          jsPsych.setProgressBar(progress_bar);
         }
-        }
+        },
       }
 
 
@@ -351,6 +402,10 @@
       // on_load: function(){
       //   document.getElementById('startExp').focus();
       // }
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
   
 
@@ -379,7 +434,11 @@
       choices: [32],
       on_load: function(){
         document.getElementById('startExp').focus();
-      }
+      },
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
+      },
     };
 
     timeline.push(start_task);
@@ -389,7 +448,7 @@
 
     let experimentOutcome = ["lose", "lose", "lose", "win", "lose",	"win", "lose", "win", "win", "win", "lose",	"win", "lose", "win", "lose",	"lose",	"win", "lose", "win", "lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"win", 	"lose",	"lose",	"lose",	"win", 	"lose",	"win", 	"win", 	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"lose",	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"win", 	"win", 	"lose",	"lose",	"win", 	"lose",	"lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"lose",	"win", 	"win", 	"win", 	"lose",	"win", 	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"lose",	"win", 	"win", 	"win", 	"win", 	"win", 	"lose",	"lose",	"win", 	"lose",	"win", 	"lose",	"lose"];
     
-    let hardAmount = [3.04,	1.42,	2.86,	3.22,	1.78,	1.96,	2.68,	1.78,	2.14,	2.50,	3.94,	2.32,	2.14,	1.42,	3.04,	1.24,	3.58,	2.32,	4.12,	4.12,	2.50,	3.94,	3.22,	4.12,	2.68,	3.40,	2.50,	3.76,	1.78,	1.42,	3.04,	3.40,	3.22,	1.24,	3.58,	3.76,	3.76,	2.14,	3.58,	1.60,	2.86,	2.68,	1.24,	1.96,	1.60,	2.86,	2.32,	3.40,	3.94,	1.96,	1.60,	2.59,	3.49,	3.85,	4.21,	4.03,	3.67,	3.67,	4.03,	2.77,	1.51,	1.87,	4.21,	1.33,	1.87,	1.51,	3.13,	3.13,	3.85,	2.59,	4.21,	2.95,	2.05,	2.77,	3.49,	1.87,	2.95,	3.13,	3.67,	1.69,	2.59,	2.41,	1.33,	3.31,	2.23,	2.23,	4.03,	1.33,	2.41,	3.31,	2.23,	3.85, 2.41,	3.31,	2.77,	2.05,	1.69,	3.49,	1.69,	2.95,	2.05,	1.51];
+    let hardAmount = [3.04, 1.42,	2.86,	3.22,	1.78,	1.96,	2.68,	1.78,	2.14,	2.50,	3.94,	2.32,	2.14,	1.42,	3.04,	1.24,	3.58,	2.32,	4.12,	4.12,	2.50,	3.94,	3.22,	4.12,	2.68,	3.40,	2.50,	3.76,	1.78,	1.42,	3.04,	3.40,	3.22,	1.24,	3.58,	3.76,	3.76,	2.14,	3.58,	1.60,	2.86,	2.68,	1.24,	1.96,	1.60,	2.86,	2.32,	3.40,	3.94,	1.96,	1.60,	2.59,	3.49,	3.85,	4.21,	4.03,	3.67,	3.67,	4.03,	2.77,	1.51,	1.87,	4.21,	1.33,	1.87,	1.51,	3.13,	3.13,	3.85,	2.59,	4.21,	2.95,	2.05,	2.77,	3.49,	1.87,	2.95,	3.13,	3.67,	1.69,	2.59,	2.41,	1.33,	3.31,	2.23,	2.23,	4.03,	1.33,	2.41,	3.31,	2.23,	3.85, 2.41,	3.31,	2.77,	2.05,	1.69,	3.49,	1.69,	2.95,	2.05,	1.51];
     
     let easyAmount = [1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,];
     
@@ -409,14 +468,19 @@
             if (selection==EasyKey_uCase){
             outcome.innerHTML = 'You won $ '+easyAmount[experimentIterator];
             experimentIterator++
-            
+            progress_bar += experiment_tick;
+            jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won $ '+hardAmount[experimentIterator];
              experimentIterator++
+             progress_bar += experiment_tick;
+             jsPsych.setProgressBar(progress_bar);
             }
         } else if (experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           outcome.innerHTML = 'No money this round';
           experimentIterator++;
+          progress_bar += experiment_tick;
+          jsPsych.setProgressBar(progress_bar);
         }
     }
   }
@@ -574,10 +638,14 @@ let test_procedure = {
         return "<p style='color:white;'> You responded correctly on "+accuracy+"% of the trials. </p>"+
         "<p style='color:white;'>Your average response time was "+rt+"ms.</p>"+
         "<p style='color:white;'>Press any key to complete the experiment. Thank you!</p>";
-      }
+      },
+      on_finish: function completionTick() {
+        progress_bar = 1.00;
+        jsPsych.setProgressBar(progress_bar);
+      },
     }; 
 
-    //  timeline.push(debrief_block); 
+     timeline.push(debrief_block); 
 
     // COMPLETION MESSAGE: Completed Classification Phase
     // let link = "https://survey.az1.qualtrics.com/SE/?SID=SV_9uARDX1aXEXq1pP&Q_JFE=0&workerId="
@@ -625,6 +693,7 @@ function saveData(name, data){
       jsPsych.init({
         timeline: timeline,
         show_progress_bar: true,
+        auto_update_progress_bar: false,
         on_finish: function(){ saveData("eEfRT_" + workerID, jsPsych.data.get().csv()); }
         //on_finish: function(){
           //jsPsych.data.get().filter([{test_part: 'test'},{test_part: 'prediction'},{test_part: 'c2_test'}]).localSave("csv", `test-self-deception-data.csv`);

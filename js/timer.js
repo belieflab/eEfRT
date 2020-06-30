@@ -58,7 +58,8 @@ function experimentTimer(minutes) {
     function tick() {
         let current_minutes = mins-1
         seconds--;
-        timer = "Time Remaining: " + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
+        timer = (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
+        timerFloat = parseFloat(timer);
         if( seconds > 0 ) {
             setTimeout(tick, 1000);
             console.log(seconds);
