@@ -35,7 +35,7 @@
     let progress_bar = 0.00;
     let instruction_tick = 0.005;
     let practice_tick = 0.01;
-    let experiment_tick = (1-progress_bar)/timerFloat;
+    let experiment_tick;
   
     // run script to ask participant how much time they would like to play for
     playTime();
@@ -468,18 +468,21 @@
             if (selection==EasyKey_uCase){
             outcome.innerHTML = 'You won $ '+easyAmount[experimentIterator];
             experimentIterator++
-            progress_bar += experiment_tick;
+
+            progress_bar += (1-progress_bar)/(timerFloat/60);
             jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won $ '+hardAmount[experimentIterator];
              experimentIterator++
-             progress_bar += experiment_tick;
+
+             progress_bar += (1-progress_bar)/(timerFloat/60);
              jsPsych.setProgressBar(progress_bar);
             }
         } else if (experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           outcome.innerHTML = 'No money this round';
           experimentIterator++;
-          progress_bar += experiment_tick;
+
+          progress_bar += (1-progress_bar)/(timerFloat/60);
           jsPsych.setProgressBar(progress_bar);
         }
     }
