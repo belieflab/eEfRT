@@ -386,6 +386,9 @@
           practiceIterator++;
           progress_bar += practice_tick;
           jsPsych.setProgressBar(progress_bar);
+        } else {
+          progress_bar += (1-progress_bar)/(timerFloat/60);
+          jsPsych.setProgressBar(progress_bar);
         }
         },
       }
@@ -482,6 +485,9 @@
           outcome.innerHTML = 'No money this round';
           experimentIterator++;
 
+          progress_bar += (1-progress_bar)/(timerFloat/60);
+          jsPsych.setProgressBar(progress_bar);
+        } else {
           progress_bar += (1-progress_bar)/(timerFloat/60);
           jsPsych.setProgressBar(progress_bar);
         }

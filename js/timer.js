@@ -53,7 +53,7 @@ function countdownHard(minutes) {
 }
 
 function experimentTimer(minutes) {
-    let seconds = 1200;
+    let seconds = MinutesToPlay*60;
     let mins = minutes;
     function tick() {
         let current_minutes = mins-1
@@ -69,7 +69,7 @@ function experimentTimer(minutes) {
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
                 console.log('Experiment complete')
-                jsPsych.endCurrentTimeline('complete');
+                jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete."));
             }
         }
     }
