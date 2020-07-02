@@ -27,7 +27,7 @@ file_put_contents($name, $data);
     <?php include 'consent.php';?>
   </body>
   <footer> 
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="js/jquery-git.js"></script>
     <script type="text/javascript" src="js/consent-load.js"></script>
   </footer>
