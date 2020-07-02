@@ -259,18 +259,6 @@
 
 
    
-
-    let end_of_trial = {
-      type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">You completed the task.   </p> ' +
-      '<p style="color:white;">No money this round    </p> ' +
-      '<p style="color:white;">Now you are ready to play the game.    </p> ' +
-      '<p style="color:white;">You did not complete the task.   </p> ' +
-      '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
-      choices: [32],
-      post_trial_gap: 2000,
-    
-    };
     let fixation = {
       type: 'html-keyboard-response',
       stimulus: '<div style="color:white; font-size:60px;">+</div>',
@@ -381,18 +369,17 @@
              progress_bar += practice_tick;
              jsPsych.setProgressBar(progress_bar);
           }
-        } else if (feedbackLogic == 'You completed the task' && practiceOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-            outcome.innerHTML = 'No money this round';
-            practiceIterator++;
-              progress_bar += practice_tick;
-              jsPsych.setProgressBar(progress_bar);
-        } else {
-              practiceIterator++;
-              progress_bar += practice_tick;
-              jsPsych.setProgressBar(progress_bar);
-            }
-        }, 
-        };
+        } else if (experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+          outcome.innerHTML = 'No money this round';
+          practiceIterator++;
+          progress_bar += practice_tick;
+          jsPsych.setProgressBar(progress_bar);
+        } else if (feedbackLogic == 'You completed the task'){
+          progress_bar += (1-progress_bar)/(timerFloat/60);
+          jsPsych.setProgressBar(progress_bar);
+        }
+        },
+      }
 
 
 
@@ -482,20 +469,18 @@
              progress_bar += (1-progress_bar)/(timerFloat/60);
              jsPsych.setProgressBar(progress_bar);
             }
-          } else if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-            outcome.innerHTML = 'No money this round';
-            experimentIterator++;
-            progress_bar += (1-progress_bar)/(timerFloat/60);
-              jsPsych.setProgressBar(progress_bar);
-        } else {
-              experimentIterator++;
-              progress_bar += (1-progress_bar)/(timerFloat/60);
-              jsPsych.setProgressBar(progress_bar);
-            }
-        }, 
-        };
+        } else if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+          outcome.innerHTML = 'No money this round';
+          experimentIterator++;
 
-  
+          progress_bar += (1-progress_bar)/(timerFloat/60);
+          jsPsych.setProgressBar(progress_bar);
+        } else {
+          progress_bar += (1-progress_bar)/(timerFloat/60);
+          jsPsych.setProgressBar(progress_bar);
+        }
+    }
+  }
 
   let begin_experiment = {
     type: "html-keyboard-response",
