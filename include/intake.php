@@ -88,8 +88,10 @@
     </head>
     <body
     style="background-color:lightgrey;">
-    <header><h1 style="text-align:center;">Behavioral Intake Form</h1></header>
+    
     <div class="screening" style="background-color:powderblue; text-align:center; margin:35px; vertical-align:middle">
+    <br>
+    <header><h1 style="text-align:center;">Behavioral Intake Form</h1></header>
 
     <br>
     <br>
@@ -100,7 +102,7 @@
 
     <label for="facility"><b>Select your facility</b></label>
 
-    <select name="facility" id="facility">
+    <select name="facility" id="siteid">
         <option value="Yale">Yale</option>
         <option value="UGA">UGA</option>
         <option value="Northwestern">Northwestern</option>
@@ -113,40 +115,56 @@
     <input type="submit" value="Submit">
     </form> -->
 
-    <form action="/action_page.php" method="post">
+    <!-- <form action="/action_page.php" method="post">
         <input type="text" name="fname" required>
         <input type="submit" value="Submit">
-    </form>
+    </form> -->
 
+    <form>
     <p><b>Site Specific Subject ID Number</b></p>
-    <p style="color:red">*must provide value</p>
-    <input type="number">
+    <input id="subjectid" type="number" required>
+</form>
+    <!-- <button onclick="submitIntake()">submit subjectid</button> -->
 
-    <p><b>Participant DOB</b></p>
+    <!-- <p><b>Participant DOB</b></p>
     <p><b>Enter as MM/DD/YYYY</b></p>
     <p style="color:red">*must provide value</p>
     <input type="date">
-    <form>
-    
+    <form> -->
+   
+  <form>
     <label for="handedness"><b>Are you right or left handed?</b></label>
     <label class="container">Right
-        <input type="checkbox" checked="checked">
+        <input id="rightHanded" type="radio" value="right">
         <span class="checkmark"></span>
     </label>
     <label class="container">Left
-        <input type="checkbox" checked="checked">
+        <input id="leftHanded" type="radio" value="left">
         <span class="checkmark"></span>
     </label>
+  </form>
 
     <!-- <input type="checkbox"><p>Left</p> -->
 
+  <form>
     <p><b>Before proceeding to the task, please confirm that the following are true:</b></p>
-    <p style="color:red">*must provide value</p>
-    <input type="checkbox"><p>Screen brightness is up to 100%</p>
-    <input type="checkbox"><p>Headphones are plugged in</p>
-    <input type="checkbox"><p>Volume is up to 100%</p>
+    <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp   
+    <input type="checkbox">
+</label>
+<br>
+<!-- <label class="container">Headphones are plugged in
+    <input type="checkbox">
+</label>
+<br> -->
+    <!-- <label class="container">Volume is up to 100% &nbsp&nbsp&nbsp&nbsp
+    <input type="checkbox">
+</label> -->
+</form>
 
     <br>
+    <form>
+    <input onclick="submitIntake()" type="submit" value="submit">
+</form>
 </div>
 
 <!-- <label class="container">One
