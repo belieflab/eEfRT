@@ -83,12 +83,13 @@
         <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
         <link href="jsPsych/css/jspsych.css" rel="stylesheet" type="text/css"></link>
         <link href="css/intake.css" rel="stylesheet" type="text/css"></link>
+        <link href='https://fonts.googleapis.com/css?family=Assistant' rel='stylesheet'>
         <!-- <link rel="stylesheet" type="text/css" href="css/style.css"></link> -->
     </head>
     <body
     style="background-color:lightgrey;">
     <header><h1 style="text-align:center;">Behavioral Intake Form</h1></header>
-    <div class="Screening" style="background-color:powderblue; text-align:center; margin:35px; vertical-align:middle">
+    <div class="screening" style="background-color:powderblue; text-align:center; margin:35px; vertical-align:middle">
 
     <br>
     <br>

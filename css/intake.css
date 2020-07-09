@@ -134,3 +134,9 @@
     border-radius: 50%;
     background: white;
   }
+
+  /*Changing font*/
+.screening {
+    font-family: 'Assistant';
+    font-size: 22px;
+}
