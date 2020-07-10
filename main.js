@@ -1,5 +1,5 @@
    
-
+  let workerID
     /* create timeline */
     let timeline = [];
 
@@ -15,7 +15,8 @@
     var selection;
 
     // Ask participant handedness
-    let handedness =prompt("Are you right or left handed?");
+    // let handedness =prompt("Are you right or left handed?");
+    let handedness;
     
     // const handedness=right;
     let antihandedness;
@@ -38,13 +39,13 @@
     let experiment_tick;
   
     // run script to ask participant how much time they would like to play for
-    playTime();
+    // playTime();
 
     /* define welcome message trial */
     let welcome = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Welcome to the experiment! Press any key to begin.</p>',
-      on_load: checkHandedness(),
+
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
         jsPsych.setProgressBar(progress_bar);
@@ -63,10 +64,7 @@
         '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
         '<p style="color:white;"> Press the space bar to continue.</p>',
       choices: [' '],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
+      // on_finish: checkHandedness(),
     };
 
     let instructions_2 = {
@@ -683,7 +681,8 @@ function saveData(name, data){
       else
         return results[1];
     }
-    let workerID = prompt( 'subjectId' );
+    // let workerID = prompt( 'subjectId' );
+
 
     /* start the experiment */
     function startExperiment(){
