@@ -28,8 +28,8 @@ file_put_contents($name, $data);
     <?php include 'include/intake.php';?>
   </body>
   <footer> 
-    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/jquery-git.js"></script>
     <script type="text/javascript" src="js/consent-load.js"></script>
+    
   </footer>
 </html>

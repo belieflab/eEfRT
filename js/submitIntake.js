@@ -1,20 +1,33 @@
 // function to store subject number on submit
+let workerID;
+
+let handedness;
+let antihandedness;
+let EasyKey_uCase; 
+let HardKey_uCase;
+
+function validateIntake() {
+    let intake = document.getElementById("intake");
+    let consent = document.getElementById("nextButton");
+    if (intake.style.display === "none") {
+      intake.style.display = "block";
+    } else {
+      intake.style.display = "none";
+      consent.style.display = "block";
+    }
+  }
 
 function submitIntake() {
     let subjectID = document.getElementById("subjectid").value;
-    let rightHandedness = document.getElementById("rightHanded").value;
-    let leftHandedness = document.getElementById("leftHanded").value;
+    let rightHandedness = document.getElementById("rightHanded").checked;
+    let leftHandedness = document.getElementById("leftHanded").checked;
     let siteID = document.getElementById("siteid");
    
-    if(rightHandedness == "right") {
-        handedness = "right"
-    } else if(leftHandedness == "left"){
+    if(rightHandedness == true) {
+        handedness = "right";
+    } else if(leftHandedness == true) {
         handedness = "left"
-    } else {
-        alert("Check only right or left handed")
-    }
-    
-    checkHandedness()
+    } 
 
     switch(siteID.options[siteID.selectedIndex].value){
         case "Yale":
@@ -45,6 +58,10 @@ function submitIntake() {
     } else {
         alert("your subjectid is " + siteNumber + subjectID);
         workerID = parseInt(siteNumber + subjectID);
-        startExperiment()
+        validateIntake();
+        checkHandedness();
     }
 }
+
+
+

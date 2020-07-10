@@ -1,11 +1,13 @@
 <div class="screening" style="background-color:powderblue; text-align:center; margin:35px; vertical-align:middle">
+  <div id="intake">
   <br>
   <h1 style="text-align:center;">CAPR Participant Intake</h1>
 
 
-    <p><b>Select your facility</b></p>
+    <p><b>Select your Research Site:</b></p>
 
     <select name="facility" id="siteid">
+        <option value="">---</option>
         <option value="Yale">Yale</option>
         <option value="UGA">UGA</option>
         <option value="Northwestern">Northwestern</option>
@@ -25,7 +27,7 @@
     </form> -->
 
     <form>
-    <p><b>Site Specific Subject ID Number</b></p>
+    <p><b>Subject ID Number:</b></p>
     <input id="subjectid" type="number" required>
 </form>
     <!-- <button onclick="submitIntake()">submit subjectid</button> -->
@@ -54,8 +56,8 @@
     <p><b>Before proceeding to the task, please confirm that the following are true:</b></p>
     <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp   
     <input type="checkbox">
-</label>
-<br>
+  </label>
+
 <!-- <label class="container">Headphones are plugged in
     <input type="checkbox">
 </label>
@@ -65,12 +67,35 @@
 </label> -->
 </form>
 
+<br>
+<button class="loadMain" onclick="submitIntake();" type="button">submit</button>
+
+</div>
+<div id="validation">
     <br>
     <form>
-    <input onclick="submitIntake()" type="submit" value="submit">
+
+
 </form>
+
+
+</div>
+<button id="nextButton" style="display: none" onclick="startExperiment()">CONSENT/NEXT</button>
 <br>
 </div>
+
+<script type="text/javascript" src="js/jquery-git.js"></script>
+
+<script>$("button.loadMain").click(function(){
+    $.getScript("main.js");
+    // $.load("include/consent.php");
+  }); </script>
+
+
+<script>
+
+</script>
+
 
 <!-- <label class="container">One
   <input type="checkbox" checked="checked">

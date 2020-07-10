@@ -15,3 +15,8 @@ window.onload = function() {
           }
       }
   });
+
+
+// $("input.go").click(function(){
+//     $.getScript("main.js");
+//   });
