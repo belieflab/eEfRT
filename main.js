@@ -45,7 +45,7 @@
       stimulus: '<p style="color:white;">You are going to play the lever-press game. </p>' +
         '<p style="color:white;">The game will consist of a series of individual trials. </p>' +
         '<p style="color:white;">The length of time required to complete each trial will depend upon decisions you make during that trial.  </p>'+
-        '<p style="color:white;">You will play the game for exactly <span style="font-size:42;"><strong>'+ MinutesToPlay + '</strong></span> minutes, after which you will be asked to stop.  </p>'+
+        '<p style="color:white;">You will play the game for exactly <span><strong>'+ MinutesToPlay + '</strong></span> minutes, after which you will be asked to stop.  </p>'+
         '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
         '<p style="color:white;"> Press the space bar to continue.</p>',
       choices: [' '],
