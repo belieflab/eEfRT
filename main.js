@@ -198,15 +198,15 @@
   // we create a new array and we use a for loop to add 4 practice items to the array. at the same time we are also looping through the variables that we assigned from 281-283.
     let practice_prompt_array = [];
     for (let i = 0; i <= 3; i++){
-      practice_prompt_array.push('<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. </p> ' +
-      '<p style="color:white;">Easy is worth:    </p> ' +
-      '<p style="color:white;">$'+practiceEasy[i]+'   </p> ' +
-      '<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key. </p> ' +
-      '<p style="color:white;">Hard is worth:    </p> ' +
-      '<p style="color:white;">$'+practiceHard[i]+'    </p> ' +
-      '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ',)
-
-      
+      practice_prompt_array.push(
+        '<br>'+
+        '<br>'+
+      '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <u><strong>'+HardKey_uCase+'</strong></u> key.</p> ' +
+      '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Hard is worth: </p> ' +
+      '<p style="color:white;">$'+practiceEasy[i]+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $'+practiceHard[i]+'</p> ' +
+      '<br>'+
+      '<br>'+
+      '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ')
     }
     let practice_feedback_array = [];
         for (let i = 0; i <= 3; i++){
@@ -358,6 +358,7 @@
           progress_bar += practice_tick;
           jsPsych.setProgressBar(progress_bar);
         } else {
+          practiceIterator++
           progress_bar += (1-progress_bar)/(timerFloat/60);
           jsPsych.setProgressBar(progress_bar);
         }
@@ -458,6 +459,7 @@
           progress_bar += (1-progress_bar)/(timerFloat/60);
           jsPsych.setProgressBar(progress_bar);
         } else {
+          experimentIterator++;
           progress_bar += (1-progress_bar)/(timerFloat/60);
           jsPsych.setProgressBar(progress_bar);
         }
@@ -471,15 +473,16 @@
 
 let test_prompt_array = []; // change to selection_array
   for (let i = 0; i < experimentOutcome.length; i++){
-    test_prompt_array.push('<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. </p> ' +
-    '<p style="color:white;">Easy is worth:    </p> ' +
-    '<p style="color:white;">$'+ easyAmount[i]+'   </p> ' +
-    '<p style="color:white;">Press the <u><strong>'+HardKey_uCase+'</strong></u> key. </p> ' +
-    '<p style="color:white;">Hard is worth:    </p> ' +
-    '<p style="color:white;">$'+ hardAmount[i]+'    </p> ' +
-    '<p style="color:white;"> The probability of winning is ' +experimentProbability[i]+'%.   </p> ' )
+    test_prompt_array.push(
+      '<br>'+
+      '<br>'+
+    '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <u><strong>'+HardKey_uCase+'</strong></u> key.</p> ' +
+    '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hard is worth: </p> ' +
+    '<p style="color:white;">$'+easyAmount[i]+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $'+hardAmount[i]+'</p> ' +
+    '<br>'+
+    '<br>'+
+    '<p style="color:white;"> The probability of winning is ' +experimentProbability[i]+'%.   </p> ')
   }
-   
 let test_feedback_array = [];
     for (let i = 0; i < experimentOutcome.length; i++){
     test_feedback_array.push('<p id="feedbackGenerator" style="color:white;"></p>')
