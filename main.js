@@ -45,7 +45,7 @@
       stimulus: '<p style="color:white;">You are going to play the lever-press game. </p>' +
         '<p style="color:white;">The game will consist of a series of individual trials. </p>' +
         '<p style="color:white;">The length of time required to complete each trial will depend upon decisions you make during that trial.  </p>'+
-        '<p style="color:white;">You will play the game for exactly <strong>'+ MinutesToPlay + '</strong> minutes, after which you will be asked to stop.  </p>'+
+        '<p style="color:white;">You will play the game for exactly <span style="font-size:42;"><strong>'+ MinutesToPlay + '</strong></span> minutes, after which you will be asked to stop.  </p>'+
         '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
         '<p style="color:white;"> Press the space bar to continue.</p>',
       choices: [' '],
@@ -68,7 +68,7 @@
 
     let instructions_3 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">If you choose the Easy task, you will need to press the <u><strong>'+EasyKey_uCase+'</strong></u> key with your <u><strong>'+handedness+'</strong></u> index finger approximately 30 times within 7 seconds. </p> ' +
+      stimulus: '<p style="color:white;">If you choose the Easy task, you will need to press the <strong >'+EasyKey_uCase+'</strong> key with your <strong>'+handedness.toUpperCase()+'</strong> index finger approximately 30 times within 7 seconds. </p> ' +
       '<p style="color:white;">You are eligible to win $1.00 for each time you complete the Easy task. </p> ' + 
       '<p style="color:white;">Press the space bar to continue. </p>' ,
       choices: [32],
@@ -80,7 +80,7 @@
     
     let instructions_4 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">If you choose the Hard task, you will need to press the <u><strong>'+HardKey_uCase+'</strong></u> key with the pinky finger of your <u><strong>'+antihandedness+'</strong></u> hand approximately 100 times within 21 seconds.  </p> ' +
+      stimulus: '<p style="color:white;">If you choose the Hard task, you will need to press the <strong>'+HardKey_uCase+'</strong> key with the pinky finger of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately 100 times within 21 seconds.  </p> ' +
       '<p style="color:white;">For each trial, the amount that you are eligible to win if you complete the Hard task will change.  </p> ' + 
       '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.  </p>' +
       '<p style="color:white;">Hard trials range from $1.20 to around $4.00. </p>' + 
@@ -132,8 +132,8 @@
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">At the beginning of each trial, you will have a choice between the Hard task and the Easy task.   </p> ' +
       '<p style="color:white;">The amount you are eligible to win on the Hard task, and the probability of winning will be presented at the beginning of each trial.   </p> ' +
-      '<p style="color:white;">To choose the Hard task, press the <u><strong>'+HardKey_uCase+'</strong></u> key.  </p> ' +
-      '<p style="color:white;">To choose the Easy task, press the <u><strong>'+EasyKey_uCase+'</strong></u> key.  </p> ' +
+      '<p style="color:white;">To choose the Hard task, press the <strong>'+HardKey_uCase+'</strong> key.  </p> ' +
+      '<p style="color:white;">To choose the Easy task, press the <strong>'+EasyKey_uCase+'</strong> key.  </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
@@ -201,7 +201,7 @@
       practice_prompt_array.push(
         '<br>'+
         '<br>'+
-      '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <u><strong>'+HardKey_uCase+'</strong></u> key.</p> ' +
+      '<p style="color:white;">Press the <strong>'+EasyKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+HardKey_uCase+'</strong> key.</p> ' +
       '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Hard is worth: </p> ' +
       '<p style="color:white;">$'+practiceEasy[i]+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $'+practiceHard[i]+'</p> ' +
       '<br>'+
@@ -222,7 +222,7 @@
 
   
     // '<p style="color:white;">Ready?    </p> ' +
-    //   '<p style="color:white;">Push the <u><strong>'+EasyKey_uCase+'</strong></u> key until the bar fills up.   </p>');
+    //   '<p style="color:white;">Push the <strong>'+EasyKey_uCase+'</strong> key until the bar fills up.   </p>');
     let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>'
 
      // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
@@ -303,7 +303,7 @@
     stimulus: jsPsych.timelineVariable('progress'),    
     on_load:function buttonPress(){
         barFill = document.getElementById("fillUp");
-        barFill.innerHTML = 'Press the <u><strong>'+selection+'</strong></u> key until the bar fills up.';   
+        barFill.innerHTML = 'Press the <strong>'+selection+'</strong> key until the bar fills up.';   
         document.getElementById("tapTap").focus(); //gives focus to the text box
         console.log(pressing_time)
         console.log(selection)
@@ -476,7 +476,7 @@ let test_prompt_array = []; // change to selection_array
     test_prompt_array.push(
       '<br>'+
       '<br>'+
-    '<p style="color:white;">Press the <u><strong>'+EasyKey_uCase+'</strong></u> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <u><strong>'+HardKey_uCase+'</strong></u> key.</p> ' +
+    '<p style="color:white;">Press the <strong>'+EasyKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+HardKey_uCase+'</strong> key.</p> ' +
     '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hard is worth: </p> ' +
     '<p style="color:white;">$'+easyAmount[i]+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp $'+hardAmount[i]+'</p> ' +
     '<br>'+
