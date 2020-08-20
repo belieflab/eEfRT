@@ -26,9 +26,9 @@
         <input type="submit" value="Submit">
     </form> -->
 
-    <form>
+    <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
     <p><b>Subject ID Number:</b></p>
-    <input id="subjectid" type="number" required>
+    <input id="subjectid" type="number" required name="consent_id">
 </form>
     <!-- <button onclick="submitIntake()">submit subjectid</button> -->
 
@@ -38,7 +38,7 @@
     <input type="date">
     <form> -->
    
-  <form>
+  <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
     <!-- <label for="handedness"><b>Are you right or left handed?</b></label> -->
     <p><b>Which is your dominant hand?</b></p>
     
