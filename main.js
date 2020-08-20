@@ -440,13 +440,13 @@
         if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'win'){  
 
             if (selection==EasyKey_uCase){
-            outcome.innerHTML = 'You won $ '+easyAmount[experimentIterator];
+            outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' points';
             experimentIterator++
 
             progress_bar += (1-progress_bar)/(timerFloat/60);
             jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
-             outcome.innerHTML = 'You won $ '+hardAmount[experimentIterator];
+             outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' points';
              experimentIterator++
 
              progress_bar += (1-progress_bar)/(timerFloat/60);
