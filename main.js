@@ -191,7 +191,7 @@
 // display the variables on the screen to the participant (write a for loop to iterate through)
     //  variables for practice condition
     let practiceOutcome = ["win", "lose", "lose", "win"]
-    let practiceHard = [1.78,2.68,3.58,4.12];
+    let practiceHard = [178,268,358,412];
     let practiceEasy = [1,1,1,1];
     let practiceProbability = [50,12,50,88];
   // this is where I put the text for the page
@@ -342,12 +342,12 @@
         let outcome = document.getElementById("outcomeGenerator");
         if (feedbackLogic == 'You completed the task' && practiceOutcome[practiceIterator] == 'win'){ 
             if (selection==EasyKey_uCase){
-            outcome.innerHTML = 'You won $ '+practiceEasy[practiceIterator];
+            outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' points';
             practiceIterator++
             progress_bar += practice_tick;
             jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
-             outcome.innerHTML = 'You won $ '+practiceHard[practiceIterator];
+             outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' points';
              practiceIterator++
              progress_bar += practice_tick;
              jsPsych.setProgressBar(progress_bar);
