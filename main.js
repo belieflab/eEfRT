@@ -402,9 +402,8 @@
 
 
     let start_task = {
-      type: 'html-button-response',
-      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
-      button_html: '<button id="startExp" onclick="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
+      type: 'html-keyboard-response',
+      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the space bar to start. </p>' + '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
       choices: [32],
       on_load: function(){
         document.getElementById('startExp').focus();
