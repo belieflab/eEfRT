@@ -142,19 +142,19 @@
       },
     };
 
-    let instructions_9 = {
-      type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">We cannot pay you based on every choice you make.  </p> ' +
-      '<p style="color:white;">However, at the end of the experiment, we will randomly select 4 trials (2 from each session) and add them to your payment.    </p> ' +
-      '<p style="color:white;">You won’t know which trials get added to your payment.   </p> ' +
-      '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
-      '<p style="color:white;">Press the space bar to continue. </p>',
-      choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
-    };
+    // let instructions_9 = {
+    //   type: "html-keyboard-response",
+    //   stimulus: '<p style="color:white;">We cannot pay you based on every choice you make.  </p> ' +
+    //   '<p style="color:white;">However, at the end of the experiment, we will randomly select 4 trials (2 from each session) and add them to your payment.    </p> ' +
+    //   '<p style="color:white;">You won’t know which trials get added to your payment.   </p> ' +
+    //   '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
+    //   '<p style="color:white;">Press the space bar to continue. </p>',
+    //   choices: [32],
+    //   on_finish: function instructionTick() {
+    //     progress_bar += instruction_tick;
+    //     jsPsych.setProgressBar(progress_bar);
+    //   },
+    // };
 
     let instructions_10 = {
       type: "html-keyboard-response",
@@ -185,7 +185,7 @@
     };
 
     let instructions_procedure = {
-      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9, instructions_10, instructions_11],
+      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10, instructions_11],
     }
 
     timeline.push(instructions_procedure);
@@ -219,7 +219,7 @@
         '<br>'+
       '<p style="color:white;">Press the <strong>'+EasyKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+HardKey_uCase+'</strong> key.</p> ' +
       '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  Hard is worth: </p> ' +
-      '<p style="color:white;"> '+practiceEast[i]+' points &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+practiceHard[i]+' points</p> ' +
+      '<p style="color:white;"> '+practiceEasy[i]+' points &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+practiceHard[i]+' points</p> ' +
       '<br>'+
       '<br>'+
       '<p style="color:white;"> The probability of winning is ' +practiceProbability[i]+'%.   </p> ')
@@ -384,25 +384,6 @@
 
 
 
-
-    let practice_position = {
-      type: 'html-keyboard-response',
-      stimulus: '<p style="color:white;">Get your hands in position and press the space bar to start. </p>',
-      // button_html: '<button id="startExp" onclick="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
-      choices: [32],
-      // on_load: function(){
-      //   document.getElementById('startExp').focus();
-      // }
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
-    };
-  
-
-    timeline.push(practice_position);
-
-
   
 // this is where the procedure loops over the timeline property below. the timeline variables are the stimuli.
     
@@ -482,10 +463,10 @@
     }
   }
 
-  let begin_experiment = {
-    type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Get your hands in position and press any key to start the real trials.  </p> ' ,
-  }
+  // let begin_experiment = {
+  //   type: "html-keyboard-response",
+  //     stimulus: '<p style="color:white;">Get your hands in position and press any key to start the real trials.  </p> ' ,
+  // }
 
 let test_prompt_array = []; // change to selection_array
   for (let i = 0; i < experimentOutcome.length; i++){
