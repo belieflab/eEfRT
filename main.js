@@ -34,7 +34,8 @@
     /* define welcome message trial */
     let welcome = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Welcome to the experiment! Press any key to begin.</p>',
+      stimulus: '<p style="color:white;">Welcome to the experiment!</p>'+
+      '<p style="color:white;">Press any key to begin.</p>',
     };
 
     timeline.push(welcome);
@@ -45,20 +46,20 @@
       stimulus: '<p style="color:white;">You are going to play the lever-press game. </p>' +
         '<p style="color:white;">The game will consist of a series of individual trials. </p>' +
         '<p style="color:white;">The length of time required to complete each trial will depend upon decisions you make during that trial.  </p>'+
-        '<p style="color:white;">You will play the game for exactly <span><strong>'+ MinutesToPlay + '</strong></span> minutes, after which you will be asked to stop.  </p>'+
-        '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
-        '<p style="color:white;"> Press the space bar to continue.</p>',
+        '<p style="color:white;">You will play the game for exactly <span><strong>'+ MinutesToPlay + ' minutes</strong></span>, after which you will be asked to stop.  </p>'+
+        '<p style="color:white;"><b><i>Even if you choose to go through trials quickly, you will still play for the same total amount of time.</i></b></p>'+
+        '<p style="color:white;"> Press the spacebar to continue.</p>',
       choices: [' '],
       // on_load: practiceOrientation(),
     };
 
     let instructions_2 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">For each trial, you will have an opportunity to win some points.</p> ' +
-          '<p style="color:white;">In order to be eligible to win points on a given trial, you must first complete a task.</p> ' + 
-          '<p style="color:white;">The task involves making repeated button presses within a certain amount of time. </p>' +
-          '<p style="color:white;">For each trial you can choose to complete an Easy task, or a Hard task. </p> '+
-          '<p style="color:white;">Press the space bar to continue.</p>',
+      stimulus: '<p style="color:white;">For <b>each trial</b>, you will have an opportunity to <b>win some points</b>.</p> ' +
+          '<p style="color:white;">In order to be eligible to <b>win points</b> on a given trial, you must first <b>complete a task</b>.</p> ' + 
+          '<p style="color:white;">The task involves making <b>repeated button presses within a certain amount of time</b>. </p>' +
+          '<p style="color:white;">For each trial you can <b>choose</b> to complete an <b>Easy task</b> <i>or a </i> <b>Hard task</b>. </p> '+
+          '<p style="color:white;">Press the spacebar to continue.</p>',
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -68,9 +69,9 @@
 
     let instructions_3 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">If you choose the Easy task, you will need to press the <strong >'+EasyKey_uCase+'</strong> key with your <strong>'+handedness.toUpperCase()+'</strong> index finger approximately 30 times within 7 seconds. </p> ' +
-      '<p style="color:white;">You are eligible to win 100 points for each time you complete the Easy task. </p> ' + 
-      '<p style="color:white;">Press the space bar to continue. </p>' ,
+      stimulus: '<p style="color:white;">If you choose the <b>Easy task</b>, you will need to press the <strong >'+EasyKey_uCase+' key</strong> with your <strong>'+handedness.toUpperCase()+' index finger</strong> approximately <b>30 times within 7 seconds</b>. </p> ' +
+      '<p style="color:white;">You are eligible to win <b>100 points</b> for each time you complete the <b>Easy task</b>. </p> ' + 
+      '<p style="color:white;">Press the spacebar to continue. </p>' ,
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -80,11 +81,11 @@
     
     let instructions_4 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">If you choose the Hard task, you will need to press the <strong>'+HardKey_uCase+'</strong> key with the pinky finger of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately 100 times within 21 seconds.  </p> ' +
-      '<p style="color:white;">For each trial, the amount that you are eligible to win if you complete the Hard task will change.  </p> ' + 
-      '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.  </p>' +
-      '<p style="color:white;">Hard trials range from 120 to around 400 points. </p>' + 
-      '<p style="color:white;">Press the space bar to continue. </p>',
+      stimulus: '<p style="color:white;">If you choose the <b>Hard task</b>, you will need to press the <strong>'+HardKey_uCase+' key</strong> with the <b>pinky finger</b> of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately <b>100 times within 20 seconds</b>.  </p> ' +
+      '<p style="color:white;"><b><i>For each trial, the amount that you are eligible to win if you complete the Hard task will change.</i></b></p>' + 
+      '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.</p>' +
+      '<p style="color:white;"><b>Hard trials</b> range from <b>120 to around 400 points</b>. </p>' + 
+      '<p style="color:white;">Press the spacebar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -94,8 +95,9 @@
 
     let instructions_5 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Completing the Easy or Hard task makes you eligible to receive points on that trial, but completion alone does NOT guarantee that you will win points.  </p> ' +
-      '<p style="color:white;">Press the space bar to continue.  </p> ' , 
+      stimulus: '<p style="color:white;"><b><i>Completing the Easy or Hard task makes you eligible to receive points on that trial</i></b>,<p>'+
+      '<p style="color:white;"><b><i>but completion alone does NOT guarantee that you will win points.</i></b></p> ' +
+      '<p style="color:white;">Press the spacebar to continue.  </p> ' , 
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -105,9 +107,9 @@
 
     let instructions_6 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Some trials are less likely to give you points than others. </p> ' +
+      stimulus: '<p style="color:white;"><b>Some trials are less likely to give you points than others.</b></p> ' +
       '<p style="color:white;">To help you decide which trials are more likely to give you points, you will be told the probability that you WILL receive points IF you complete the task at the beginning of each trial.   </p> ' +
-      '<p style="color:white;">Press the space bar to continue. </p>',
+      '<p style="color:white;">Press the spacebar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -117,9 +119,9 @@
 
     let instructions_7 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Some trials have an 88% chance of receiving points if you complete the task.  </p> ' +
-      '<p style="color:white;">Some trials have a 50% chance of receiving points if you complete the task.   </p> ' +
-      '<p style="color:white;">Some trials have a 12% chance of receiving points if you complete the task.   </p> ' +
+      stimulus: '<p style="color:white;">Some trials have an <b>88% chance</b> of receiving points if you <b>complete the task</b>.  </p> ' +
+      '<p style="color:white;">Some trials have a <b>50% chance</b> of receiving points if you <b>complete the task</b>.   </p> ' +
+      '<p style="color:white;">Some trials have a <b>12% chance</b> of receiving points if you <b>complete the task</b>.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
@@ -130,11 +132,11 @@
 
     let instructions_8 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">At the beginning of each trial, you will have a choice between the Hard task and the Easy task.   </p> ' +
+      stimulus: '<p style="color:white;"><b>At the beginning of each trial, you will have a choice between the Hard task and the Easy task.</b></p> ' +
       '<p style="color:white;">The amount you are eligible to win on the Hard task, and the probability of winning will be presented at the beginning of each trial.   </p> ' +
-      '<p style="color:white;">To choose the Hard task, press the <strong>'+HardKey_uCase+'</strong> key.  </p> ' +
-      '<p style="color:white;">To choose the Easy task, press the <strong>'+EasyKey_uCase+'</strong> key.  </p> ' +
-      '<p style="color:white;">Press the space bar to continue. </p>',
+      '<p style="color:white;">To choose the <b>Hard task</b>, press the <strong>'+HardKey_uCase+' key</strong>.  </p> ' +
+      '<p style="color:white;">To choose the <b>Easy task</b>, press the <strong>'+EasyKey_uCase+' key</strong>.  </p> ' +
+      '<p style="color:white;">Press the spacebar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -158,11 +160,10 @@
 
     let instructions_10 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + '</strong> minutes to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
-      '<p style="color:white;">If you choose all Easy tasks, you will probably get through approximately 40 trials, if you choose all Hard tasks, you will probably get through around 20 trials, so choose your Hard tasks carefully!    </p> ' +
-      '<p style="color:white;">Now you are ready to play the game.    </p> ' +
-      '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
-      '<p style="color:white;">Press the space bar to start. </p>',
+      stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + ' minutes</strong> to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
+      '<p style="color:white;">If you choose all <b>Easy tasks</b>, you will probably get through approximately <b>40 trials</b></p>'+
+      '<p style="color:white;">If you choose all <b>Hard tasks</b>, you will probably get through around <b>20 trials</b>, so <i>choose your Hard tasks carefully</i>!    </p> '+
+      '<p style="color:white;">Press the spacebar to start. </p>',
       choices: [32],
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -172,20 +173,32 @@
 
     let instructions_11 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Get your hands in position and press the spacebar to start the practice trials. </p> ' +
-      "<img id='cartoon' src='' width='1000' height='500'>",
+      stimulus: '<p style="color:white;">Now you are ready to play the game.    </p> ' +
+      '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
+      '<p style="color:white;">Press the spacebar to start. </p>',
       choices: [32],
-      on_load: function(){
-        if (handedness==='LEFT'){
-          document.getElementById("cartoon").src= "stim/cartoonLeft.png";
-        } else if (handedness==='RIGHT'){
-          document.getElementById("cartoon").src= "stim/cartoonRight.png";
-        }
+      on_finish: function instructionTick() {
+        progress_bar += instruction_tick;
+        jsPsych.setProgressBar(progress_bar);
       },
     };
 
+    // let instructions_12 = {
+    //   type: "html-keyboard-response",
+    //   stimulus: '<p style="color:white;">Get your hands in position and press the spacebar to start the practice trials. </p> ' +
+    //   "<img id='cartoon' src='' width='1000' height='500'>",
+    //   choices: [32],
+    //   on_load: function(){
+    //     if (handedness==='LEFT'){
+    //       document.getElementById("cartoon").src= "stim/cartoonLeft.png";
+    //     } else if (handedness==='RIGHT'){
+    //       document.getElementById("cartoon").src= "stim/cartoonRight.png";
+    //     }
+    //   },
+    // };
+
     let instructions_procedure = {
-      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10],
+      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10, instructions_11],
     }
 
     timeline.push(instructions_procedure);
@@ -374,12 +387,12 @@
         let outcome = document.getElementById("outcomeGenerator");
         if (feedbackLogic == 'You completed the task' && practiceOutcome[practiceIterator] == 'win'){ 
             if (selection==EasyKey_uCase){
-            outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' points';
+            outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' points.';
             practiceIterator++
             progress_bar += practice_tick;
             jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
-             outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' points';
+             outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' points.';
              practiceIterator++
              progress_bar += practice_tick;
              jsPsych.setProgressBar(progress_bar);
@@ -459,13 +472,13 @@
         if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'win'){  
 
             if (selection==EasyKey_uCase){
-            outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' points';
+            outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' points.';
             experimentIterator++
 
             progress_bar += (1-progress_bar)/(timerFloat/60);
             jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
-             outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' points';
+             outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' points.';
              experimentIterator++
 
              progress_bar += (1-progress_bar)/(timerFloat/60);
