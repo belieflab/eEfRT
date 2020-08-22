@@ -172,11 +172,15 @@
 
     let instructions_11 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Get your hands in position and press any key to start the practice trials. </p> ' ,
+      stimulus: '<p style="color:white;">Get your hands in position and press any key to start the practice trials. </p> ' +
+      "<img id='cartoon' src='' width='1000' height='500'>",
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
+      on_load: function(){
+        if (handedness==='LEFT'){
+          document.getElementById("cartoon").src= "stim/cartoonLeft.png";
+        } else if (handedness==='RIGHT'){
+          document.getElementById("cartoon").src= "stim/cartoonRight.png";
+        }
       },
     };
 

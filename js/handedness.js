@@ -21,6 +21,7 @@ function checkHandedness(){
          HardKey_uCase = 'S';  // 115
          EasyKey_ASCII = 108;
          HardKey_ASCII = 115;
+     //     cartoon = document.getElementById("cartoon").src= "stim/cartoonRight.png";
     } else if (handedness.toUpperCase() == 'LEFT') {
          handedness = 'LEFT';
          antihandedness = 'RIGHT';
@@ -28,5 +29,7 @@ function checkHandedness(){
          HardKey_uCase = 'L';  // 108
          EasyKey_ASCII = 115;
          HardKey_ASCII = 108;
+     //     cartoon = document.getElementById("cartoon").src= "stim/cartoonLeft.png";
     } 
  }
+ 

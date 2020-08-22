@@ -6,20 +6,22 @@ let timeline = [];
 let welcome = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Welcome to the experiment! Press any key to begin.</p>',
-  on_finish: function checkHandedness(){
-    if (handedness.toUpperCase() == 'RIGHT'){
-         EasyKey_uCase = 'L';  // 108
-         HardKey_uCase = 'S';  // 115
-         antihandedness = 'LEFT';
-         EasyKey_ASCII = 108;
-         HardKey_ASCII = 115;
-    } else if (handedness.toUpperCase() == 'LEFT') {
-         EasyKey_uCase = 'S';  // 115
-         HardKey_uCase = 'L';  // 108
-         antihandedness = 'RIGHT';
-         EasyKey_ASCII = 115;
-         HardKey_ASCII = 108;
-    } 
+  // on_load: function cartoonHandedness(){
+  //   if (handedness === 'RIGHT'){
+  //       //  EasyKey_uCase = 'L';  // 108
+  //       //  HardKey_uCase = 'S';  // 115
+  //       //  antihandedness = 'LEFT';
+  //       //  EasyKey_ASCII = 108;
+  //       //  HardKey_ASCII = 115;
+  //        document.getElementById("cartoon").src= "stim/cartoonRight.png";
+  //   } else if (handedness === 'LEFT') {
+  //       //  EasyKey_uCase = 'S';  // 115
+  //       //  HardKey_uCase = 'L';  // 108
+  //       //  antihandedness = 'RIGHT';
+  //       //  EasyKey_ASCII = 115;
+  //       //  HardKey_ASCII = 108;
+  //        document.getElementById("cartoon").src= "stim/cartoonLeft.png";
+  //   } 
  }
 //   on_finish: function instructionTick() {
 //     progress_bar += instruction_tick;

@@ -60,6 +60,7 @@ function submitIntake() {
         workerID = parseInt(siteNumber + subjectID);
         validateIntake();
         checkHandedness();
+        // practiceOrientation();
     }
 }
 
