@@ -49,13 +49,13 @@
         '<p style="color:white;"> Even if you choose to go through trials quickly, you will still play for the same total amount of time.  </p>'+
         '<p style="color:white;"> Press the space bar to continue.</p>',
       choices: [' '],
-      // on_load: checkHandedness(),
+      // on_load: practiceOrientation(),
     };
 
     let instructions_2 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">For each trial, you will have an opportunity to win some money.</p> ' +
-          '<p style="color:white;">In order to be eligible to win money on a given trial, you must first complete a task.</p> ' + 
+      stimulus: '<p style="color:white;">For each trial, you will have an opportunity to win some points.</p> ' +
+          '<p style="color:white;">In order to be eligible to win points on a given trial, you must first complete a task.</p> ' + 
           '<p style="color:white;">The task involves making repeated button presses within a certain amount of time. </p>' +
           '<p style="color:white;">For each trial you can choose to complete an Easy task, or a Hard task. </p> '+
           '<p style="color:white;">Press the space bar to continue.</p>',
@@ -94,7 +94,7 @@
 
     let instructions_5 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Completing the Easy or Hard task makes you eligible to receive money on that trial, but completion alone does NOT guarantee that you will win money.  </p> ' +
+      stimulus: '<p style="color:white;">Completing the Easy or Hard task makes you eligible to receive points on that trial, but completion alone does NOT guarantee that you will win points.  </p> ' +
       '<p style="color:white;">Press the space bar to continue.  </p> ' , 
       choices: [32],
       on_finish: function instructionTick() {
@@ -105,8 +105,8 @@
 
     let instructions_6 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Some trials are less likely to give you money than others. </p> ' +
-      '<p style="color:white;">To help you decide which trials are more likely to give you money, you will be told the probability that you WILL receive money IF you complete the task at the beginning of each trial.   </p> ' +
+      stimulus: '<p style="color:white;">Some trials are less likely to give you points than others. </p> ' +
+      '<p style="color:white;">To help you decide which trials are more likely to give you points, you will be told the probability that you WILL receive points IF you complete the task at the beginning of each trial.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
@@ -117,9 +117,9 @@
 
     let instructions_7 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Some trials you will have an 88% receiving money if you complete the task.  </p> ' +
-      '<p style="color:white;">Some trials you will have a 50% chance receiving money if you complete the task.   </p> ' +
-      '<p style="color:white;">Some trials you will have a 12% chance of receiving money if you complete the task.   </p> ' +
+      stimulus: '<p style="color:white;">Some trials you will have an 88% receiving points if you complete the task.  </p> ' +
+      '<p style="color:white;">Some trials you will have a 50% chance receiving points if you complete the task.   </p> ' +
+      '<p style="color:white;">Some trials you will have a 12% chance of receiving points if you complete the task.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
@@ -190,9 +190,8 @@
 
     timeline.push(instructions_procedure);
 
-    /* START TRAINING TRIAL FOR PARTICIPANTS */
-// delayed discounting task: three variables: 1st= money now, 2nd= money later, 3rd= money days later
-// display the variables on the screen to the participant (write a for loop to iterate through)
+    /* START PRACTICE TRIAL FOR PARTICIPANTS */
+
     //  variables for practice condition
     let practiceOutcome = ["win", "lose", "lose", "win"]
     let practiceHard = [178,268,358,412];
@@ -357,7 +356,7 @@
              jsPsych.setProgressBar(progress_bar);
           }
         } else if (feedbackLogic == 'You completed the task' && experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-          outcome.innerHTML = 'No money this round';
+          outcome.innerHTML = 'No points this round';
           practiceIterator++;
           progress_bar += practice_tick;
           jsPsych.setProgressBar(progress_bar);
@@ -456,7 +455,7 @@
              jsPsych.setProgressBar(progress_bar);
             }
         } else if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-          outcome.innerHTML = 'No money this round';
+          outcome.innerHTML = 'No points this round';
           experimentIterator++;
 
           progress_bar += (1-progress_bar)/(timerFloat/60);
