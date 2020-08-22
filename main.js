@@ -401,7 +401,8 @@
 
     let start_task = {
       type: 'html-keyboard-response',
-      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the spacebar to start. </p>' + '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>'+
+      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' +
+      '<p style="color:white;">Get your hands in position and press the spacebar to start. </p>' + '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>'+
       "<img id='cartoon' src='' width='1000' height='500'>",
       choices: [32],
       on_load: function(){
