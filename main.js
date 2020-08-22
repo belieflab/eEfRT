@@ -172,7 +172,7 @@
 
     let instructions_11 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Get your hands in position and press any key to start the practice trials. </p> ' +
+      stimulus: '<p style="color:white;">Get your hands in position and press the spacebar to start the practice trials. </p> ' +
       "<img id='cartoon' src='' width='1000' height='500'>",
       choices: [32],
       on_load: function(){
@@ -401,10 +401,16 @@
 
     let start_task = {
       type: 'html-keyboard-response',
-      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the space bar to start. </p>' + '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
+      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the spacebar to start. </p>' + '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>'+
+      "<img id='cartoon' src='' width='1000' height='500'>",
       choices: [32],
       on_load: function(){
         document.getElementById('startExp').focus();
+        if (handedness==='LEFT'){
+          document.getElementById("cartoon").src= "stim/cartoonLeft.png";
+        } else if (handedness==='RIGHT'){
+          document.getElementById("cartoon").src= "stim/cartoonRight.png";
+        }
       },
       on_finish: function instructionTick() {
         progress_bar += instruction_tick;
@@ -469,17 +475,32 @@
   // }
 
 let test_prompt_array = []; // change to selection_array
+if (handedness == "RIGHT") {
+  for (let i = 0; i < experimentOutcome.length; i++){
+    test_prompt_array.push(
+      '<br>'+
+      '<br>'+
+    '<p style="color:white;">Press the <strong>'+HardKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+EasyKey_uCase+'</strong> key.</p> ' +
+    '<p style="color:white;">Hard is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Easy is worth: </p> ' +
+    '<p style="color:white;">'+hardAmount[i]+' points &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+easyAmount[i]+' points</p> ' +
+    '<br>'+
+    '<br>'+
+    '<p style="color:white;"> The probability of winning is ' +experimentProbability[i]+'%.   </p> ')
+  };
+} else if (handedness = "LEFT") {
   for (let i = 0; i < experimentOutcome.length; i++){
     test_prompt_array.push(
       '<br>'+
       '<br>'+
     '<p style="color:white;">Press the <strong>'+EasyKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+HardKey_uCase+'</strong> key.</p> ' +
-    '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hard is worth: </p> ' +
-    '<p style="color:white;">'+easyAmount[i]+' points &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+hardAmount[i]+' points</p> ' +
+    '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hard is worth: </p> ' +
+    '<p style="color:white;">'+easyAmount[i]+' points &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+hardAmount[i]+' points</p> ' +
     '<br>'+
     '<br>'+
     '<p style="color:white;"> The probability of winning is ' +experimentProbability[i]+'%.   </p> ')
-  }
+  };
+}
+
 let test_feedback_array = [];
     for (let i = 0; i < experimentOutcome.length; i++){
     test_feedback_array.push('<p id="feedbackGenerator" style="color:white;"></p>')
