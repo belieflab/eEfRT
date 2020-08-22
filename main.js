@@ -117,9 +117,9 @@
 
     let instructions_7 = {
       type: "html-keyboard-response",
-      stimulus: '<p style="color:white;">Some trials have an 88% receiving points if you complete the task.  </p> ' +
-      '<p style="color:white;">Some trials you will have a 50% chance receiving points if you complete the task.   </p> ' +
-      '<p style="color:white;">Some trials you will have a 12% chance of receiving points if you complete the task.   </p> ' +
+      stimulus: '<p style="color:white;">Some trials have an 88% chance of receiving points if you complete the task.  </p> ' +
+      '<p style="color:white;">Some trials have a 50% chance of receiving points if you complete the task.   </p> ' +
+      '<p style="color:white;">Some trials have a 12% chance of receiving points if you complete the task.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
       on_finish: function instructionTick() {
