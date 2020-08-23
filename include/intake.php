@@ -1,4 +1,4 @@
-<div class="screening" style="background-color:powderblue; text-align:center; margin:35px; vertical-align:middle">
+<div class="screening" style="background-color:gray; text-align:center; margin:35px; vertical-align:middle">
   <div id="intake">
   <br>
   <h1 style="text-align:center;">CAPR Participant Intake</h1>

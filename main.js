@@ -3,9 +3,6 @@
     /* create timeline */
     let timeline = [];
 
-    // hard code playtime to 20 minutes
-    const MinutesToPlay = 20;
-
     // store feedback generated from trial outcome
     var feedbackLogic;
 
