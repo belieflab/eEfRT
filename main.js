@@ -201,7 +201,7 @@
       timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10, instructions_11],
     }
 
-    timeline.push(instructions_procedure);
+    // timeline.push(instructions_procedure);
 
     let start_practice = {
       type: "html-keyboard-response",
@@ -216,7 +216,7 @@
         }
       },
     };
-    timeline.push(start_practice);
+    // timeline.push(start_practice);
 
     /* START PRACTICE TRIAL FOR PARTICIPANTS */
 
@@ -420,7 +420,7 @@
       timeline_variables: practice_prompt_stimuli,
       randomize_order: false
     }
-    timeline.push(practice_procedure);
+    // timeline.push(practice_procedure);
 
 
 
@@ -429,25 +429,37 @@
 
     let start_experiment = {
       type: 'html-keyboard-response',
-      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' +
-      '<p style="color:white;">Get your hands in position and press the spacebar to start. </p>' + '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>'+
+      stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the spacebar to start. </p>'+
+      // '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
       "<img id='cartoon' src='' width='1000' height='500'>",
       choices: [32],
       on_load: function(){
+        // document.getElementById('startExp').focus();
         if (handedness==='LEFT'){
           document.getElementById("cartoon").src= "stim/cartoonLeft.png";
         } else if (handedness==='RIGHT'){
           document.getElementById("cartoon").src= "stim/cartoonRight.png";
         };
-        document.getElementById('startExp').focus();
       },
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
+      on_finish: function(){
+        experimentTimer();
+      }
     };
 
     timeline.push(start_experiment);
+
+    // let start_timer = {
+    //   type: 'html-keyboard-response',
+    //   stimulus: '<p style="color:white;">Lets go</p>',
+    //   choices: jsPsych.NO_KEYS,
+    //   trial_duartion: 1000,
+    //   response_ends_trial: false,
+    //   on_start: function(){
+    //     experimentTimer();
+    //   }
+    // };
+
+    // timeline.push(start_timer);
 
     // this is where the real trials begin with sheet 1 variables
   
