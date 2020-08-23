@@ -3,31 +3,6 @@
     /* create timeline */
     let timeline = [];
 
-    // store feedback generated from trial outcome
-    var feedbackLogic;
-
-    // user selection of hard or easy trials
-    var selection;
-
-
-    // declare variable for the time to press
-    let pressing_time;
-
-    // declare iterators for the practice and experiment outcome
-    let practiceIterator=0;
-    let experimentIterator=0;
-
-    // set the progress bar
-    let timer;
-    let timerFloat;
-    let progress_bar = 0.00;
-    let instruction_tick = 0.005;
-    let practice_tick = 0.01;
-    let experiment_tick;
-  
-    // run script to ask participant how much time they would like to play for
-    // playTime();
-
     /* define welcome message trial */
     let welcome = {
       type: "html-keyboard-response",
@@ -218,10 +193,7 @@
     /* START PRACTICE TRIAL FOR PARTICIPANTS */
 
     //  variables for practice condition
-    let practiceOutcome = ["win", "lose", "lose", "win"]
-    let practiceHard = [178,268,358,412];
-    let practiceEasy = [100,100,100,100];
-    let practiceProbability = [50,12,50,88];
+
   // this is where I put the text for the page
   // we create a new array and we use a for loop to add 4 practice items to the array. at the same time we are also looping through the variables that we assigned from 281-283.
     let practice_prompt_array = [];
@@ -260,19 +232,7 @@
         practice_outcome_array.push('<p id="outcomeGenerator" style="color:white;"></p>')
         }
 
-    // the feedback array is populated after trial is completed or failed
 
-  
-    // '<p style="color:white;">Ready?    </p> ' +
-    //   '<p style="color:white;">Push the <strong>'+EasyKey_uCase+'</strong> key until the bar fills up.   </p>');
-    let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>'
-
-     // let progressBar= '<div class="w3-container"><div class="w3-light-grey"><div class="w3-grey" style="height:24px; width:50%;"></div></div></div></div></div>'
-    let progressBar = '<div id="counter" class="w3-container"><h2>Progress Bar Width</h2><p>Change the width of the progress bar with the width property:</p><div class="w3-light-grey"><div class="w3-grey" id="keyBar" style="height:24px;width:0%;"></div></div><br><div>';
-
-    let feedbackGenerator = '<p id="feedbackGenerator" style="color:white;"></p>';
-
-    let fillUp = '<p id="fillUp" style="color:white;"></p>';
 
 // this is where I call each item from the array above
     let practice_prompt_stimuli = [
@@ -461,14 +421,7 @@
     // this is where the real trials begin with sheet 1 variables
   
 
-    let experimentOutcome = ["lose", "lose", "lose", "win", "lose",	"win", "lose", "win", "win", "win", "lose",	"win", "lose", "win", "lose",	"lose",	"win", "lose", "win", "lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"win", 	"lose",	"lose",	"lose",	"win", 	"lose",	"win", 	"win", 	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"lose",	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"win", 	"win", 	"lose",	"lose",	"win", 	"lose",	"lose",	"win", 	"lose",	"lose",	"win", 	"win", 	"lose",	"win", 	"win", 	"win", 	"lose",	"win", 	"win", 	"lose",	"win", 	"lose",	"lose",	"win", 	"lose",	"win", 	"win", 	"win", 	"win", 	"win", 	"lose",	"lose",	"win", 	"lose",	"win", 	"lose",	"lose"];
-    
-    let hardAmount = [304, 142,	286,	322,	178,	196,	268,	178,	214,	250,	394,	232,	214,	142,	304,	124,	358,	232,	412,	412,	250,	394,	322,	412,	268,	340,	250,	376,	178,	142,	304,	340,	322,	124,	358,	376,	376,	214,	358,	160,	286,	268,	124,	196,	160,	286,	232,	340,	394,	196,	160,	259,	349,	385,	421,	403,	367,	367,	403,	277,	151,	187,	421,	133,	187,	151,	313,	313,	385,	259,	421,	295,	205,	277,	349,	187,	295,	313,	367,	169,	259,	241,	133,	331,	223,	223,	403,	133,	241,	331,	223,	385, 241,	331,	277,	205,	169,	349,	169,	295,	205,	151];
-    
-    let easyAmount = [100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,	100,];
-    
-    let experimentProbability = [12,	50,	50,	88,	12,	88,	50,	88,	50,	12,	50,	50,	12,	88,	88,	12,	88,	12,	50,	12,	50,	12,	12,	88,	88,	50,	88,	50,	50,	12,	50,	88,	50,	88,	12,	12,	88,	88,	50,	88,	12,	12,	50,	50,	12,	88,	88,	12,	88,	12,	50,	12,	88,	50,	88,	12,	50,	12,	88,	50,	88,	88,	50,	50,	50,	50,	88,	12,	12,	88,	12,	12,	88,	12,	50,	12,	50,	50,	88,	88,	50,	12,	88,	50,	12,	50,	50,	12,	88,	12,	88,	88,	50,	88,	88,	12,	12,	12,	50,	88,	50,	12,];
-    
+
     let experiment_outcome = {
       type: 'html-keyboard-response',
       // stimulus:'<p style="color:white;">completion </p> ',
