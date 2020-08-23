@@ -88,9 +88,9 @@
 <script type="text/javascript" src="js/jquery-git.js"></script>
 
 <script>$("button.loadMain").click(function(){
-      $.getScript("exp/run.js");
+    $.getScript("exp/run.js");
     $.getScript("exp/var.js");
-    $.getScript("main.js");
+    $.getScript("exp/main.js");
 
     // $.load("include/consent.php");
   }); </script>
