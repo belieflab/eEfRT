@@ -8,19 +8,20 @@ let selection;
 let pressing_time;
 
 // declare iterators for the practice and experiment outcome
+// they must be declared separatly, don't even think about it Ben
 let practiceIterator=0;
 let experimentIterator=0;
 
 // set the progress bar
-let timer;
-let timerFloat;
-let progress_bar = 0.00;
-let instruction_tick = 0.005;
-let practice_tick = 0.01;
-let experiment_tick;
+// let timer;
+// let timerFloat;
+// let progress_bar = 0.00;
+// let instruction_tick = 0.005;
+// let practice_tick = 0.01;
+// let experiment_tick;
 
 // set the time remaining notification for participant
-let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>'
+let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white;"></p>';
 
 // feedback contrainer
 let feedbackGenerator = '<p id="feedbackGenerator" style="color:white;"></p>';

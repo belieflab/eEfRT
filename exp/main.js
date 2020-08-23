@@ -185,8 +185,8 @@ let load = {
       buttonPressing.trial_duration = 7000;
       document.getElementById("ready").setAttribute("onclick", "countdownEasy(1)");
     } else if (selection==HardKey_uCase){ 
-      pressing_time= 21000; // for right handed only
-      buttonPressing.trial_duration = 21000;
+      pressing_time= 20000; // for right handed only
+      buttonPressing.trial_duration = 20000;
       document.getElementById("ready").setAttribute("onclick", "countdownHard(1)");
     }
     document.getElementById("ready").click(); //automatically clicks the hidden button after loading
@@ -209,7 +209,7 @@ on_load:function buttonPress(){
     document.getElementById("tapTap").focus(); //gives focus to the text box
     console.log(pressing_time)
     console.log(selection)
-    if (pressing_time==21000){
+    if (pressing_time==20000){
       // pressing_time = 7000;
       // buttonPressing.trial_duration = pressing_time;
       document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
@@ -224,7 +224,7 @@ on_load:function buttonPress(){
 let feedback = {
   type: 'html-keyboard-response',
   choices: jsPsych.NO_KEYS,
-  trial_duration: 2000, 
+  trial_duration: 2000,
   stimulus: jsPsych.timelineVariable('feedback'),  
   data: jsPsych.timelineVariable('data'),  
   on_load: function(){

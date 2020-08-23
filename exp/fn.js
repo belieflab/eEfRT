@@ -59,41 +59,41 @@ function moveEasy() { // function definition
 
     }
 
-    function countdownEasy(minutes) {
-        let seconds = 7;
-        let mins = minutes;
-        function tick() {
-            let counter = document.getElementById("timeRemaining");
-            let current_minutes = mins-1
-            seconds--;
-            counter.innerHTML = "Time Remaining: " + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
-            if(seconds > 0) {
-                setTimeout(tick, 1000);
-                console.log(seconds);
-            } else {
-                if(mins > 1){
-                    countdown(mins-1);           
-                }
-                else if (seconds == 0) { //ends experiment when timer reaches 0
-                    feedbackLogic = 'You <u>did not</u> complete the task';
-                    console.log('incomplete')
-                    jsPsych.finishTrial('failure');
-                   seconds = 7;
-                   counter.innerHTML = "Time Remaining: 00:07";
-                }
+function countdownEasy(minutes) {
+    let seconds = 8;
+    let mins = minutes;
+    function tick() {
+        let counter = document.getElementById("timeRemaining");
+        // let current_minutes = mins-1
+        seconds--;
+        counter.innerHTML = seconds; //comment out .innerHTML method to hide the timer
+        if(seconds > 0) {
+            setTimeout(tick, 1000);
+            console.log(seconds);
+        } else {
+            if(mins > 1){
+                countdown(mins-1);           
+            }
+            else if (seconds == 0) { //ends experiment when timer reaches 0
+                feedbackLogic = 'You <u>did not</u> complete the task';
+                console.log('incomplete')
+                jsPsych.finishTrial('failure');
+                seconds = 7;
+                counter.innerHTML = "";
             }
         }
-        tick();
     }
+    tick();
+}
     
     function countdownHard(minutes) {
         let seconds = 21;
         let mins = minutes;
         function tick() {
             let counter = document.getElementById("timeRemaining");
-            let current_minutes = mins-1
+            // let current_minutes = mins-1
             seconds--;
-            counter.innerHTML = "Time Remaining: " + current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds); //comment out .innerHTML method to hide the timer
+            counter.innerHTML = seconds; //comment out .innerHTML method to hide the timer
             if( seconds > 0 ) {
                 setTimeout(tick, 1000);
                 console.log(seconds);
@@ -105,14 +105,25 @@ function moveEasy() { // function definition
                     feedbackLogic = 'You <u>did not</u> complete the task';
                     console.log('incomplete')
                     jsPsych.finishTrial('failure');
-                   seconds = 21;
-                   counter.innerHTML = "Time Remaining: 00:21";
+                   seconds = 20;
+                   counter.innerHTML = "";
                 }
             }
         }
         tick();
     }
-    
+
+// function countdownHard() {
+//     var timeleft = 21;
+//     // if timeleft
+//     var downloadTimer = setInterval(function(){
+//     timeleft--;
+//     document.getElementById("timeRemaining").textContent = timeleft;
+//     if(timeleft <= 0)
+//         clearInterval(downloadTimer);
+//     },1000);
+// }
+
     function experimentTimer(minutes) {
         let seconds = MinutesToPlay*60;
         let mins = minutes;
