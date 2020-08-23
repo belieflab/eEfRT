@@ -9,7 +9,7 @@
     <select name="facility" id="siteid">
         <option value="">---</option>
         <option value="Yale">Yale</option>
-        <option value="UGA">UGA</option>
+        <option value="Georgia">Georgia</option>
         <option value="Northwestern">Northwestern</option>
         <option value="Temple">Temple</option>
         <option value="Maryland">Maryland</option>

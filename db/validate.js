@@ -33,7 +33,7 @@ function submitIntake() {
         case "Yale":
             siteNumber = "10";
             break;
-        case "UGA":
+        case "Georgia":
             siteNumber = "20";
             break;
         case "Northwestern":
@@ -44,6 +44,9 @@ function submitIntake() {
             break;
         case "Maryland":
             siteNumber = "50";
+            break;
+        case "Emory":
+            siteNumber = "60";
             break;
         default:
             siteNumber = "00";
@@ -60,15 +63,8 @@ function submitIntake() {
         workerID = parseInt(siteNumber + subjectID);
         validateIntake();
         checkHandedness();
-        // practiceOrientation();
     }
 }
 
 
-// function validateForm() {
-//   var x = document.forms["myForm"]["fname"].value;
-//   if (x == "") {
-//     alert("Name must be filled out");
-//     return false;
-//   }
-// }
+
