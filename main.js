@@ -33,10 +33,6 @@
           '<p style="color:white;">For each trial you can <b>choose</b> to complete an <b>Easy task</b> <i>or a </i> <b>Hard task</b>. </p> '+
           '<p style="color:white;">Press the spacebar to continue.</p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     let instructions_3 = {
@@ -45,10 +41,6 @@
       '<p style="color:white;">You are eligible to win <b>100 points</b> for each time you complete the <b>Easy task</b>. </p> ' + 
       '<p style="color:white;">Press the spacebar to continue. </p>' ,
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
     
     let instructions_4 = {
@@ -59,10 +51,6 @@
       '<p style="color:white;"><b>Hard trials</b> range from <b>120 to around 400 points</b>. </p>' + 
       '<p style="color:white;">Press the spacebar to continue. </p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     let instructions_5 = {
@@ -71,10 +59,6 @@
       '<p style="color:white;"><b><i>but completion alone does NOT guarantee that you will win points.</i></b></p> ' +
       '<p style="color:white;">Press the spacebar to continue.  </p> ' , 
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     let instructions_6 = {
@@ -83,10 +67,6 @@
       '<p style="color:white;">To help you decide which trials are more likely to give you points, you will be told the probability that you WILL receive points IF you complete the task at the beginning of each trial.   </p> ' +
       '<p style="color:white;">Press the spacebar to continue. </p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     let instructions_7 = {
@@ -96,10 +76,6 @@
       '<p style="color:white;">Some trials have a <b>12% chance</b> of receiving points if you <b>complete the task</b>.   </p> ' +
       '<p style="color:white;">Press the space bar to continue. </p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     let instructions_8 = {
@@ -110,10 +86,6 @@
       '<p style="color:white;">To choose the <b>Easy task</b>, press the <strong>'+EasyKey_uCase+' key</strong>.  </p> ' +
       '<p style="color:white;">Press the spacebar to continue. </p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     // let instructions_9 = {
@@ -124,10 +96,6 @@
     //   '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
     //   '<p style="color:white;">Press the space bar to continue. </p>',
     //   choices: [32],
-    //   on_finish: function instructionTick() {
-    //     progress_bar += instruction_tick;
-    //     jsPsych.setProgressBar(progress_bar);
-    //   },
     // };
 
     let instructions_10 = {
@@ -137,10 +105,6 @@
       '<p style="color:white;">If you choose all <b>Hard tasks</b>, you will probably get through around <b>20 trials</b>, so <i>choose your Hard tasks carefully</i>!    </p> '+
       '<p style="color:white;">Press the spacebar to start. </p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     let instructions_11 = {
@@ -149,10 +113,6 @@
       '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
       '<p style="color:white;">Press the spacebar to start. </p>',
       choices: [32],
-      on_finish: function instructionTick() {
-        progress_bar += instruction_tick;
-        jsPsych.setProgressBar(progress_bar);
-      },
     };
 
     // let instructions_12 = {
@@ -169,13 +129,8 @@
     //   },
     // };
 
-    let instructions_procedure = {
-      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10, instructions_11],
-    }
 
-    // timeline.push(instructions_procedure);
-
-    let start_practice = {
+    let begin_practice = {
       type: "html-keyboard-response",
       stimulus: '<p style="color:white;">Get your hands in position and press the spacebar to start the practice trials. </p> ' +
       "<img id='cartoon' src='' width='1000' height='500'>",
@@ -188,7 +143,7 @@
         }
       },
     };
-    // timeline.push(start_practice);
+
 
     /* START PRACTICE TRIAL FOR PARTICIPANTS */
 
@@ -257,7 +212,7 @@
     response_ends_trial: false,
     trial_duration: pressing_time,
     data: jsPsych.timelineVariable('data'),
-    stimulus: jsPsych.timelineVariable('progress'),    
+    stimulus: jsPsych.timelineVariable('progress'),
     on_load:function buttonPress(){
         barFill = document.getElementById("fillUp");
         barFill.innerHTML = 'Press the <strong>'+selection+'</strong> key until the bar fills up.';   
@@ -301,23 +256,15 @@
             if (selection==EasyKey_uCase){
             outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' points.';
             practiceIterator++
-            progress_bar += practice_tick;
-            jsPsych.setProgressBar(progress_bar);
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' points.';
              practiceIterator++
-             progress_bar += practice_tick;
-             jsPsych.setProgressBar(progress_bar);
           }
         } else if (feedbackLogic == 'You completed the task' && experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           outcome.innerHTML = 'No points this round';
           practiceIterator++;
-          progress_bar += practice_tick;
-          jsPsych.setProgressBar(progress_bar);
         } else {
           practiceIterator++
-          progress_bar += (1-progress_bar)/(timerFloat/60);
-          jsPsych.setProgressBar(progress_bar);
         }
         },
       }
@@ -327,19 +274,14 @@
   
 // this is where the procedure loops over the timeline property below. the timeline variables are the stimuli.
     
-    let practice_procedure = {
-      timeline: [fixation, trial, ready, load, buttonPressing, feedback, practice_outcome],
-      timeline_variables: practice_prompt_stimuli,
-      randomize_order: false
-    }
-    // timeline.push(practice_procedure);
+
 
 
 
     /* END TRAINING TRIAL FOR PARTICIPANTS */
 
 
-    let start_experiment = {
+    let begin_experiment = {
       type: 'html-keyboard-response',
       stimulus: '<p style="color:white;">That was the practice. The experiment starts now!</p> ' + '<p style="color:white;">Get your hands in position and press the spacebar to start. </p>'+
       // '<button id="startExp" onkeypress="experimentTimer()" style="outline:none; border:none; background-color:black">START</button>',
@@ -358,7 +300,7 @@
       }
     };
 
-    timeline.push(start_experiment);
+
 
     // let start_timer = {
     //   type: 'html-keyboard-response',
@@ -392,25 +334,20 @@
             outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' points.';
             experimentIterator++
 
-            progress_bar += (1-progress_bar)/(timerFloat/60);
-            jsPsych.setProgressBar(progress_bar);
+
             } else if (selection==HardKey_uCase){
              outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' points.';
              experimentIterator++
 
-             progress_bar += (1-progress_bar)/(timerFloat/60);
-             jsPsych.setProgressBar(progress_bar);
             }
         } else if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
           outcome.innerHTML = 'No points this round';
           experimentIterator++;
 
-          progress_bar += (1-progress_bar)/(timerFloat/60);
-          jsPsych.setProgressBar(progress_bar);
+
         } else {
           experimentIterator++;
-          progress_bar += (1-progress_bar)/(timerFloat/60);
-          jsPsych.setProgressBar(progress_bar);
+
         }
     }
   }
@@ -422,12 +359,7 @@
 
 
 
-let test_procedure = {
-      timeline: [fixation, trial, ready, load, buttonPressing, feedback, experiment_outcome],
-      timeline_variables: test_prompt_stimuli,
-      randomize_order: false
-    }
-    timeline.push(test_procedure);
+
 
 
    let debrief_block = {
@@ -442,10 +374,6 @@ let test_procedure = {
         return "<p style='color:white;'> You responded correctly on "+accuracy+"% of the trials. </p>"+
         "<p style='color:white;'>Your average response time was "+rt+"ms.</p>"+
         "<p style='color:white;'>Press any key to complete the experiment. Thank you!</p>";
-      },
-      on_finish: function completionTick() {
-        progress_bar = 1.00;
-        jsPsych.setProgressBar(progress_bar);
       },
     }; 
 
@@ -506,3 +434,34 @@ function saveData(name, data){
         //}
       });
     }
+
+    let instructions_procedure = {
+      timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10, instructions_11],
+  }
+  
+  let practice_start = {
+      timeline: [begin_practice],
+  }
+  
+  let practice_procedure = {
+      timeline: [fixation, trial, ready, load, buttonPressing, feedback, practice_outcome],
+      timeline_variables: practice_prompt_stimuli,
+      randomize_order: false
+    }
+  
+  
+  let test_start = {
+      timeline: [begin_experiment],
+  }
+  let test_procedure = {
+      timeline: [fixation, trial, ready, load, buttonPressing, feedback, experiment_outcome],
+      timeline_variables: test_prompt_stimuli,
+      randomize_order: false
+  }
+  
+  
+  timeline.push(instructions_procedure);
+  timeline.push(practice_start);
+  timeline.push(practice_procedure);
+  timeline.push(test_start);
+  timeline.push(test_procedure);
