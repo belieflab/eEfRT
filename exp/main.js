@@ -43,7 +43,7 @@ let instructions_3 = {
   
 let instructions_4 = {
   type: "html-keyboard-response",
-  stimulus: '<p style="color:white;">If you choose the <b>Hard task</b>, you will need to press the <strong>'+HardKey_uCase+' key</strong> with the <b>pinky finger</b> of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately <b>100 times within 20 seconds</b>.  </p> ' +
+  stimulus: '<p style="color:white;">If you choose the <b>Hard task</b>, you will need to press the <strong>'+HardKey_uCase+' key</strong> with the <b>pinky finger</b> of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately <b>100 times within 21 seconds</b>.  </p> ' +
   '<p style="color:white;"><b><i>For each trial, the amount that you are eligible to win if you complete the Hard task will change.</i></b></p>' + 
   '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.</p>' +
   '<p style="color:white;"><b>Hard trials</b> range from <b>120 to around 400 points</b>. </p>' + 
@@ -185,7 +185,7 @@ let load = {
       buttonPressing.trial_duration = 7000;
       document.getElementById("ready").setAttribute("onclick", "countdownEasy(1)");
     } else if (selection==HardKey_uCase){ 
-      pressing_time= 20000; // for right handed only
+      pressing_time= 21000; // for right handed only
       buttonPressing.trial_duration = 20000;
       document.getElementById("ready").setAttribute("onclick", "countdownHard(1)");
     }
@@ -209,7 +209,7 @@ on_load:function buttonPress(){
     document.getElementById("tapTap").focus(); //gives focus to the text box
     console.log(pressing_time)
     console.log(selection)
-    if (pressing_time==20000){
+    if (pressing_time==21000){
       // pressing_time = 7000;
       // buttonPressing.trial_duration = pressing_time;
       document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use

@@ -87,7 +87,7 @@ function countdownEasy(minutes) {
 }
     
     function countdownHard(minutes) {
-        let seconds = 21;
+        let seconds = 22;
         let mins = minutes;
         function tick() {
             let counter = document.getElementById("timeRemaining");
@@ -105,7 +105,7 @@ function countdownEasy(minutes) {
                     feedbackLogic = 'You <u>did not</u> complete the task';
                     console.log('incomplete')
                     jsPsych.finishTrial('failure');
-                   seconds = 20;
+                   seconds = 21;
                    counter.innerHTML = "";
                 }
             }
