@@ -365,9 +365,9 @@ let conclusion = {
 }
   
   
-  timeline.push(instructions_procedure);
-  timeline.push(practice_start);
-  timeline.push(practice_procedure);
+  // timeline.push(instructions_procedure);
+  // timeline.push(practice_start);
+  // timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
   timeline.push(conclusion);
