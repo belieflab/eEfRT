@@ -321,15 +321,15 @@ let experiment_outcome = {
 let debrief_block = {
   type: "html-keyboard-response",
   stimulus: function(){
-
+    return "<p style='color:white;'>“You have completed this task. Please wait for the experimenter”.</p>"
     // let trials = jsPsych.data.get().filter({test_part: 'practice'});
     // let correct_trials = trials.filter({correct: true});
     // let accuracy = Math.round(correct_trials.count() / trials.count() * 100);
     // let rt = Math.round(correct_trials.select('rt').mean());
 
-    return "<p style='color:white;'> You responded correctly on "+accuracy+"% of the trials. </p>"+
-    "<p style='color:white;'>Your average response time was "+rt+"ms.</p>"+
-    "<p style='color:white;'>Press any key to complete the experiment. Thank you!</p>";
+    // return "<p style='color:white;'> You responded correctly on "+accuracy+"% of the trials. </p>"+
+    // "<p style='color:white;'>Your average response time was "+rt+"ms.</p>"+
+    // "<p style='color:white;'>Press any key to complete the experiment. Thank you!</p>";
   },
 }; 
 
