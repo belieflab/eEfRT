@@ -3,7 +3,7 @@
 //******************************************/
 
 // hard code playtime to 20 minutes (default)
-const MinutesToPlay = 1;
+const MinutesToPlay = 20;
 
 
 // practice variables
