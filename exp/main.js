@@ -25,8 +25,8 @@ let instructions_1 = {
 
 let instructions_2 = {
   type: "html-keyboard-response",
-  stimulus: '<p style="color:white;">For <b>each trial</b>, you will have an opportunity to <b>win some points</b>.</p> ' +
-      '<p style="color:white;">In order to be eligible to <b>win points</b> on a given trial, you must first <b>complete a task</b>.</p> ' + 
+  stimulus: '<p style="color:white;">For <b>each trial</b>, you will have an opportunity to <b>win some '+version+'</b>.</p> ' +
+      '<p style="color:white;">In order to be eligible to <b>win '+version+'</b> on a given trial, you must first <b>complete a task</b>.</p> ' + 
       '<p style="color:white;">The task involves making <b>repeated button presses within a certain amount of time</b>. </p>' +
       '<p style="color:white;">For each trial you can <b>choose</b> to complete an <b>Easy task</b> <i>or a </i> <b>Hard task</b>. </p> '+
       '<p style="color:white;">Press the spacebar to continue.</p>',
@@ -36,7 +36,7 @@ let instructions_2 = {
 let instructions_3 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">If you choose the <b>Easy task</b>, you will need to press the <strong >'+EasyKey_uCase+' key</strong> with your <strong>'+handedness.toUpperCase()+' index finger</strong> approximately <b>30 times within 7 seconds</b>. </p> ' +
-  '<p style="color:white;">You are eligible to win <b>100 points</b> for each time you complete the <b>Easy task</b>. </p> ' + 
+  '<p style="color:white;">You are eligible to win <b>'+currency+practiceEasy[1]+' '+points+'</b> for each time you complete the <b>Easy task</b>. </p> ' + 
   '<p style="color:white;">Press the spacebar to continue. </p>' ,
   choices: [32],
 };
@@ -46,32 +46,32 @@ let instructions_4 = {
   stimulus: '<p style="color:white;">If you choose the <b>Hard task</b>, you will need to press the <strong>'+HardKey_uCase+' key</strong> with the <b>pinky finger</b> of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately <b>100 times within 21 seconds</b>.  </p> ' +
   '<p style="color:white;"><b><i>For each trial, the amount that you are eligible to win if you complete the Hard task will change.</i></b></p>' + 
   '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.</p>' +
-  '<p style="color:white;"><b>Hard trials</b> range from <b>120 to around 400 points</b>. </p>' + 
+  '<p style="color:white;"><b>Hard trials</b> range from <b>'+rangeLow+' to around '+rangeHigh+'</b>.</p>' +
   '<p style="color:white;">Press the spacebar to continue. </p>',
   choices: [32],
 };
 
 let instructions_5 = {
   type: "html-keyboard-response",
-  stimulus: '<p style="color:white;"><b><i>Completing the Easy or Hard task makes you eligible to receive points on that trial</i></b>,<p>'+
-  '<p style="color:white;"><b><i>but completion alone does NOT guarantee that you will win points.</i></b></p> ' +
+  stimulus: '<p style="color:white;"><b><i>Completing the Easy or Hard task makes you eligible to receive '+version+' on that trial</i></b>,<p>'+
+  '<p style="color:white;"><b><i>but completion alone does NOT guarantee that you will win '+version+'.</i></b></p> ' +
   '<p style="color:white;">Press the spacebar to continue.  </p> ' , 
   choices: [32],
 };
 
 let instructions_6 = {
   type: "html-keyboard-response",
-  stimulus: '<p style="color:white;"><b>Some trials are less likely to give you points than others.</b></p> ' +
-  '<p style="color:white;">To help you decide which trials are more likely to give you points, you will be told the probability that you WILL receive points IF you complete the task at the beginning of each trial.   </p> ' +
+  stimulus: '<p style="color:white;"><b>Some trials are less likely to give you '+version+' than others.</b></p> ' +
+  '<p style="color:white;">To help you decide which trials are more likely to give you '+version+', you will be told the probability that you WILL receive '+version+' IF you complete the task at the beginning of each trial.   </p> ' +
   '<p style="color:white;">Press the spacebar to continue. </p>',
   choices: [32],
 };
 
 let instructions_7 = {
   type: "html-keyboard-response",
-  stimulus: '<p style="color:white;">Some trials have an <b>88% chance</b> of receiving points if you <b>complete the task</b>.  </p> ' +
-  '<p style="color:white;">Some trials have a <b>50% chance</b> of receiving points if you <b>complete the task</b>.   </p> ' +
-  '<p style="color:white;">Some trials have a <b>12% chance</b> of receiving points if you <b>complete the task</b>.   </p> ' +
+  stimulus: '<p style="color:white;">Some trials have an <b>88% chance</b> of receiving '+version+' if you <b>complete the task</b>.  </p> ' +
+  '<p style="color:white;">Some trials have a <b>50% chance</b> of receiving '+version+' if you <b>complete the task</b>.   </p> ' +
+  '<p style="color:white;">Some trials have a <b>12% chance</b> of receiving '+version+' if you <b>complete the task</b>.   </p> ' +
   '<p style="color:white;">Press the space bar to continue. </p>',
   choices: [32],
 };
@@ -244,14 +244,14 @@ let practice_outcome = {
     let outcome = document.getElementById("outcomeGenerator");
     if (feedbackLogic == 'You completed the task' && practiceOutcome[practiceIterator] == 'win'){ 
         if (selection==EasyKey_uCase){
-        outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' points.';
+        outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' '+version+'!';
         practiceIterator++
         } else if (selection==HardKey_uCase){
-          outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' points.';
+          outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' '+version+'!';
           practiceIterator++
       }
     } else if (feedbackLogic == 'You completed the task' && experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-      outcome.innerHTML = 'No points this round';
+      outcome.innerHTML = 'No '+version+' this round';
       practiceIterator++;
     } else {
       practiceIterator++
@@ -294,17 +294,17 @@ let experiment_outcome = {
     if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'win'){  
 
         if (selection==EasyKey_uCase){
-        outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' points.';
+        outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' '+version+'!';
         experimentIterator++
 
 
         } else if (selection==HardKey_uCase){
-          outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' points.';
+          outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' '+version+'!';
           experimentIterator++
 
         }
     } else if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-      outcome.innerHTML = 'No points this round';
+      outcome.innerHTML = 'No '+version+' this round';
       experimentIterator++;
 
 
