@@ -6,8 +6,8 @@
 const MinutesToPlay = 20;
 
 // select version
-// const version = 'points';
-const version = 'money';
+const version = 'points';
+// const version = 'money';
 
 // practice variables
 let practiceOutcome     = [];
@@ -38,7 +38,7 @@ let breakSpace;
 
 if (version === 'money') {
   rewardTally = 0;
-  breakSpace = '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
+  breakSpace = '&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp';
   currency = "$";
   points="";
   rangeLow = "$1.20";
