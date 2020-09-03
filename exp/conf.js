@@ -21,7 +21,7 @@ let hardAmount = [];
 let easyAmount = [];
 let experimentProbability = [];
 
-// declare currency value
+// declare currency and point values
 let currency;
 let points;
 

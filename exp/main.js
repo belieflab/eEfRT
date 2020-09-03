@@ -287,19 +287,21 @@ let experiment_outcome = {
   // stimulus:'<p style="color:white;">completion </p> ',
   choices: jsPsych.NO_KEYS,
   trial_duration: 2000,
-  stimulus: jsPsych.timelineVariable('outcome'),  
-  data: jsPsych.timelineVariable('data'),  
+  stimulus: jsPsych.timelineVariable('outcome'),
+  data: jsPsych.timelineVariable('data'),
   on_load: function(){
     let outcome = document.getElementById("outcomeGenerator");
     if (feedbackLogic == 'You completed the task!' && experimentOutcome[experimentIterator] == 'win'){  
 
         if (selection==EasyKey_uCase){
         outcome.innerHTML = 'You won '+currency+easyAmount[experimentIterator]+' '+points+'!';
+        rewardTally+=easyAmount[experimentIterator]; // adds easy winnings to array
         experimentIterator++
 
 
         } else if (selection==HardKey_uCase){
           outcome.innerHTML = 'You won '+currency+hardAmount[experimentIterator]+' '+points+'!';
+          rewardTally+=hardAmount[experimentIterator]; // adds hard winnings to array
           experimentIterator++
 
         }

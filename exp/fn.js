@@ -123,6 +123,11 @@ function countdownEasy(minutes) {
 //         clearInterval(downloadTimer);
 //     },1000);
 // }
+// function rewardSum(){
+//     rewardTally.reduce(function(a, b){
+//         return a + b;
+//     }, 0);
+//   }
 
     function experimentTimer(minutes) {
         let seconds = MinutesToPlay*60;
@@ -141,7 +146,7 @@ function countdownEasy(minutes) {
                 }
                 else if (seconds == 0) { //ends experiment when timer reaches 0
                     console.log('Experiment complete')
-                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete."));
+                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete. You won : $ "+rewardTally+" !"));
                 }
             }
         }
@@ -227,3 +232,4 @@ function saveData(name, data){
       //}
     });
   }
+
