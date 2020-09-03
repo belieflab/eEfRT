@@ -156,12 +156,21 @@ let trial = {
   stimulus: jsPsych.timelineVariable('stimulus'), //train_stimuli_array, //jsPsych.timelineVariable('stimulus'),
   choices: [EasyKey_uCase, HardKey_uCase],
   data: jsPsych.timelineVariable('data'),
+  trial_duration: 5000,
   on_finish: function(data){
     selection = String(jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press))
     selection = selection.toUpperCase()
     console.log(selection)
+    if (selection == EasyKey_uCase.toUpperCase()) { // handles exception if participant does not respond within 5s
+      console.log("oh hai mark")
+    } else if (selection == HardKey_uCase.toUpperCase()) {
+      console.log("oh hai mark")
+    } else {
+      selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
+      console.log("oh hai greg")
+    }
+    }
   }
-}
 
 let ready = {
   type: 'html-keyboard-response',
@@ -205,7 +214,7 @@ data: jsPsych.timelineVariable('data'),
 stimulus: jsPsych.timelineVariable('progress'),
 on_load:function buttonPress(){
     barFill = document.getElementById("fillUp");
-    barFill.innerHTML = 'Press the <strong>'+selection+'</strong> key until the bar fills up.';   
+    barFill.innerHTML = 'Press the <strong>'+selection+'</strong> key until the bar fills up.';
     document.getElementById("tapTap").focus(); //gives focus to the text box
     console.log(pressing_time)
     console.log(selection)

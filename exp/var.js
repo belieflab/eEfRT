@@ -4,6 +4,9 @@ let feedbackLogic;
 // user selection of hard or easy trials
 let selection;
 
+// randomized selection of hard or easy trials
+let selectionTimeout = [EasyKey_uCase, HardKey_uCase];
+
 // declare variable for the time to press
 let pressing_time;
 
