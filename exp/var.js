@@ -18,8 +18,8 @@ let experimentIterator=0;
 // tracks timeout in log file
 let timeout;
 
-// tracks timeout in log file
-let width;
+// tracks total taps per trial
+let tapTotal;
 
 // set the progress bar
 // let timer;

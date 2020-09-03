@@ -172,7 +172,7 @@ let trial = {
       data.timeout = 0;
     } else {
       selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
-      data.condition = 'timeout';
+      data.condition = selection.toUpperCase;
       console.log("oh hai greg")
       data.timeout = 1;
     }
@@ -219,7 +219,7 @@ response_ends_trial: false,
 trial_duration: pressing_time,
 data: jsPsych.timelineVariable('data'),
 stimulus: jsPsych.timelineVariable('progress'),
-on_load:function buttonPress(){
+on_load: function buttonPress(){
     barFill = document.getElementById("fillUp");
     barFill.innerHTML = 'Press the <strong>'+selection+'</strong> key until the bar fills up.';
     document.getElementById("tapTap").focus(); //gives focus to the text box
@@ -234,6 +234,9 @@ on_load:function buttonPress(){
       // buttonPressing.trial_duration = pressing_time;
       document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
     }
+},
+on_finish: function(data){
+  data.total_taps = tapTotal;
 },
 }
 
