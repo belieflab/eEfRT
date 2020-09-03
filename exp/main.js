@@ -164,11 +164,17 @@ let trial = {
     console.log(selection)
     if (selection == EasyKey_uCase.toUpperCase()) { // handles exception if participant does not respond within 5s
       console.log("oh hai mark")
+      data.condition = 'EASY';
+      data.timeout = 0;
     } else if (selection == HardKey_uCase.toUpperCase()) {
       console.log("oh hai mark")
+      data.condition = 'HARD'
+      data.timeout = 0;
     } else {
       selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
+      data.condition = 'timeout';
       console.log("oh hai greg")
+      data.timeout = 1;
     }
     }
   }
