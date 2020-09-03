@@ -25,7 +25,7 @@ function checkHandedness() {
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
       if (width >= 99) { // set to record 100 taps
-        feedbackLogic = 'You completed the task';
+        feedbackLogic = 'You completed the task!';
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%"; // reset to 0
         jsPsych.finishTrial('success');  
@@ -45,7 +45,7 @@ function moveEasy() { // function definition
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
         if (width >= 96.57) { // set to record 30 taps
-        feedbackLogic = 'You completed the task';
+        feedbackLogic = 'You completed the task!';
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%";
         jsPsych.finishTrial('data');  
@@ -102,7 +102,7 @@ function countdownEasy(minutes) {
                     countdown(mins-1);           
                 }
                 else if (seconds == 0) { //ends experiment when timer reaches 0
-                    feedbackLogic = 'You <u>did not</u> complete the task';
+                    feedbackLogic = 'You <u>did not</u> complete the task.';
                     console.log('incomplete')
                     jsPsych.finishTrial('failure');
                    seconds = 21;
@@ -186,7 +186,7 @@ function experimentPromptPush(){
             '<br>'+
             '<p style="color:white;">Press the <strong>'+HardKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+EasyKey_uCase+'</strong> key.</p> ' +
             '<p style="color:white;">Hard is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Easy is worth: </p> ' +
-            '<p style="color:white;">'+currency+hardAmount[i]+' '+points+' '+breakSpace+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+easyAmount[i]+' '+points+'</p> ' +
+            '<p style="color:white;">'+currency+hardAmount[i]+' '+points+' '+breakSpace+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+currency+easyAmount[i]+' '+points+'</p> ' +
             '<br>'+
             '<br>'+
             '<p style="color:white;"> The probability of winning is ' +experimentProbability[i]+'%.   </p> ')
@@ -198,7 +198,7 @@ function experimentPromptPush(){
             '<br>'+
             '<p style="color:white;">Press the <strong>'+EasyKey_uCase+'</strong> key. &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Press the <strong>'+HardKey_uCase+'</strong> key.</p> ' +
             '<p style="color:white;">Easy is worth: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Hard is worth: </p> ' +
-            '<p style="color:white;">'+currency+easyAmount[i]+' '+points+' '+breakSpace+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+hardAmount[i]+' '+points+'</p> ' +
+            '<p style="color:white;">'+currency+easyAmount[i]+' '+points+' '+breakSpace+' &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '+currency+hardAmount[i]+' '+points+'</p> ' +
             '<br>'+
             '<br>'+
             '<p style="color:white;"> The probability of winning is ' +experimentProbability[i]+'%.   </p> ')

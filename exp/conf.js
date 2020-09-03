@@ -6,8 +6,8 @@
 const MinutesToPlay = 20;
 
 // select version
-const version = 'points';
-// const version = 'money';
+// const version = 'points';
+const version = 'money';
 
 // practice variables
 let practiceOutcome     = [];

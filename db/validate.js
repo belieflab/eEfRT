@@ -26,7 +26,7 @@ function submitIntake() {
     if(rightHandedness == true) {
         handedness = "right";
     } else if(leftHandedness == true) {
-        handedness = "left"
+        handedness = "left";
     } 
 
     switch(siteID.options[siteID.selectedIndex].value){

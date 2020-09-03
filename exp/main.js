@@ -242,16 +242,16 @@ let practice_outcome = {
   data: jsPsych.timelineVariable('data'),  
   on_load: function(){
     let outcome = document.getElementById("outcomeGenerator");
-    if (feedbackLogic == 'You completed the task' && practiceOutcome[practiceIterator] == 'win'){ 
+    if (feedbackLogic == 'You completed the task!' && practiceOutcome[practiceIterator] == 'win'){ 
         if (selection==EasyKey_uCase){
-        outcome.innerHTML = 'You won '+practiceEasy[practiceIterator]+' '+version+'!';
+        outcome.innerHTML = 'You won '+currency+practiceEasy[practiceIterator]+' '+points+'!';
         practiceIterator++
         } else if (selection==HardKey_uCase){
-          outcome.innerHTML = 'You won '+practiceHard[practiceIterator]+' '+version+'!';
+          outcome.innerHTML = 'You won '+currency+practiceHard[practiceIterator]+' '+points+'!';
           practiceIterator++
       }
-    } else if (feedbackLogic == 'You completed the task' && experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-      outcome.innerHTML = 'No '+version+' this round';
+    } else if (feedbackLogic == 'You completed the task!' && experimentOutcome[practiceIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+      outcome.innerHTML = 'No '+version+' this round.';
       practiceIterator++;
     } else {
       practiceIterator++
@@ -291,20 +291,20 @@ let experiment_outcome = {
   data: jsPsych.timelineVariable('data'),  
   on_load: function(){
     let outcome = document.getElementById("outcomeGenerator");
-    if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'win'){  
+    if (feedbackLogic == 'You completed the task!' && experimentOutcome[experimentIterator] == 'win'){  
 
         if (selection==EasyKey_uCase){
-        outcome.innerHTML = 'You won '+easyAmount[experimentIterator]+' '+version+'!';
+        outcome.innerHTML = 'You won '+currency+easyAmount[experimentIterator]+' '+points+'!';
         experimentIterator++
 
 
         } else if (selection==HardKey_uCase){
-          outcome.innerHTML = 'You won '+hardAmount[experimentIterator]+' '+version+'!';
+          outcome.innerHTML = 'You won '+currency+hardAmount[experimentIterator]+' '+points+'!';
           experimentIterator++
 
         }
-    } else if (feedbackLogic == 'You completed the task' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
-      outcome.innerHTML = 'No '+version+' this round';
+    } else if (feedbackLogic == 'You completed the task!' && experimentOutcome[experimentIterator] == 'lose') { // elseif block prevents writing bad outcomeLogic i.e. no reward when completed where win was expected
+      outcome.innerHTML = 'No '+version+' this round.';
       experimentIterator++;
 
 
