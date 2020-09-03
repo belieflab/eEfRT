@@ -26,12 +26,14 @@ function checkHandedness() {
     width = parseFloat(width.slice(0, -1)); // variable reassignment
       if (width >= 99) { // set to record 100 taps
         feedbackLogic = 'You completed the task!';
+        // data.total_taps = 100;
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%"; // reset to 0
         jsPsych.finishTrial('success');  
       } else {
         width++;
         console.log(width);
+        // data.total_taps = width;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == HardKey_ASCII)
       }
@@ -46,12 +48,14 @@ function moveEasy() { // function definition
     width = parseFloat(width.slice(0, -1)); // variable reassignment
         if (width >= 96.57) { // set to record 30 taps
         feedbackLogic = 'You completed the task!';
+        // data.total_taps = 30;
         console.log('complete');
         width = document.getElementById("keyBar").style.width="0%";
         jsPsych.finishTrial('data');  
         } else {
         width+=3.33;
         console.log(width);
+        // data.total_taps = width;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == EasyKey_ASCII)
         }
