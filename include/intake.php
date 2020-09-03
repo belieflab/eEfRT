@@ -88,7 +88,7 @@
 <script type="text/javascript" src="js/jquery-git.js"></script>
 
 <script>$("button.loadMain").click(function(){
-    $.getScript("exp/run.js");
+    // $.getScript("exp/run.js");
     $.getScript("exp/var.js");
     $.getScript("exp/main.js");
 

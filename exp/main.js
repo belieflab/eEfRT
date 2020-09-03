@@ -29,6 +29,7 @@ let instructions_2 = {
       '<p style="color:white;">In order to be eligible to <b>win '+version+'</b> on a given trial, you must first <b>complete a task</b>.</p> ' + 
       '<p style="color:white;">The task involves making <b>repeated button presses within a certain amount of time</b>. </p>' +
       '<p style="color:white;">For each trial you can <b>choose</b> to complete an <b>Easy task</b> <i>or a </i> <b>Hard task</b>. </p> '+
+      '<p style="color:white;"><strong>If you do not decide within 5 seconds, an option will be randomly chosen</strong>. </p> '+
       '<p style="color:white;">Press the spacebar to continue.</p>',
   choices: [32],
 };
