@@ -165,16 +165,21 @@ let trial = {
     if (selection == EasyKey_uCase.toUpperCase()) { // handles exception if participant does not respond within 5s
       console.log("oh hai mark")
       data.condition = 'EASY';
-      data.timeout = 0;
+      data.trial_timeout = 0;
     } else if (selection == HardKey_uCase.toUpperCase()) {
       console.log("oh hai mark")
       data.condition = 'HARD'
-      data.timeout = 0;
+      data.trial_timeout = 0;
     } else {
       selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
-      data.condition = selection.toUpperCase;
+      if (selection.toUpperCase() == EasyKey_uCase.toUpperCase()) {
+        data.condition = 'EASY';
+        console.log("oh hai greg")
+        data.trial_timeout = 1;
+      } else if (selection.toUpperCase() == HardKey_uCase.toUpperCase())
+      data.condition = 'HARD';
       console.log("oh hai greg")
-      data.timeout = 1;
+      data.trial_timeout = 1;
     }
     }
   }
@@ -217,7 +222,7 @@ prompt: fillUp + feedbackGenerator + timeRemaining + '<input autocomplete="autoc
 choices: [selection],
 response_ends_trial: false,
 trial_duration: pressing_time,
-data: jsPsych.timelineVariable('data'),
+// data: jsPsych.timelineVariable('data'),
 stimulus: jsPsych.timelineVariable('progress'),
 on_load: function buttonPress(){
     barFill = document.getElementById("fillUp");
@@ -237,6 +242,7 @@ on_load: function buttonPress(){
 },
 on_finish: function(data){
   data.total_taps = tapTotal;
+  tapTotal = 0;
 },
 }
 
@@ -245,10 +251,11 @@ let feedback = {
   choices: jsPsych.NO_KEYS,
   trial_duration: 2000,
   stimulus: jsPsych.timelineVariable('feedback'),  
-  data: jsPsych.timelineVariable('data'),  
+  // data: jsPsych.timelineVariable('data'),  
   on_load: function(){
     let feedback = document.getElementById("feedbackGenerator");
     feedback.innerHTML = feedbackLogic;
+
   }
 }
 
@@ -258,7 +265,7 @@ let practice_outcome = {
   choices: jsPsych.NO_KEYS,
   trial_duration: 2000,
   stimulus: jsPsych.timelineVariable('outcome'),  
-  data: jsPsych.timelineVariable('data'),  
+  // data: jsPsych.timelineVariable('data'),  
   on_load: function(){
     let outcome = document.getElementById("outcomeGenerator");
     if (feedbackLogic == 'You completed the task!' && practiceOutcome[practiceIterator] == 'win'){ 
@@ -307,7 +314,7 @@ let experiment_outcome = {
   choices: jsPsych.NO_KEYS,
   trial_duration: 2000,
   stimulus: jsPsych.timelineVariable('outcome'),
-  data: jsPsych.timelineVariable('data'),
+  // data: jsPsych.timelineVariable('data'),
   on_load: function(){
     let outcome = document.getElementById("outcomeGenerator");
     if (feedbackLogic == 'You completed the task!' && experimentOutcome[experimentIterator] == 'win'){  
