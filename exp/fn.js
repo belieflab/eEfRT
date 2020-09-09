@@ -149,8 +149,8 @@ function countdownEasy(minutes) {
                     countdown(mins-1);           
                 }
                 else if (seconds == 0) { //ends experiment when timer reaches 0
-                    console.log('Experiment complete')
-                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete. You won : $ "+rewardTally+" !"));
+                    console.log('Experiment complete');
+                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete. You won : "+currency+" "+rewardTally+" "+points+" !"));
                 }
             }
         }
