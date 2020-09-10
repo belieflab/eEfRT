@@ -159,18 +159,17 @@ let trial = {
   // data: jsPsych.timelineVariable('data'),
   trial_duration: 5000,
   on_finish: function(data){
+    trialCondition.pop();
     selection = String(jsPsych.pluginAPI.convertKeyCodeToKeyCharacter(data.key_press))
     selection = selection.toUpperCase()
     console.log(selection)
     if (selection == EasyKey_uCase.toUpperCase()) { // handles exception if participant does not respond within 5s
       // console.log("oh hai mark");
-      trialCondition.pop();
       trialCondition.push('e');
       trialTimeout.pop();
       trialTimeout.push(0);
     } else if (selection == HardKey_uCase.toUpperCase()) {
       // console.log("oh hai mark");
-      trialCondition.pop();
       trialCondition.push('h');
       trialTimeout.pop();
       trialTimeout.push(0);
@@ -178,19 +177,18 @@ let trial = {
       selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
       if (selection.toUpperCase() == EasyKey_uCase.toUpperCase()) {
         // console.log("oh hai greg");
-        trialCondition.pop();
         trialCondition.push('e');
         trialTimeout.pop();
         trialTimeout.push(1);
       } else if (selection.toUpperCase() == HardKey_uCase.toUpperCase())
       // console.log("oh hai greg");
-      trialCondition.pop();
       trialCondition.push('h');
       trialTimeout.pop();
       trialTimeout.push(1);
     }
     }
   }
+
 
 let ready = {
   type: 'html-keyboard-response',
@@ -249,6 +247,7 @@ on_load: function buttonPress(){
     }
 },
 on_finish: function(data){
+  data.eefrt_01_condition = trialCondition;
   data.eefrt_01_taps = tapTotal;
   data.trial_complete = trialComplete;
   tapTotal = 0;
