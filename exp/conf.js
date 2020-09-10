@@ -3,7 +3,7 @@
 //******************************************/
 
 // hard code playtime to 20 minutes (default)
-const MinutesToPlay = 20
+const MinutesToPlay = 1;
 
 // select version
 const version = 'points';

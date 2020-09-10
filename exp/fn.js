@@ -27,13 +27,16 @@ function checkHandedness() {
       if (width >= 99) { // set to record 100 taps
         feedbackLogic = 'You completed the task!';
         tapTotal = 100;
-        console.log('complete');
+        // console.log('complete');
+        trialComplete = 1;
         width = document.getElementById("keyBar").style.width="0%"; // reset to 0
-        jsPsych.finishTrial('success');  
+        jsPsych.finishTrial();  
       } else {
         width++;
         console.log(width);
         tapTotal = width;
+        // console.log('incomplete');
+        trialComplete = 0;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == HardKey_ASCII)
       }
@@ -48,14 +51,17 @@ function moveEasy() { // function definition
     width = parseFloat(width.slice(0, -1)); // variable reassignment
         if (width >= 96.57) { // set to record 30 taps
         feedbackLogic = 'You completed the task!';
-        tapTotal = 30;
-        console.log('complete');
+        // console.log('complete');
+        trialComplete = 1;
         width = document.getElementById("keyBar").style.width="0%";
-        jsPsych.finishTrial('data');  
+        tapTotal = 30;
+        jsPsych.finishTrial();  
         } else {
         width+=3.33;
         console.log(width);
         tapTotal = width;
+        // console.log('incomplete');
+        trialComplete = 0;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == EasyKey_ASCII)
         }
@@ -79,9 +85,9 @@ function countdownEasy(minutes) {
                 countdown(mins-1);           
             }
             else if (seconds == 0) { //ends experiment when timer reaches 0
-                feedbackLogic = 'You <u>did not</u> complete the task';
+                feedbackLogic = 'You <u>did not</u> complete the task.';
                 console.log('incomplete')
-                jsPsych.finishTrial('failure');
+                jsPsych.finishTrial();
                 seconds = 7;
                 counter.innerHTML = "";
             }
@@ -108,7 +114,7 @@ function countdownEasy(minutes) {
                 else if (seconds == 0) { //ends experiment when timer reaches 0
                     feedbackLogic = 'You <u>did not</u> complete the task.';
                     console.log('incomplete')
-                    jsPsych.finishTrial('failure');
+                    jsPsych.finishTrial();
                    seconds = 21;
                    counter.innerHTML = "";
                 }

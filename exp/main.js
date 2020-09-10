@@ -242,6 +242,7 @@ on_load: function buttonPress(){
 },
 on_finish: function(data){
   data.total_taps = tapTotal;
+  data.trial_complete = trialComplete;
   tapTotal = 0;
 },
 }
