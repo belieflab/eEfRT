@@ -22,7 +22,10 @@ let experimentIterator=0;
 let trialCondition = [];
 
 // tracks total taps per trial
-let tapTotal;
+let tapTotal = [0]; // must be 0 to compensate for participant should they miss first trial
+
+// tracks whether or not a trial has been completed
+let trialComplete = [0]; // must be 0 to compensate for participant should they miss first trial
 
 
 
@@ -79,15 +82,15 @@ let test_outcome_array = [];
 
 // practice trials
 let practice_prompt_stimuli = [
-{stimulus: practice_prompt_array[0], feedback: practice_feedback_array[0], outcome: practice_outcome_array[0], progress: progressBar, data: {block: 'practice', task_version: version, trial: -1, probability: practiceProbability[0], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[0]}},
-{stimulus: practice_prompt_array[1], feedback: practice_feedback_array[1], outcome: practice_outcome_array[1], progress: progressBar, data: {block: 'practice', task_version: version, trial: -2, probability: practiceProbability[1], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[1]}},
-{stimulus: practice_prompt_array[2], feedback: practice_feedback_array[2], outcome: practice_outcome_array[2], progress: progressBar, data: {block: 'practice', task_version: version, trial: -3, probability: practiceProbability[2], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[2]}},
-{stimulus: practice_prompt_array[3], feedback: practice_feedback_array[3], outcome: practice_outcome_array[3], progress: progressBar, data: {block: 'practice', task_version: version, trial: -4, probability: practiceProbability[3], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[3]}},
+{stimulus: practice_prompt_array[0], feedback: practice_feedback_array[0], outcome: practice_outcome_array[0], progress: progressBar, data: {block: 'practice', task_version: version, trial: -1, probability: practiceProbability[0], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], hard_reward_value: practiceHardRewardValue[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[0]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},
+{stimulus: practice_prompt_array[1], feedback: practice_feedback_array[1], outcome: practice_outcome_array[1], progress: progressBar, data: {block: 'practice', task_version: version, trial: -2, probability: practiceProbability[1], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], hard_reward_value: practiceHardRewardValue[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[1]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},
+{stimulus: practice_prompt_array[2], feedback: practice_feedback_array[2], outcome: practice_outcome_array[2], progress: progressBar, data: {block: 'practice', task_version: version, trial: -3, probability: practiceProbability[2], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], hard_reward_value: practiceHardRewardValue[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[2]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},
+{stimulus: practice_prompt_array[3], feedback: practice_feedback_array[3], outcome: practice_outcome_array[3], progress: progressBar, data: {block: 'practice', task_version: version, trial: -4, probability: practiceProbability[3], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: practiceEasy[practiceIterator], reward_hard: practiceHard[practiceIterator], hard_reward_value: practiceHardRewardValue[practiceIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: practiceOutcome[3]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},
 ]
 
 
 // experiment trials
 let test_prompt_stimuli = [];
     for (let i = 0; i < test_feedback_array.length; i++){
-    test_prompt_stimuli.push({stimulus: test_prompt_array[i], feedback: test_feedback_array[i], outcome: test_outcome_array[i], progress: progressBar, data: {block: 'experiment', task_version: version, trial: i+1, probability: experimentProbability[i], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: easyAmount[experimentIterator], reward_hard: hardAmount[experimentIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: experimentOutcome[i]}},)
+    test_prompt_stimuli.push({stimulus: test_prompt_array[i], feedback: test_feedback_array[i], outcome: test_outcome_array[i], progress: progressBar, data: {block: 'experiment', task_version: version, trial: i+1, probability: experimentProbability[i], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: easyAmount[experimentIterator], reward_hard: hardAmount[experimentIterator], hard_reward_value: hardRewardValue[experimentIterator], eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, procedure: experimentOutcome[i]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},)
     }
