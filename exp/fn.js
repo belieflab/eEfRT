@@ -35,7 +35,6 @@ function checkHandedness() {
         width++;
         console.log(width);
         tapTotal = width;
-        // console.log('incomplete');
         trialComplete = 0;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == HardKey_ASCII)
@@ -60,7 +59,6 @@ function moveEasy() { // function definition
         width+=3.33;
         console.log(width);
         tapTotal = width;
-        // console.log('incomplete');
         trialComplete = 0;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == EasyKey_ASCII)
