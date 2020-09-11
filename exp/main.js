@@ -163,23 +163,39 @@ let trial = {
     selection = selection.toUpperCase()
     console.log(selection)
     if (selection == EasyKey_uCase.toUpperCase()) { // handles exception if participant does not respond within 5s
+      while(trialTimeout.length > 0) {
+        trialTimeout.pop();
+      } 
       console.log("oh hai mark")
       data.condition = 'e';
-      data.trial_timeout = 0;
+      // data.trial_timeout = 0;
+      trialTimeout.push(0);
     } else if (selection == HardKey_uCase.toUpperCase()) {
+      while(trialTimeout.length > 0) {
+        trialTimeout.pop();
+      } 
       console.log("oh hai mark")
       data.condition = 'h'
-      data.trial_timeout = 0;
+      // data.trial_timeout = 0;
+      trialTimeout.push(0);
     } else {
       selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
       if (selection.toUpperCase() == EasyKey_uCase.toUpperCase()) {
+        while(trialTimeout.length > 0) {
+          trialTimeout.pop();
+        } 
         data.condition = 'e';
         console.log("oh hai greg")
-        data.trial_timeout = 1;
+        // data.trial_timeout = 1;
+        trialTimeout.push(1);
       } else if (selection.toUpperCase() == HardKey_uCase.toUpperCase())
+      while(trialTimeout.length > 0) {
+        trialTimeout.pop();
+      } 
       data.condition = 'h';
       console.log("oh hai greg")
-      data.trial_timeout = 1;
+      // data.trial_timeout = 1;
+      trialTimeout.push(1);
     }
     }
   }
