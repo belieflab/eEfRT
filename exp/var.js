@@ -82,5 +82,5 @@ let practice_prompt_stimuli = [
 // experiment trials
 let test_prompt_stimuli = [];
     for (let i = 0; i < test_feedback_array.length; i++){
-    test_prompt_stimuli.push({stimulus: test_prompt_array[i], feedback: test_feedback_array[i], outcome: test_outcome_array[i], progress: progressBar, data: {block: 'experiment', task_version: version, trial: i+1, probability: experimentProbability[i], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: easyAmount[i], reward_hard: hardAmount[i], hard_reward_value: hardRewardValue[i], /*eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, */procedure: experimentOutcome[i]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},)
+    test_prompt_stimuli.push({stimulus: test_prompt_array[i], feedback: test_feedback_array[i], outcome: test_outcome_array[i], progress: progressBar, data: {block: 'experiment', task_version: version, trial: i+1, probability: experimentProbability[i], handedness: handedness.toLowerCase(), easy_key: EasyKey_uCase, hard_key: HardKey_uCase, reward_easy: easyAmount[i], reward_hard: hardAmount[i], hard_reward_magnitude: hardRewardValue[i], /*eefrt_01_condition: trialCondition, trial_timeout: trialTimeout, */procedure: experimentOutcome[i]/*, eefrt_01_taps: tapTotal, trial_complete: trialComplete*/}},)
     }
