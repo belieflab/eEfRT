@@ -1,0 +1,56 @@
+ElementName,DataType,Size,Required,ElementDescription,ValueRange,Notes,Aliases
+subjectkey,GUID,,Required,The NDAR Global Unique Identifier (GUID) for research subject,NDAR*,,
+src_subject_id,String,20,Required,Subject ID how it's defined in lab/project,,,
+interview_date,Date,,Required,Date on which the interview/genetic test/sampling/imaging/biospecimen was completed. MM/DD/YYYY,,Required field,effortdt
+interview_age,Integer,,Required,Age in months at the time of the interview/test/sampling/imaging.,0 :: 1260,"Age is rounded to chronological month. If the research participant is 15-days-old at time of interview, the appropriate value would be 0 months. If the participant is 16-days-old, the value would be 1 month.",
+sex,String,20,Required,Sex of the subject,M;F; O; NR,M = Male; F = Female; O=Other; NR = Not reported,gender
+total_hard_choice,Float,,Required,Percentage of hard choice selection,,,"hard_overall,prphdtsk"
+reward_sensitivity_beta,Float,,Required,Beta value for reward sensitivity. Reward magnitud (RM_beta),,999 = Missing,sens_beta
+comprate,Float,,Recommended,Complete rate,,,
+trial,Integer,,Recommended,Trial number, -100::400; -777; -999,"1 = first experimental; 2= second experimental; 3=third experimental; 4=fourth experimental; 5=fifth experimental; 6=sixth experimental; etc; -1 = first practice, -2 = second practice, -3 = third practice, etc; -777=NA, -999=missing",trialnumber
+choice_88,Float,,Recommended,Percentage of hard choice selection during 88% winning probability condition,,,hard_hi
+choice_50,Float,,Recommended,Percentage of hard choice selection during 50% winning probability condition,,,hard_med
+choice_12,Float,,Recommended,Percentage of hard choice selection during 12% winning probability condition,,,hard_lo
+ne_20,Float,,Recommended,% non-effortful choice at effort level 20,,,
+e_20,Float,,Recommended,% effortful choice at effort level 20,,,
+ne_50,Float,,Recommended,% non-effortful choice at effort level 50,,,
+e_50,Float,,Recommended,% effortful choice at effort level 50,,,
+ne_80,Float,,Recommended,% non-effortful choice at effort level 80,,,
+e_80,Float,,Recommended,% effortful choice at effort level 80,,,
+ne_100,Float,,Recommended,% non-effortful choice at effort level 100,,,
+e_100,Float,,Recommended,% effortful choice at effort level 100,,,
+rt,Float,,Recommended,Reaction Time,,,rt_total
+timeout,Float,,Recommended,number of timeouts,,,
+post_hard,Float,,Recommended,total hard choice for postscan,,,
+post_switch,Float,,Recommended,number of choices switched,,,
+post_comp,Float,,Recommended,% completed,,,complete_total
+perc_to,Integer,,Recommended,% timeout,0;1; -99,#NAME?,
+data_file1,File,,Recommended,Data file 1,,,
+eefrt_pe_1,Integer,,Recommended,# of taps in 7 seconds,,"Practice trial, used to determine target score",
+eefrt_ph_2,Integer,,Recommended,# of taps in 21 seconds,,"Practice trial, used to determine target score",
+eefrt_targetscore_e,Float,,Recommended,Target score for 7-second trials,,,
+eefrt_targetscore_h,Float,,Recommended,Target score for 21-second trials,,,
+eefrt_01_condition,String,1,Recommended,Subject chooses to complete a hard task or an easy task. ,E;H,E = Easy; H = Hard,
+eefrt_01_taps,Integer,,Recommended,# of taps recorded during H or E condition ,,,
+eefrt_01_target,Integer,,Recommended,Was the target score met? Was this trial paid or unpaid?,1::4,"1 = Target score met, paid trial. 2 = target score met, not a paid trial. No_p: Target score not met, paid trial. No_np:Target score not met, not a paid trial. ",
+dode,String,10,Recommended,Date of Data Entry,,,
+aescode,Integer,,Recommended,Staff code number of person completing this form,,,
+comments_misc,String,4000,Recommended,"Miscellaneous comments on study, interview, methodology relevant to this form data",,,
+version_form,String,121,Recommended,Form used/assessment name,,,
+pupil_record,Integer,,Recommended,Was the pupil recorded in this trial?,0;1,0 = No; 1 = Yes,
+visit,String,50,Recommended,Visit name,,,
+sample,Integer,,Recommended,Training or randomized case,1;2,1 = randomized; 2 = training,
+key_press,Integer,,Recommended,Keycode value of the key pressed,,,
+time_elapsed,Integer,,Recommended,Total time elapsed since start of task,,,
+block,String,,Recommended,Block of experiment,practice;experimental,,
+task_version,String,,Recommended,Reward type in the task,points;money,,
+probability,Integer,,Recommended,Percent chance of winning on the trial,12; 50; 88,,
+handedness,String,,Recommended,Handedness of participant,left;right,,
+easy_key,String,,Recommended,Which key is pressed for the easy trials,s;l,"s = left-handed, l = right-handed",
+hard_key,String,,Recommended,Which key is pressed for the hard trials,s;l,"s = right-handed, l = left-handed",
+reward_easy,Float,,Recommended,Reward for the easy task,,1.00 for money version; 100 for points version,
+reward_hard,Float,,Recommended,Reward for the hard task,,,
+hard_reward_magnitude,Integer,,Recommended,Category of magnitude for the hard reward,1::4,"1 = <1.96, 2 = 1.96 - 2.76, 3 = 2.77 - 3.57, 4 = >3.57 for money version; 1 = <196, 2 = 196 - 276, 3 = 277 - 357, 4 = >357 for points version",
+procedure,String,,Recommended,Whether completing the task gets rewarded,win;lose,,
+trial_complete,Boolean,,Recommended,Did the participant meet the target taps during the trial?,0;1,,
+trial_timeout,Boolean,,Recommended,Did the participant run out of time when choosing between the easy and hard conditions?,0;1,,
