@@ -163,13 +163,13 @@ let trial = {
     selection = selection.toUpperCase()
     console.log(selection)
     if (selection == EasyKey_uCase.toUpperCase()) { // handles exception if participant does not respond within 5s
-      console.log("oh hai mark")
+      // console.log("oh hai mark")
       // data.eefrt_01_condition = 'e';
       // data.trial_timeout = 0;
       trialTimeout = 0;
       trialCondition = 'e';
     } else if (selection == HardKey_uCase.toUpperCase()) {
-      console.log("oh hai mark")
+      // console.log("oh hai mark")
       // data.eefrt_01_condition = 'h'
       // data.trial_timeout = 0;
       trialTimeout = 0;
@@ -178,13 +178,13 @@ let trial = {
       selection = selectionTimeout[Math.floor(Math.random() * selectionTimeout.length)]; // randomizes the two possible response keys
       if (selection.toUpperCase() == EasyKey_uCase.toUpperCase()) {
         // data.eefrt_01_condition = 'e';
-        console.log("oh hai greg")
+        // console.log("oh hai greg")
         // data.trial_timeout = 1;
         trialTimeout = 1;
         trialCondition = 'e';
       } else if (selection.toUpperCase() == HardKey_uCase.toUpperCase())
       // data.eefrt_01_condition = 'h';
-      console.log("oh hai greg")
+      // console.log("oh hai greg")
       // data.trial_timeout = 1;
       trialTimeout = 1;
       trialCondition = 'h';
