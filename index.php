@@ -11,7 +11,7 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>EEfRT Task</title>
-    <script src="db/validate.js"></script>
+    <script src="db/submit.js"></script>
     <!-- <script src="js/timer.js"></script> importing our timer function from timer.js file -->
     <!-- <script src="js/progressBars.js"></script>  -->
     <!-- <script src="js/handedness.js"></script> -->

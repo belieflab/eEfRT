@@ -105,10 +105,14 @@ body {
 }
 
 
-/* columns  */
-/* .column {
-  text-align: left;
-  width: 50%;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-} */
+
+
+#submitButton {
+  background-color: #077bff; /* omnibus blue */
+  border: black solid 3px;
+  color: white;
+  font-size: 30px;
+  height: 50px;
+  margin: 30px auto;
+  width: 300px;
+}
