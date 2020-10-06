@@ -63,7 +63,7 @@
     <br>
   </label>
   
-  <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp               
+  <!-- <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp               
     <input type="checkbox"> 
     <br>
   </label>
@@ -73,8 +73,8 @@
     <br>
   </label>
 </form>
-<br>
-<button id="submitButton" class="loadMain" onclick="submitIntake(), ageFinder()" type="button">VALIDATE</button>
+<br> -->
+<button id="submitButton" class="loadMain" onclick="submitIntake(), ageFinder()" type="button">submit</button>
 </div>
 <div id="validation" style="display: none">
     <br>
