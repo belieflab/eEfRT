@@ -242,11 +242,11 @@ on_load: function buttonPress(){
     if (pressing_time==21000){
       // pressing_time = 7000;
       // buttonPressing.trial_duration = pressing_time;
-      document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
-    } else if (pressing_time==7000){ 
+      document.getElementById("counter").setAttribute("onkeydown", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
+    } else if (pressing_time==7000){
       // pressing_time= 21000; // for right handed only
       // buttonPressing.trial_duration = pressing_time;
-      document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
+      document.getElementById("counter").setAttribute("onkeydown", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
     }
 },
 on_finish: function(data){
