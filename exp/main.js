@@ -228,7 +228,7 @@ type: "html-keyboard-response",
 // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
 prompt: fillUp + feedbackGenerator + timeRemaining + '<input autocomplete="autocomplete_off_hack_xfr4!k" id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeyup="">',
 // stimulus: , //this gets filled in with the countdown
-choices: jsPsych.NO_KEYS,
+choices: [selection],
 response_ends_trial: false,
 trial_duration: pressing_time,
 data: jsPsych.timelineVariable('data'),
