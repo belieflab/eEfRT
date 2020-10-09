@@ -239,21 +239,40 @@ on_load: function buttonPress(){
     document.getElementById("tapTap").focus(); //gives focus to the text box
     console.log(pressing_time)
     console.log(selection)
-    document.body.onkeypress = function(e){
+    // document.body.onkeypress = function(e){
     if (pressing_time==21000){
-      // pressing_time = 7000;
-      if(e.keyCode === HardKey_ASCII){
-        document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
-      }// buttonPressing.trial_duration = pressing_time;
+    let down = false;
+    document.addEventListener('keydown', function () {
+    if(down) return;
+    down = true;
+    // alert("down");
+    document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
+    }, false);
+    document.addEventListener('keyup', function () {
+    down = false;
+    // alert("up");
+    }, false);
     } else if (pressing_time==7000){
-      if (e.keyCode === EasyKey_ASCII){
+      let down = false;
+      document.addEventListener('keydown', function () {
+        if(down) return;
+        down = true;
+        // alert("down");
         document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
-      }
+        }, false);
+        document.addEventListener('keyup', function () {
+        down = false;
+        // alert("up");
+        }, false);
       // pressing_time= 21000; // for right handed only
       // buttonPressing.trial_duration = pressing_time;
     }
-  }
+  // }
 },
+
+
+
+
 on_finish: function(data){
   data.eefrt_01_taps = tapTotal;
   data.trial_complete = trialComplete;
