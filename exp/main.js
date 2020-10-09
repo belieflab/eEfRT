@@ -246,11 +246,11 @@ on_load: function buttonPress(){
     if(down) return;
     down = true;
     // alert("down");
-    document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
     }, false);
     document.addEventListener('keyup', function () {
     down = false;
     // alert("up");
+    document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
     }, false);
     } else if (pressing_time==7000){
       let down = false;
@@ -258,11 +258,12 @@ on_load: function buttonPress(){
         if(down) return;
         down = true;
         // alert("down");
-        document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
         }, false);
         document.addEventListener('keyup', function () {
         down = false;
         // alert("up");
+        document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
+
         }, false);
       // pressing_time= 21000; // for right handed only
       // buttonPressing.trial_duration = pressing_time;
