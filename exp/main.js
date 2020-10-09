@@ -241,30 +241,34 @@ on_load: function buttonPress(){
     console.log(selection)
     // document.body.onkeypress = function(e){
     if (pressing_time==21000){
-    let down = false;
-    document.addEventListener('keydown', function () {
-    if(down) return;
-    down = true;
-    // alert("down");
-    }, false);
-    document.addEventListener('keyup', function () {
-    down = false;
-    // alert("up");
-    document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
-    }, false);
+      document.getElementById("tapTap").focus(); //gives focus to the text box
+      document.getElementById("counter").setAttribute("onkeypress", "return moveHard()"); // event.charCode allows us to set specific keys to use 
+    // let down = false;
+    // document.addEventListener('keydown', function () {
+    // if(down) return;
+    // down = true;
+    // // alert("down");
+    // }, false);
+    // document.addEventListener('keyup', function () {
+    // down = false;
+    // // alert("up");
+    // document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
+    // }, false);
     } else if (pressing_time==7000){
-      let down = false;
-      document.addEventListener('keydown', function () {
-        if(down) return;
-        down = true;
-        // alert("down");
-        }, false);
-        document.addEventListener('keyup', function () {
-        down = false;
-        // alert("up");
-        document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
+      document.getElementById("tapTap").focus(); //gives focus to the text box
+      document.getElementById("counter").setAttribute("onkeypress", "return moveEasy()"); // event.charCode allows us to set specific keys to use 
+      // let down = false;
+      // document.addEventListener('keydown', function () {
+      //   if(down) return;
+      //   down = true;
+      //   // alert("down");
+      //   }, false);
+      //   document.addEventListener('keyup', function () {
+      //   down = false;
+      //   // alert("up");
+      //   document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
 
-        }, false);
+      //   }, false);
       // pressing_time= 21000; // for right handed only
       // buttonPressing.trial_duration = pressing_time;
     }
