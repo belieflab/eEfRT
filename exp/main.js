@@ -239,7 +239,6 @@ on_load: function buttonPress(){
     document.getElementById("tapTap").focus(); //gives focus to the text box
     console.log(pressing_time)
     console.log(selection)
-    // document.body.onkeypress = function(e){
       document.body.onkeypress = function(e){
         if(e.keyCode == HardKey_ASCII && pressing_time==21000){
             document.getElementById("counter").setAttribute("onkeyup", "return moveHard()"); // event.charCode allows us to set specific keys to use 
@@ -247,47 +246,9 @@ on_load: function buttonPress(){
         } else if (e.keyCode == EasyKey_ASCII && pressing_time==7000) {
             document.getElementById("counter").setAttribute("onkeyup", "return moveEasy()"); // event.charCode allows us to set specific keys to use 
             responseKey = EasyKey_ASCII;
-
         }
     }
-    // if (pressing_time==21000){
-    //   document.getElementById("tapTap").focus(); //gives focus to the text box
-    //   document.getElementById("counter").setAttribute("onkeyup", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use 
-    // let down = false;
-    // document.addEventListener('keydown', function () {
-    // if(down) return;
-    // down = true;
-    // // alert("down");
-    // }, false);
-    // document.addEventListener('keyup', function () {
-    // down = false;
-    // // alert("up");
-    // document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == HardKey_ASCII) && moveHard()"); // event.charCode allows us to set specific keys to use
-    // }, false);
-    // } else if (pressing_time==7000){
-    //   document.getElementById("tapTap").focus(); //gives focus to the text box
-    //   document.getElementById("counter").setAttribute("onkeyup", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use 
-      // let down = false;
-      // document.addEventListener('keydown', function () {
-      //   if(down) return;
-      //   down = true;
-      //   // alert("down");
-      //   }, false);
-      //   document.addEventListener('keyup', function () {
-      //   down = false;
-      //   // alert("up");
-      //   document.getElementById("counter").setAttribute("onkeypress", "return (event.charCode == EasyKey_ASCII) && moveEasy()"); // event.charCode allows us to set specific keys to use
-
-      //   }, false);
-      // pressing_time= 21000; // for right handed only
-      // buttonPressing.trial_duration = pressing_time;
-    // }
-  // }
 },
-
-
-
-
 on_finish: function(data){
   data.eefrt_01_taps = tapTotal;
   data.trial_complete = trialComplete;
@@ -312,7 +273,6 @@ let feedback = {
   on_load: function(){
     let feedback = document.getElementById("feedbackGenerator");
     feedback.innerHTML = feedbackLogic;
-
   }
 }
 
