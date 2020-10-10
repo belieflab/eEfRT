@@ -228,7 +228,7 @@ type: "html-keyboard-response",
 // prompt: '<p style="color:white;" id="counter"> </p>' +'<input type="text" onkeypress="move()">'+'<p style="color:white;" id="counter"> </p>',
 prompt: fillUp + feedbackGenerator + timeRemaining + '<input autocomplete="autocomplete_off_hack_xfr4!k" id="tapTap" type="text" style="background-color:black; outline:none; border:none; background:none" onkeyup="">',
 // stimulus: , //this gets filled in with the countdown
-choices: jsPsych.NO_KEYS,
+choices: [selection],
 response_ends_trial: false,
 trial_duration: pressing_time,
 data: jsPsych.timelineVariable('data'),
@@ -239,16 +239,26 @@ on_load: function buttonPress(){
     document.getElementById("tapTap").focus(); //gives focus to the text box
     console.log(pressing_time)
     console.log(selection)
-      document.body.onkeypress = function(e){
-        if(e.keyCode == HardKey_ASCII && pressing_time==21000){
-            document.getElementById("counter").setAttribute("onkeyup", "return moveHard()"); // event.charCode allows us to set specific keys to use 
-            responseKey = HardKey_ASCII;
-        } else if (e.keyCode == EasyKey_ASCII && pressing_time==7000) {
-            document.getElementById("counter").setAttribute("onkeyup", "return moveEasy()"); // event.charCode allows us to set specific keys to use 
-            responseKey = EasyKey_ASCII;
-        }
-    }
-},
+    $(document).ready(function(){
+      $("#tapTap").keypress(function(event){
+          var keycode = event.which;
+          if (pressing_time==21000) {
+            if (keycode == HardKey_ASCII) {
+              document.getElementById("counter").setAttribute("onkeyup", "return moveHard()"); // event.charCode allows us to set specific keys to use 
+            } else {
+              document.getElementById("counter").setAttribute("onkeyup", "return false"); // event.charCode allows us to set specific keys to use 
+            }
+        } else if (pressing_time==7000){
+            if (keycode == EasyKey_ASCII) {
+              document.getElementById("counter").setAttribute("onkeyup", "return moveEasy()"); // event.charCode allows us to set specific keys to use 
+            } else {
+              document.getElementById("counter").setAttribute("onkeyup", "return false"); // event.charCode allows us to set specific keys to use 
+            }
+          };
+        });
+      })
+ },
+
 on_finish: function(data){
   data.eefrt_01_taps = tapTotal;
   data.trial_complete = trialComplete;
