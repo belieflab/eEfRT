@@ -26,7 +26,7 @@ let currency;
 let points;
 
 // declare tally for $ version
-let rewardTally;
+let rewardTally = 0;
 
 let rangeLow;
 let rangeHigh;
@@ -41,4 +41,5 @@ let hardRewardValue;
 // randomization via modulus
 let version;
 
+// additional instructions for money version
 let instructions_9;

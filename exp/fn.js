@@ -155,8 +155,8 @@ function countdownEasy(minutes) {
                 else if (seconds == 0) { //ends experiment when timer reaches 0
                     console.log('Experiment complete');
                     if (version === "money"){
-                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!"));
-                    } else if (version == 'points'){
+                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!\n "));
+                    } else if (version === 'points'){
                     jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete."));
                     }
                 }

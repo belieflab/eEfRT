@@ -342,6 +342,9 @@ let experiment_outcome = {
       experimentIterator++;
 
     }
+},
+on_finish: function recordReward(data){
+  data.reward_tally = rewardTally;
 }
 }
 
