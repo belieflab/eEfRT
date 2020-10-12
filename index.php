@@ -11,7 +11,7 @@ file_put_contents($name, $data);
 <html>
   <head>
     <title>EEfRT Task</title>
-    <script src="db/submit.js"></script>
+
     <!-- <script src="js/timer.js"></script> importing our timer function from timer.js file -->
     <!-- <script src="js/progressBars.js"></script>  -->
     <!-- <script src="js/handedness.js"></script> -->
@@ -29,6 +29,7 @@ file_put_contents($name, $data);
   </body>
   <footer> 
   <script src="exp/conf.js" type="text/javascript" ></script>
+  <script src="db/submit.js"></script>
   <script src="exp/fn.js" type="text/javascript" ></script>
     <script type="text/javascript" src="js/jquery-git.js"></script>
     <!-- <script type="text/javascript" src="js/consent-load.js"></script> -->

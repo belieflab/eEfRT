@@ -82,12 +82,25 @@ function submitIntake() {
             siteNumber = "00";
     }
 
+  
+
     if(subjectID == "") {
         alert("Please enter a valid subjectid")
     } else {
         alert("your subjectid is " + siteNumber + subjectID);
         workerId = parseInt(siteNumber + subjectID);
+        switch(workerId%2){
+            case 0:
+              version = 'money';
+              break;
+            case 1:
+              version = 'points';
+              break;
+        }  
         validateIntake();
         checkHandedness();
+        versionRandomization();
     }
 }
+
+

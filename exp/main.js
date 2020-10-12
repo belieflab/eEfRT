@@ -87,16 +87,6 @@ let instructions_8 = {
   choices: [32],
 };
 
-// let instructions_9 = {
-//   type: "html-keyboard-response",
-//   stimulus: '<p style="color:white;">We cannot pay you based on every choice you make.  </p> ' +
-//   '<p style="color:white;">However, at the end of the experiment, we will randomly select 4 trials (2 from each session) and add them to your payment.    </p> ' +
-//   '<p style="color:white;">You won’t know which trials get added to your payment.   </p> ' +
-//   '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.  </p> ' +
-//   '<p style="color:white;">Press the space bar to continue. </p>',
-//   choices: [32],
-// };
-
 let instructions_10 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + ' minutes</strong> to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
@@ -113,21 +103,6 @@ let instructions_11 = {
   '<p style="color:white;">Press the spacebar to start. </p>',
   choices: [32],
 };
-
-// let instructions_12 = {
-//   type: "html-keyboard-response",
-//   stimulus: '<p style="color:white;">Get your hands in position and press the spacebar to start the practice trials. </p> ' +
-//   "<img id='cartoon' src='' width='1000' height='500'>",
-//   choices: [32],
-//   on_load: function(){
-//     if (handedness==='LEFT'){
-//       document.getElementById("cartoon").src= "stim/cartoonLeft.png";
-//     } else if (handedness==='RIGHT'){
-//       document.getElementById("cartoon").src= "stim/cartoonRight.png";
-//     }
-//   },
-// };
-
 
 let begin_practice = {
   type: "html-keyboard-response",
@@ -381,12 +356,18 @@ let task_completion= {
   trial_duration: 10000,
 };
 
+let instructions_procedure;
 
-
-
-  let instructions_procedure = {
-    timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, /*instructions_9,*/ instructions_10, instructions_11],
+if (version === "money"){
+  instructions_procedure = {
+  timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9, instructions_10, instructions_11],
+  };
+} else if (version === "points"){
+  instructions_procedure = {
+  timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_10, instructions_11],
+  };
 }
+
   
   let practice_start = {
       timeline: [begin_practice],
