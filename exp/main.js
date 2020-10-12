@@ -409,7 +409,7 @@ if (version === "money"){
     choices: jsPsych.NO_KEYS,
     trial_duration: 5000,
     on_finish: function(){
-      saveData("delay-discounting_" + workerId, jsPsych.data.get().csv());
+      saveData("eefrt_" + workerId, jsPsych.data.get().csv());
     }
   };
   
@@ -427,9 +427,9 @@ if (version === "money"){
   
   
   
-  // timeline.push(instructions_procedure);
-  // timeline.push(practice_start);
-  // timeline.push(practice_procedure);
+  timeline.push(instructions_procedure);
+  timeline.push(practice_start);
+  timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
     // timeline.push(present_reward);
