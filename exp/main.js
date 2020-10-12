@@ -349,13 +349,6 @@ let experiment_outcome = {
 
 
 
-let task_completion= {
-  type: "html-keyboard-response",
-  stimulus: "<p style='color:white;'>You have completed this task. Please wait for the experimenter to continue.</p>"+
-  "<p style='color:white;'>Data Saving...Do not close this window until the text dissapears.”</p>",
-  choices: jsPsych.NO_KEYS,
-  trial_duration: 10000,
-};
 
 let instructions_procedure;
 
@@ -390,14 +383,62 @@ if (version === "money"){
       randomize_order: false
   }
 
-let conclusion = {
-  timeline: [task_completion],
-}
+  let present_reward = {
+    type: "html-keyboard-response",
+    stimulus: reward[0],
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 10000,
+  };
+
+  let save_data = {
+    type: "html-keyboard-response",
+    stimulus: "<p style='color:white;'>Data saving...</p>"+
+    '<div class="sk-cube-grid">'+
+  '<div class="sk-cube sk-cube1"></div>'+
+  '<div class="sk-cube sk-cube2"></div>'+
+  '<div class="sk-cube sk-cube3"></div>'+
+  '<div class="sk-cube sk-cube4"></div>'+
+  '<div class="sk-cube sk-cube5"></div>'+
+  '<div class="sk-cube sk-cube6"></div>'+
+  '<div class="sk-cube sk-cube7"></div>'+
+  '<div class="sk-cube sk-cube8"></div>'+
+  '<div class="sk-cube sk-cube9"></div>'+
+  '</div>'+
+    "<p style='color:white;'>Do not close this window until the text dissapears.</p>",
+  
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 5000,
+    on_finish: function(){
+      saveData("delay-discounting_" + workerId, jsPsych.data.get().csv());
+    }
+  };
+  
+  let end = {
+    type: "html-keyboard-response",
+    stimulus:   "<p style='color:white;'>Thank you!</p>"+
+    "<p style='color:white;'>You have successfully completed the experiment and your data has been saved.</p>"+
+    "<p style='color:white;'>To leave feedback on this task, please click the following link:</p>"+
+    "<p style='color:white;'><a href='https://omnibus.sh/eCRFs/feedback/eefrt.php'>Leave Task Feedback!</a></p>"+
+        // "<p>Please wait for the experimenter to continue.</p>"+
+    "<p style='color:white;'>You may now close the expriment window at anytime.</p>",
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 60000,
+  };
   
   
-  timeline.push(instructions_procedure);
-  timeline.push(practice_start);
-  timeline.push(practice_procedure);
+  
+  // timeline.push(instructions_procedure);
+  // timeline.push(practice_start);
+  // timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
-  timeline.push(conclusion);
+    // timeline.push(present_reward);
+  timeline.push(save_data);
+  timeline.push(end);
+
+
+  // var new_timeline = {
+  //   timeline: [present_reward]
+  // }
+  
+  // jsPsych.addNodeToEndOfTimeline(new_timeline)

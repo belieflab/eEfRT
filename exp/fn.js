@@ -155,15 +155,23 @@ function countdownEasy(minutes) {
                 else if (seconds == 0) { //ends experiment when timer reaches 0
                     console.log('Experiment complete');
                     if (version === "money"){
-                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!\n "));
+                        reward.push("<p style='color:white'>"+MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!\n <p>");
+                        while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
+                            jsPsych.endCurrentTimeline();
+                            experimentIterator++;
+                    }
                     } else if (version === 'points'){
-                    jsPsych.endExperiment(alert(MinutesToPlay+" Minute Timer! Experiment Complete."));
+                        reward.push("<p style='color:white'>"+MinutesToPlay+" Minute Timer! Experiment Complete.</p>");
+                        while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
+                            jsPsych.endCurrentTimeline();
+                            experimentIterator++;
+                    }
                     }
                 }
             }
         }
         tick();
-    }
+    }'<p style="color:white;">You are going to play the lever-press game. </p>' 
 
 function versionRandomization(){
 

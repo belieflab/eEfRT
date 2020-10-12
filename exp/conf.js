@@ -3,7 +3,7 @@
 //******************************************/
 
 // hard code playtime to 20 minutes (default)
-const MinutesToPlay = 20;
+const MinutesToPlay = 1;
 
 // select version disabled; randomization handled by submit.js
 // const version = 'points';
@@ -24,6 +24,7 @@ let experimentProbability = [];
 // declare currency and point values
 let currency;
 let points;
+let reward = [];
 
 // declare tally for $ version
 let rewardTally = 0;
