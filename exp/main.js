@@ -246,6 +246,7 @@ on_finish: function(data){
   data.interview_date = today;
   data.interview_age = ageAtAssessment;
   data.sex = sexAtBirth;
+  data.reward_tally = rewardTally;
 },
 }
 
@@ -343,9 +344,6 @@ let experiment_outcome = {
 
     }
 },
-on_finish: function recordReward(data){
-  data.reward_tally = rewardTally;
-}
 }
 
 
