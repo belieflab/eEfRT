@@ -312,10 +312,11 @@ function saveData(name, data){
       preload_images: ["stim/cartoonRight.png", "stim/cartoonLeft.png"],
       show_progress_bar: true,
       auto_update_progress_bar: true,
-      //on_finish: function(){
-        //jsPsych.data.get().filter([{test_part: 'test'},{test_part: 'prediction'},{test_part: 'c2_test'}]).localSave("csv", `test-self-deception-data.csv`);
-          //jsPsych.data.displayData(); 
-      //}
     });
   }
 
+  //onbeforeunload in body
+  function areYouSure() {
+    return "Write something clever here...";
+  }
+  areYouSure();
