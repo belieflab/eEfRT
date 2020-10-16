@@ -410,6 +410,7 @@ if (version === "money"){
     trial_duration: 5000,
     on_finish: function(){
       saveData("eefrt_" + workerId, jsPsych.data.get().csv());
+      document.getElementById("unload").onbeforeunload='';
     }
   };
   
