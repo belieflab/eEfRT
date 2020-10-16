@@ -411,6 +411,8 @@ if (version === "money"){
     on_finish: function(){
       saveData("eefrt_" + workerId, jsPsych.data.get().csv());
       document.getElementById("unload").onbeforeunload='';
+      $(document).ready(function(){
+        $("body").addClass("showCursor"); // returns cursor functionality
     }
   };
   

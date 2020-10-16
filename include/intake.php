@@ -91,6 +91,7 @@
       $.getScript("exp/var.js"); // we are passing handedness into the exp
       setTimeout(1000);
     $.getScript("exp/main.js");
+    $("body").addClass("hideCursor");
     // $.getScript("exp/timeline.js");
     // $.load("include/consent.php");
   }); </script>
