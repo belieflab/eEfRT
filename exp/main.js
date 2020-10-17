@@ -412,7 +412,8 @@ if (version === "money"){
       saveData("eefrt_" + workerId, jsPsych.data.get().csv());
       document.getElementById("unload").onbeforeunload='';
       $(document).ready(function(){
-        $("body").addClass("showCursor"); // returns cursor functionality
+      $("body").addClass("showCursor"); // returns cursor functionality
+  });
     }
   };
   

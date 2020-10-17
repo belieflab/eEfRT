@@ -92,8 +92,6 @@
       setTimeout(1000);
     $.getScript("exp/main.js");
     $("body").addClass("hideCursor");
-    // $.getScript("exp/timeline.js");
-    // $.load("include/consent.php");
   }); </script>
 <script>
 </script>
