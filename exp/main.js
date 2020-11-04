@@ -177,7 +177,7 @@ let ready = {
 
 let load = {
   type: 'html-button-response',
-  prompt: '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px"></p>',
+  prompt: '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px">Begin!</p>',
   stimulus:'<p style="color:white;">Ready?</p>',
   button_html: '<button id="ready" onclick="" style="outline:none; background-color:black">START</button>',
   choices: [32],

@@ -68,7 +68,7 @@ function moveEasy() { // function definition
     }
 
 function countdownEasy(minutes) {
-    let seconds = 7;
+    let seconds = 8;
     let mins = minutes;
     function tick() {
         let counter = document.getElementById("timeRemaining");
@@ -95,7 +95,7 @@ function countdownEasy(minutes) {
 }
     
     function countdownHard(minutes) {
-        let seconds = 21;
+        let seconds = 22;
         let mins = minutes;
         function tick() {
             let counter = document.getElementById("timeRemaining");

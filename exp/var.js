@@ -29,7 +29,7 @@ let tapTotal = [0]; // must be 0 to compensate for participant should they miss 
 let trialComplete = [0]; // must be 0 to compensate for participant should they miss first trial
 
 // set the time remaining notification for participant
-let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white;"></p>';
+let timeRemaining = '<p id="timeRemaining" style="text-align:center; color:white;">Begin!</p>';
 
 // feedback contrainer
 let feedbackGenerator = '<p id="feedbackGenerator" style="color:white;"></p>';
