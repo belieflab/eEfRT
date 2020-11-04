@@ -50,10 +50,10 @@
     <!-- <label for="handedness"><b>Are you right or left handed?</b></label> -->
     <p><b>Which is your dominant hand?</b></p>
         <label for="right">Right</label>
-        <input id="rightHanded" type="radio" value="rightHanded">
+        <input type="radio" name="handedness" id="rightHanded" value="rightHanded">
 
         <label for="left">Left</label>
-        <input id="leftHanded" type="radio" value="leftHanded">
+        <input type="radio" name="handedness" id="leftHanded" value="leftHanded">
 
         <!-- <span class="checkmark"></span> -->
   </form>
