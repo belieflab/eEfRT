@@ -427,13 +427,16 @@ if (version === "money"){
     "<p style='color:white;'>You may now close the expriment window at anytime.</p>",
     choices: jsPsych.NO_KEYS,
     trial_duration: 60000,
+    on_load: function() {
+      alert(reward);
+    }
   };
   
   
   
-  timeline.push(instructions_procedure);
-  timeline.push(practice_start);
-  timeline.push(practice_procedure);
+  // timeline.push(instructions_procedure);
+  // timeline.push(practice_start);
+  // timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
     // timeline.push(present_reward);

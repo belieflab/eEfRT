@@ -150,18 +150,18 @@ function countdownEasy(minutes) {
                 console.log(seconds);
             } else {
                 if(mins > 1){
-                    countdown(mins-1);           
+                    countdown(mins-1);  
                 }
                 else if (seconds == 0) { //ends experiment when timer reaches 0
                     console.log('Experiment complete');
                     if (version === "money"){
-                        reward.push("<p style='color:white'>"+MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!\n <p>");
+                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!\n");
                         while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
                             jsPsych.endCurrentTimeline();
                             experimentIterator++;
                     }
                     } else if (version === 'points'){
-                        reward.push("<p style='color:white'>"+MinutesToPlay+" Minute Timer! Experiment Complete.</p>");
+                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete.");
                         while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
                             jsPsych.endCurrentTimeline();
                             experimentIterator++;
@@ -207,7 +207,7 @@ function versionRandomization(){
         instructions_9 = {
             type: "html-keyboard-response",
             stimulus: '<p style="color:white;"><b>We cannot pay you based on every choice you make.</b></p> ' +
-            '<p style="color:white;">However, at the end of the experiment, we will randomly select 4 trials (2 from each session) and add them to your payment.    </p> ' +
+            '<p style="color:white;">However, at the end of the experiment, we will randomly select 4 trials and add them to your payment.    </p> ' +
             '<p style="color:white;"><b>You won’t know which trials get added to your payment.</p></b>' +
             '<p style="color:white;">Therefore, while the decisions you make on only four trials WILL count, any trial COULD count.</p> ' +
             '<p style="color:white;">Press the spacebar to continue.</p>',
