@@ -246,7 +246,7 @@ on_finish: function(data){
   data.interview_date = today;
   data.interview_age = ageAtAssessment;
   data.sex = sexAtBirth;
-  data.handedness = handedness;
+  data.handedness = handedness.toLowerCase();
   data.reward_tally = rewardTally;
 },
 }
@@ -435,12 +435,12 @@ if (version === "money"){
   
   
   
-  // timeline.push(instructions_procedure);
-  // timeline.push(practice_start);
-  // timeline.push(practice_procedure);
+  timeline.push(instructions_procedure);
+  timeline.push(practice_start);
+  timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
-    // timeline.push(present_reward);
+  timeline.push(present_reward);
   timeline.push(save_data);
   timeline.push(end);
 
