@@ -17,7 +17,7 @@ let instructions_1 = {
     '<p style="color:white;">The game will consist of a series of individual trials. </p>' +
     '<p style="color:white;">The length of time required to complete each trial will depend upon decisions you make during that trial.  </p>'+
     '<p style="color:white;">You will play the game for exactly <span><strong>'+ MinutesToPlay + ' minutes</strong></span>, after which you will be asked to stop.  </p>'+
-    '<p style="color:white;"><b><i>Even if you choose to go through trials quickly, you will still play for the same total amount of time.</i></b></p>'+
+    // '<p style="color:white;"><b><i>Even if you choose to go through trials quickly, you will still play for the same total amount of time.</i></b></p>'+
     '<p style="color:white;"> Press the spacebar to continue.</p>',
   choices: [' '],
   // on_load: practiceOrientation(),
@@ -27,7 +27,7 @@ let instructions_2 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">For <b>each trial</b>, you will have an opportunity to <b>win some '+version+'</b>.</p> ' +
       '<p style="color:white;">In order to be eligible to <b>win '+version+'</b> on a given trial, you must first <b>complete a task</b>.</p> ' + 
-      '<p style="color:white;">The task involves making <b>repeated button presses within a certain amount of time</b>. </p>' +
+      '<p style="color:white;">The task requires requires you to press a button on your keyboard repeatedly for a certain amount of time.</p>' +
       '<p style="color:white;">For each trial you can <b>choose</b> to complete an <b>Easy task</b> <i>or a </i> <b>Hard task</b>. </p> '+
       '<p style="color:white;"><strong>If you do not decide within 5 seconds, an option will be randomly chosen</strong>. </p> '+
       '<p style="color:white;">Press the spacebar to continue.</p>',
@@ -46,7 +46,7 @@ let instructions_4 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">If you choose the <b>Hard task</b>, you will need to press the <strong>'+HardKey_uCase+' key</strong> with the <b>pinky finger</b> of your <strong>'+antihandedness.toUpperCase()+'</strong> hand approximately <b>100 times within 21 seconds</b>.  </p> ' +
   '<p style="color:white;"><b><i>For each trial, the amount that you are eligible to win if you complete the Hard task will change.</i></b></p>' + 
-  '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.</p>' +
+  // '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.</p>' +
   '<p style="color:white;"><b>Hard trials</b> range from <b>'+rangeLow+' to around '+rangeHigh+'</b>.</p>' +
   '<p style="color:white;">Press the spacebar to continue. </p>',
   choices: [32],
@@ -63,31 +63,24 @@ let instructions_5 = {
 let instructions_6 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;"><b>Some trials are less likely to give you '+version+' than others.</b></p> ' +
-  '<p style="color:white;">To help you decide which trials are more likely to give you '+version+', you will be told the probability that you WILL receive '+version+' IF you complete the task at the beginning of each trial.   </p> ' +
-  '<p style="color:white;">Press the spacebar to continue. </p>',
-  choices: [32],
-};
-
-let instructions_7 = {
-  type: "html-keyboard-response",
-  stimulus: '<p style="color:white;">Some trials have an <b>88% chance</b> of receiving '+version+' if you <b>complete the task</b>.  </p> ' +
+  '<p style="color:white;">Some trials have an <b>88% chance</b> of receiving '+version+' if you <b>complete the task</b>.  </p> ' +
   '<p style="color:white;">Some trials have a <b>50% chance</b> of receiving '+version+' if you <b>complete the task</b>.   </p> ' +
   '<p style="color:white;">Some trials have a <b>12% chance</b> of receiving '+version+' if you <b>complete the task</b>.   </p> ' +
   '<p style="color:white;">Press the space bar to continue. </p>',
   choices: [32],
 };
 
-let instructions_8 = {
-  type: "html-keyboard-response",
-  stimulus: '<p style="color:white;"><b>At the beginning of each trial, you will have a choice between the Hard task and the Easy task.</b></p> ' +
-  '<p style="color:white;">The amount you are eligible to win on the Hard task, and the probability of winning will be presented at the beginning of each trial.   </p> ' +
-  '<p style="color:white;">To choose the <b>Hard task</b>, press the <strong>'+HardKey_uCase+' key</strong>.  </p> ' +
-  '<p style="color:white;">To choose the <b>Easy task</b>, press the <strong>'+EasyKey_uCase+' key</strong>.  </p> ' +
-  '<p style="color:white;">Press the spacebar to continue. </p>',
-  choices: [32],
-};
+// let instructions_7 = {
+//   type: "html-keyboard-response",
+//   stimulus: '<p style="color:white;"><b>At the beginning of each trial, you will have a choice between the Hard task and the Easy task.</b></p> ' +
+//   '<p style="color:white;">The amount you are eligible to win on the Hard task, and the probability of winning will be presented at the beginning of each trial.   </p> ' +
+//   '<p style="color:white;">To choose the <b>Hard task</b>, press the <strong>'+HardKey_uCase+' key</strong>.  </p> ' +
+//   '<p style="color:white;">To choose the <b>Easy task</b>, press the <strong>'+EasyKey_uCase+' key</strong>.  </p> ' +
+//   '<p style="color:white;">Press the spacebar to continue. </p>',
+//   choices: [32],
+// };
 
-let instructions_10 = {
+let instructions_7 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + ' minutes</strong> to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
   '<p style="color:white;">If you choose all <b>Easy tasks</b>, you will probably get through approximately <b>40 trials</b></p>'+
@@ -96,7 +89,7 @@ let instructions_10 = {
   choices: [32],
 };
 
-let instructions_11 = {
+let instructions_8 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Now you are ready to play the game.    </p> ' +
   '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
@@ -355,11 +348,11 @@ let instructions_procedure;
 
 if (version === "money"){
   instructions_procedure = {
-  timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9, instructions_10, instructions_11],
+  timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_9],
   };
 } else if (version === "points"){
   instructions_procedure = {
-  timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8, instructions_10, instructions_11],
+  timeline: [instructions_1, instructions_2, instructions_3, instructions_4, instructions_5, instructions_6, instructions_7, instructions_8],
   };
 }
 

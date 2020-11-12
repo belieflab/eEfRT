@@ -155,13 +155,13 @@ function countdownEasy(minutes) {
                 else if (seconds == 0) { //ends experiment when timer reaches 0
                     console.log('Experiment complete');
                     if (version === "money"){
-                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete. You won: "+currency+" "+rewardTally+" "+points+"!\n");
+                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete. Congratulations! You won: "+currency+" "+rewardTally+" "+points+"!\n");
                         while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
                             jsPsych.endCurrentTimeline();
                             experimentIterator++;
                     }
                     } else if (version === 'points'){
-                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete.");
+                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete. Congratulations! You won: "+currency+" "+rewardTally+" "+points+"!\n");
                         while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
                             jsPsych.endCurrentTimeline();
                             experimentIterator++;
