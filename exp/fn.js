@@ -156,7 +156,7 @@ function countdownEasy(minutes) {
                     console.log('Experiment complete');
                     if (version === "money"){
                         // jsPsych.endCurrentTimeline();
-                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete.\nCongratulations! You won: "+currency+" "+rewardTally/10+" "+points+"!\nPress OK to continue.");
+                        reward.push(MinutesToPlay+" Minute Timer! Experiment Complete.\nCongratulations! You won: "+currency+" "+Math.round(rewardTally/10)+" "+points+"!\nPress OK to continue.");
                         while (experimentIterator < experimentOutcome.length){ // loops through to the end of all possible trials
                             jsPsych.endCurrentTimeline();
                             console.log('killProcess');
@@ -171,7 +171,7 @@ function countdownEasy(minutes) {
                             experimentIterator++;
                     }
                     }
-                    jsPsych.endCurrentTimeline();
+                    // jsPsych.endCurrentTimeline();
                 }
             }
         }

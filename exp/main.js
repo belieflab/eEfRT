@@ -404,15 +404,6 @@ if (version === "money"){
     }
   };
 
-  let present_reward = {
-    type: "html-keyboard-response",
-    stimulus: reward[0],
-    choices: jsPsych.NO_KEYS,
-    trial_duration: 1000,
-    on_load: function() {
-      alert(reward);
-    }
-  };
   
   let end = {
     type: "html-keyboard-response",
@@ -423,19 +414,20 @@ if (version === "money"){
         // "<p>Please wait for the experimenter to continue.</p>"+
     "<p style='color:white;'>You may now close the expriment window at anytime.</p>",
     choices: jsPsych.NO_KEYS,
-    // trial_duration: 60000,
+    on_load: function() {
+      alert(reward);
+    }
 
   };
   
   
   
-  timeline.push(instructions_procedure);
-  timeline.push(practice_start);
-  timeline.push(practice_procedure);
+  // timeline.push(instructions_procedure);
+  // timeline.push(practice_start);
+  // timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
   timeline.push(save_data);
-  timeline.push(present_reward);
   timeline.push(end);
 
 
