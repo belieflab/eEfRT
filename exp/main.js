@@ -83,7 +83,7 @@ let instructions_7 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + ' minutes</strong> to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
   '<p style="color:white;">If you choose all <b>Easy tasks</b>, you will probably get through approximately <b>60 trials</b></p>'+
-  '<p style="color:white;">If you choose all <b>Hard tasks</b>, you will probably get through around <b>40 trials</b>, so <i>choose your Hard tasks carefully</i>!    </p> '+
+  '<p style="color:white;">If you choose all <b>Hard tasks</b>, you will probably get through around <b>30 trials</b>, so <i>choose your Hard tasks carefully</i>!    </p> '+
   '<p style="color:white;">Press the spacebar to start. </p>',
   choices: [32],
 };
@@ -376,12 +376,6 @@ if (version === "money"){
       randomize_order: false
   }
 
-  let present_reward = {
-    type: "html-keyboard-response",
-    stimulus: reward[0],
-    choices: jsPsych.NO_KEYS,
-    trial_duration: 10000,
-  };
 
   let save_data = {
     type: "html-keyboard-response",
@@ -409,31 +403,39 @@ if (version === "money"){
   });
     }
   };
+
+  let present_reward = {
+    type: "html-keyboard-response",
+    stimulus: reward[0],
+    choices: jsPsych.NO_KEYS,
+    trial_duration: 1000,
+    on_load: function() {
+      alert(reward);
+    }
+  };
   
   let end = {
     type: "html-keyboard-response",
     stimulus:   "<p style='color:white;'>Thank you!</p>"+
     "<p style='color:white;'>You have successfully completed the experiment and your data has been saved.</p>"+
     "<p style='color:white;'>To leave feedback on this task, please click the following link:</p>"+
-    "<p style='color:white;'><a href='https://omnibus.sh/eCRFs/feedback/eefrt.php'>Leave Task Feedback!</a></p>"+
+    "<p style='color:white;'><a href="+feedbackLink+">Leave Task Feedback!</a></p>"+
         // "<p>Please wait for the experimenter to continue.</p>"+
     "<p style='color:white;'>You may now close the expriment window at anytime.</p>",
     choices: jsPsych.NO_KEYS,
-    trial_duration: 60000,
-    on_load: function() {
-      alert(reward);
-    }
+    // trial_duration: 60000,
+
   };
   
   
   
-  timeline.push(instructions_procedure);
-  timeline.push(practice_start);
-  timeline.push(practice_procedure);
+  // timeline.push(instructions_procedure);
+  // timeline.push(practice_start);
+  // timeline.push(practice_procedure);
   timeline.push(test_start);
   timeline.push(test_procedure);
-  timeline.push(present_reward);
   timeline.push(save_data);
+  timeline.push(present_reward);
   timeline.push(end);
 
 

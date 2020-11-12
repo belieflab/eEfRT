@@ -5,6 +5,7 @@ $name = "data/".$post_data['filename'].".csv";
 $data = $post_data['filedata'];
 // write the file to disk
 file_put_contents($name, $data);
+$studyId = $_GET["studyId"];
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,9 @@ file_put_contents($name, $data);
   <script src="db/submit.js"></script>
   <script src="exp/fn.js" type="text/javascript" ></script>
     <script type="text/javascript" src="js/jquery-git.js"></script>
-    <!-- <script type="text/javascript" src="js/consent-load.js"></script> -->
+    <script type="text/javascript">
+    let feedbackLink = "https://omnibus.sh/eCRFs/feedback/tasks/eefrt.php?studyId=<?php echo $studyId?>";
+    </script>
     
   </footer>
 </html>

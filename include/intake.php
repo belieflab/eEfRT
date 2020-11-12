@@ -5,7 +5,7 @@
   <div id="intake">
     <p><b>Select your Research Site:</b></p>
     <select name="facility" id="siteid">
-        <option value="">---</option>
+        <option value="none">---</option>
         <option value="Maryland">Maryland</option>
         <option value="Northwestern">Northwestern</option>
         <option value="Temple">Temple</option>
@@ -24,27 +24,25 @@
     </form> -->
     <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
     <p><b>Subject ID Number:</b></p>
-    <input required id="subjectid" type="number" name="consent_id">
-</form>
+    <input required id="subjectid" type="text" name="consent_id" plattern="\d*" minlength="6" maxlength="6">
+    </form>
     <!-- <button onclick="submitIntake()">submit subjectid</button> -->
-    <!-- <p><b>Participant DOB</b></p>
-    <p><b>Enter as MM/DD/YYYY</b></p>
-    <p style="color:red">*must provide value</p>
-    <input type="date">
-    <form> -->
-    <!-- <input type="checkbox"><p>Left</p> -->
-  <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
+    <p><b>Date of Birth:</b></p>
+    <!-- <p><b>Enter as MM/DD/YYYY</b></p> -->
+    <!-- <p style="color:red">*must provide value</p> -->
+    <input required id="dob" type="date">
+    <!-- <form>
     <p><b>Age:</b></p>
-    <input required id="age" type="number" name="currentage">
-</form>
-<form>
-  <p><strong>Please select your sex assigned at birth:</strong></p>
-  <label for="male">Male</label>
-  <input type="radio" id="male" name="sex" value="male" onclick="sexFinder(this.value)">
-  <label for="female">Female</label>
-  <input type="radio" id="female" name="sex" value="female" onclick="sexFinder(this.value)">
-  </form>
-<form>
+    <input required id="age" type="text" name="currentage" plattern="\d*" minlength="1" maxlength="3">
+    </form> -->
+    <form>
+    <p><strong>Please select your sex assigned at birth:</strong></p>
+    <label for="male">Male</label>
+    <input type="radio" id="male" name="sex" value="male" onclick="sexFinder(this.value)">
+    <label for="female">Female</label>
+    <input type="radio" id="female" name="sex" value="female" onclick="sexFinder(this.value)">
+    </form>
+    <form>
 
 <form>
     <!-- <label for="handedness"><b>Are you right or left handed?</b></label> -->
@@ -57,9 +55,10 @@
 
         <!-- <span class="checkmark"></span> -->
   </form>
-    <p><b>Before proceeding to the task, please confirm that the following are true:</b></p>
-    <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp   
-    <input type="checkbox">
+    <p><b>Before proceeding to the task, please confirm the following are true:</b></p>
+    <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp  
+    <input type="hidden" name="brightness" id="brightness" value="0" />
+    <input type="checkbox" name="brightness" id="brightness" value="1"/>
     <br>
   </label>
   
@@ -74,7 +73,7 @@
   </label>
 </form>
 <br> -->
-<button id="submitButton" class="loadMain" onclick="submitIntake(), ageFinder()" type="button">submit</button>
+<button id="submitButton" class="loadMain" onclick="validateSite(), submitIntake(), ageFinder(), validateSex(), validateHandedness(), validateBrightness()" type="button">submit</button>
 </div>
 <div id="validation" style="display: none">
     <br>
@@ -97,21 +96,3 @@ $("button.noCursor").click(function(){
 $("body").addClass("hideCursor");
 }); 
 </script>
-<!-- <label class="container">One
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Two
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Three
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Four
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label> -->
-
-
