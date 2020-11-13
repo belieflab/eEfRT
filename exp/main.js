@@ -5,7 +5,7 @@ let timeline = [];
 let welcome = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Welcome to the experiment!</p>'+
-  '<p style="color:white;">Press any key to begin.</p>',
+  '<p style="color:white;"><i>Press any key to begin.</i></p>',
 };
 
   timeline.push(welcome);
@@ -18,7 +18,7 @@ let instructions_1 = {
     '<p style="color:white;">The length of time required to complete each trial will depend upon decisions you make during that trial.  </p>'+
     '<p style="color:white;">You will play the game for exactly <span><strong>'+ MinutesToPlay + ' minutes</strong></span>, after which you will be asked to stop.  </p>'+
     // '<p style="color:white;"><b><i>Even if you choose to go through trials quickly, you will still play for the same total amount of time.</i></b></p>'+
-    '<p style="color:white;"> Press the spacebar to continue.</p>',
+    '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
   choices: [' '],
   // on_load: practiceOrientation(),
 };
@@ -29,7 +29,7 @@ let instructions_2 = {
       '<p style="color:white;">In order to be eligible to <b>win '+version+'</b> on a given trial, you must first complete a task that requires you to <b>press a button on your keyboard</b> repeatedly for a certain amount of time.</p>' +
       '<p style="color:white;">For each trial you can <b>choose</b> to complete an <b>Easy task</b> <i>or a </i> <b>Hard task</b>. </p> '+
       '<p style="color:white;"><strong>If you do not decide within 5 seconds, an option will be randomly chosen</strong>. </p> '+
-      '<p style="color:white;">Press the spacebar to continue.</p>',
+      '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
   choices: [32],
 };
 
@@ -37,7 +37,7 @@ let instructions_3 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">If you choose the <b>Easy task</b>, you will need to press the <strong >'+EasyKey_uCase+' key</strong> with your <strong>'+handedness.toUpperCase()+' index finger</strong> approximately <b>30 times within 7 seconds</b>. </p> ' +
   '<p style="color:white;">You are eligible to win <b>'+currency+practiceEasy[1]+' '+points+'</b> for each time you complete the <b>Easy task</b>. </p> ' + 
-  '<p style="color:white;">Press the spacebar to continue. </p>' ,
+  '<p style="color:white;"><i>Press the spacebar to continue.</i></p>' ,
   choices: [32],
 };
   
@@ -47,15 +47,15 @@ let instructions_4 = {
   '<p style="color:white;"><b><i>For each trial, the amount that you are eligible to win if you complete the Hard task will change.</i></b></p>' +
   // '<p style="color:white;">The amount that the Hard task is worth on a given trial will be presented to you at the beginning of that trial.</p>' +
   '<p style="color:white;"><b>Hard trials</b> range from <b>'+rangeLow+' to around '+rangeHigh+'</b>.</p>' +
-  '<p style="color:white;">Press the spacebar to continue. </p>',
+  '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
   choices: [32],
 };
 
 let instructions_5 = {
   type: "html-keyboard-response",
-  stimulus: '<p style="color:white;"><b><i>Completing the Easy or Hard task makes you eligible to receive '+version+' on that trial</i></b>,<p>'+
-  '<p style="color:white;"><b><i>but completion alone does NOT guarantee that you will win '+version+'.</i></b></p> ' +
-  '<p style="color:white;">Press the spacebar to continue.  </p> ' , 
+  stimulus: '<p style="color:white;"><b>Completing the Easy or Hard task makes you eligible to receive '+version+' on that trial</i></b>,<p>'+
+  '<p style="color:white;"><b>but completion alone does NOT guarantee that you will win '+version+'.</b></p> ' +
+  '<p style="color:white;"><i>Press the spacebar to continue.</p>' , 
   choices: [32],
 };
 
@@ -65,7 +65,7 @@ let instructions_6 = {
   '<p style="color:white;">Some trials have an <b>88% chance</b> of receiving '+version+' if you <b>complete the task</b>.  </p> ' +
   '<p style="color:white;">Some trials have a <b>50% chance</b> of receiving '+version+' if you <b>complete the task</b>.   </p> ' +
   '<p style="color:white;">Some trials have a <b>12% chance</b> of receiving '+version+' if you <b>complete the task</b>.   </p> ' +
-  '<p style="color:white;">Press the space bar to continue. </p>',
+  '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
   choices: [32],
 };
 
@@ -83,16 +83,16 @@ let instructions_7 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Also keep in mind that you only have <strong>'+ MinutesToPlay + ' minutes</strong> to get through the game, and the Hard task takes about twice as long as the Easy task.   </p> ' +
   '<p style="color:white;">If you choose all <b>Easy tasks</b>, you will probably get through approximately <b>60 trials</b></p>'+
-  '<p style="color:white;">If you choose all <b>Hard tasks</b>, you will probably get through around <b>30 trials</b>, so <i>choose your Hard tasks carefully</i>!    </p> '+
-  '<p style="color:white;">Press the spacebar to start. </p>',
+  '<p style="color:white;">If you choose all <b>Hard tasks</b>, you will probably get through around <b>30 trials</b>, so <b>choose your Hard tasks carefully</b>!    </p> '+
+  '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
   choices: [32],
 };
 
 let instructions_8 = {
   type: "html-keyboard-response",
   stimulus: '<p style="color:white;">Now you are ready to play the game.    </p> ' +
-  '<p style="color:white;">You will begin with a set of 4 practice trials.    </p> ' +
-  '<p style="color:white;">Press the spacebar to start. </p>',
+  '<p style="color:white;"><b>You will begin with a set of 4 practice trials.</b></p> ' +
+  '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
   choices: [32],
 };
 
@@ -162,15 +162,15 @@ let trial = {
 
 let ready = {
   type: 'html-keyboard-response',
-  stimulus:'<p style="color:white;">Ready?</p>',
+  stimulus:'<p style="color:white; font-size:24px">Ready?</p>',
   choices: jsPsych.NO_KEYS,
   trial_duration: 1000,
 }
 
 let load = {
   type: 'html-button-response',
-  prompt: '<p id="timeRemaining" style="text-align:center; color:white; font-size:30px">Begin!</p>',
-  stimulus:'<p style="color:white;">Ready?</p>',
+  prompt: '<p id="timeRemaining" style="text-align:center; color:white; font-size:24px">Begin!</p>',
+  stimulus:'<p style="color:white; font-size:24px">Ready?</p>',
   button_html: '<button id="ready" onclick="" style="outline:none; background-color:black">START</button>',
   choices: [32],
   // trial_duration: 1000,
@@ -412,7 +412,7 @@ if (version === "money"){
     "<p style='color:white;'>To leave feedback on this task, please click the following link:</p>"+
     "<p style='color:white;'><a href="+feedbackLink+">Leave Task Feedback!</a></p>"+
         // "<p>Please wait for the experimenter to continue.</p>"+
-    "<p style='color:white;'>You may now close the expriment window at anytime.</p>",
+    "<p style='color:white;'><i>You may now close the expriment window at anytime.</i></p>",
     choices: jsPsych.NO_KEYS,
     on_load: function() {
       alert(reward);

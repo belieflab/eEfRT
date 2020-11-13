@@ -171,7 +171,6 @@ function countdownEasy(minutes) {
                             experimentIterator++;
                     }
                     }
-                    // jsPsych.endCurrentTimeline();
                 }
             }
         }
@@ -203,11 +202,6 @@ function versionRandomization(){
         easyAmount = [1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,	1.00,];
         experimentProbability = [12,	50,	50,	88,	12,	88,	50,	88,	50,	12,	50,	50,	12,	88,	88,	12,	88,	12,	50,	12,	50,	12,	12,	88,	88,	50,	88,	50,	50,	12,	50,	88,	50,	88,	12,	12,	88,	88,	50,	88,	12,	12,	50,	50,	12,	88,	88,	12,	88,	12,	50,	12,	88,	50,	88,	12,	50,	12,	88,	50,	88,	88,	50,	50,	50,	50,	88,	12,	12,	88,	12,	12,	88,	12,	50,	12,	50,	50,	88,	88,	50,	12,	88,	50,	12,	50,	50,	12,	88,	12,	88,	88,	50,	88,	88,	12,	12,	12,	50,	88,	50,	12,];
         hardRewardValue = [3, 1, 3, 3, 1, 2, 2, 1, 2, 2, 4, 2, 2, 1, 3, 1, 4, 2, 4, 4, 2, 4, 3, 4, 2, 3, 2, 4, 1, 1, 3, 3, 3, 1, 4, 4, 4, 2, 4, 1, 3, 2, 1, 2, 1, 3, 2, 3, 4, 2, 1, 2, 3, 4, 4, 4, 4, 4, 4, 3, 1, 1, 4, 1, 1, 1, 3, 3, 4, 2, 4, 3, 2, 3, 3, 1, 3, 3, 4, 1, 2, 2, 1, 3, 2, 2, 4, 1, 2, 3, 2, 4, 2, 3, 3, 2, 1, 3, 1, 3, 2, 1,];
-        // experiment variables test only
-        // experimentOutcome = ["win", "lose"];
-        // hardAmount = [3.04, 1.42];
-        // easyAmount = [1.00,	1.00];
-        // experimentProbability = [12, 50];
         
         instructions_9 = {
             type: "html-keyboard-response",
@@ -215,7 +209,7 @@ function versionRandomization(){
             '<p style="color:white;">At the end of the experiment, you will be notified of your winnings that will be added to your payment.    </p> ' +
             '<p style="color:white;"><b>You won’t know which trials get added to your payment.</p></b>' +
             '<p style="color:white;">Therefore, while the decisions you make on these selected trials WILL count, any trial COULD count.</p> ' +
-            '<p style="color:white;">Press the spacebar to continue.</p>',
+            '<p style="color:white;"><i>Press the spacebar to continue.</i></p>',
             choices: [32],
         };
       
