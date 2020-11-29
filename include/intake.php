@@ -24,7 +24,7 @@
     </form> -->
     <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
     <p><b>Subject ID Number:</b></p>
-    <input required id="subjectid" type="text" name="consent_id" plattern="\d*" minlength="6" maxlength="6">
+    <input required id="subjectid" type="text" name="consent_id" plattern="\d*" minlength="4" maxlength="4">
     </form>
     <!-- <button onclick="submitIntake()">submit subjectid</button> -->
     <p><b>Date of Birth:</b></p>
