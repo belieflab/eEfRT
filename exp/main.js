@@ -232,7 +232,7 @@ on_finish: function(data){
   tapTotal = 0;
   data.trial_timeout = trialTimeout;
   data.eefrt_01_condition = trialCondition;
-  data.subjectkey = 'GUID';
+  data.subjectkey = GUID;
   data.src_subject_id = workerId;
   data.site = siteNumber;
   data.interview_date = today;
