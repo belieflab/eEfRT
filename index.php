@@ -20,7 +20,11 @@ if (isset($candidateId)) {
   $prepare->close();
   } else {
 }
-
+$subjectKey = $_GET["subjectkey"];
+$consortId = $_GET["src_subject_id"];
+$sexAtBirth = $_GET["sex"];
+$institutionAlias = $_GET["site"];
+$ageInMonths = $_GET["interview_age"];
 ?>
 
 <!DOCTYPE html>
@@ -41,16 +45,20 @@ if (isset($candidateId)) {
     <link rel="stylesheet" type="text/css" href="css/w3.css"> <!-- styling for w3c progress bars -->
   </head>
   <body id='unload' onbeforeunload="return areYouSure()" style="background-color:black;">  
-    <?php include_once 'include/intake.php';?>
+    <?php include_once 'include/nda.php';?>
   </body>
   <footer> 
   <script src="exp/conf.js" type="text/javascript" ></script>
-  <script src="db/submit.js"></script>
+  <script src="db/validate.js"></script>
   <script src="exp/fn.js" type="text/javascript" ></script>
     <script type="text/javascript" src="js/jquery-git.js"></script>
     <script type="text/javascript">
     let feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/eefrt.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
+    let GUID = "<?php echo $subjectKey?>";
+    let subjectID = "<?php echo $consortId?>";
+    let sexAtBirth = "<?php echo $sexAtBirth?>";
+    let siteID = "<?php echo $institutionAlias?>";
+    let ageAtAssessment = "<?php echo $ageInMonths?>";
     </script>
-    
   </footer>
 </html>
