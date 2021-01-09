@@ -46,7 +46,6 @@
 <!-- <p id="nextButton" style="display: none" >please make sure you are in a quiet place. When you are ready to begin, click 'START'</p> -->
 <br>
 </div>
-<script type="text/javascript" src="//code.jquery.com/jquery-git.js"></script>
 <script>$("button.loadMain").click(function(){
       $.getScript("exp/var.js"); // we are passing handedness into the exp
       setTimeout(1000);

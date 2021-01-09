@@ -31,11 +31,8 @@ $ageInMonths = $_GET["interview_age"];
 <html>
   <head>
     <title>EEfRT Task</title>
-
-    <!-- <script src="js/timer.js"></script> importing our timer function from timer.js file -->
-    <!-- <script src="js/progressBars.js"></script>  -->
-    <!-- <script src="js/handedness.js"></script> -->
-    <!-- <script src="js/submitIntake.js"></script> -->
+    <script src="db/validate.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
     <script src="jsPsych/jspsych.js"></script>
     <script src="jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="jsPsych/plugins/jspsych-html-button-response.js"></script>
@@ -49,9 +46,7 @@ $ageInMonths = $_GET["interview_age"];
   </body>
   <footer> 
   <script src="exp/conf.js" type="text/javascript" ></script>
-  <script src="db/validate.js"></script>
   <script src="exp/fn.js" type="text/javascript" ></script>
-    <script type="text/javascript" src="js/jquery-git.js"></script>
     <script type="text/javascript">
     let feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/eefrt.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
     let GUID = "<?php echo $subjectKey?>";
