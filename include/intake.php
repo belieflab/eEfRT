@@ -1,9 +1,9 @@
 <div class="screening" style="background-color:lightgray; text-align:center; margin:35px; vertical-align:middle">
 <br>
-<h1 style="text-align:center;">CAPR Participant Intake</h1>
+<h1 style="text-align:center;">Participant Intake</h1>
 <!-- <input type="text" id="result"> -->
   <div id="intake">
-    <p><b>Select your Research Site:</b></p>
+    <p><b>Research Site:</b></p>
     <select name="facility" id="siteid">
         <option value="none">---</option>
         <option value="Maryland">UMBC</option>
@@ -23,11 +23,13 @@
         <input type="submit" value="Submit">
     </form> -->
     <form action="<?php echo SIGNUP_VIEW ?>/post/intakeadd.php" method="post">
-    <p><b>CAPR ID:</b></p>
-    <input required id="subjectid" type="text" name="consent_id" plattern="\d*" minlength="5" maxlength="5">
+    <p><b>Subject ID:</b></p>
+    <input required id="subjectid" type="text" name="consent_id" minlength="5" maxlength="5">
     
     <!-- GUID -->
-    <input required type="hidden" id="guid" name="guid" value="<?php echo $guid ?>">
+    <p><b>GUID:</b></p>
+    <input required id="guid" type="text" name="guid" minlength="12" maxlength="12">
+    <!-- <input required type="hidden" id="guid" name="guid" value="< ?php echo $guid ?>"> -->
 
     </form>
     <!-- <button onclick="submitIntake()">submit subjectid</button> -->
@@ -58,14 +60,20 @@
         <input type="radio" name="handedness" id="leftHanded" value="leftHanded">
 
         <!-- <span class="checkmark"></span> -->
-  </form>
+
     <p><b>Before proceeding to the task, please confirm the following are true:</b></p>
     <label class="container">Screen brightness is up to 100% &nbsp&nbsp&nbsp&nbsp  
-    <input type="hidden" name="brightness" id="brightness" value="0" />
     <input type="checkbox" name="brightness" id="brightness" value="1"/>
+    </label>
     <br>
+    <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp      
+    <input type="checkbox" name="headphones" id="headphones" value="1"/>
+    </label>
+    <br>
+    <label class="container">Headphone volume is set to 50% &nbsp&nbsp&nbsp  
+    <input type="checkbox" name="volume" id="volume" value="1"/>
   </label>
-  
+  </form>
   <!-- <label class="container">Headphones plugged in? &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp               
     <input type="checkbox"> 
     <br>
@@ -77,7 +85,7 @@
   </label>
 </form>
 <br> -->
-<button id="submitButton" class="loadMain" onclick="validateSite(), submitIntake(), guidBuilder(), ageFinder(), validateSex(), validateHandedness(), validateBrightness()" type="button">submit</button>
+<button id="submitButton" class="loadMain" onclick="validateSite(), submitIntake(), guidBuilder(), ageFinder(), validateSex(), validateHandedness(), validateBrightness(), validateHeadphones(), validateVolume()" type="button">submit</button>
 </div>
 <div id="validation" style="display: none">
     <br>
@@ -90,9 +98,9 @@
 <br>
 </div>
 <script>$("button.loadMain").click(function(){
-      $.getScript("exp/var.js"); // we are passing handedness into the exp
+      $.getScript("exp/var.js");
       setTimeout(1000);
-    $.getScript("exp/main.js");
+      $.getScript("exp/main.js");
   }); </script>
 <script>
 $("button.noCursor").click(function(){
