@@ -6,11 +6,11 @@ let antihandedness;
 let EasyKey_uCase;
 let HardKey_uCase;
 
-let ageAtAssessment;
+// let ageAtAssessment;
 
-let sexAtBirth;
+// let sexAtBirth;
 
-let GUID;
+// let GUID;
 
 let today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
@@ -44,7 +44,7 @@ function guidBuilder(){
 
 function validateIntake() {
     let intake = document.getElementById("intake");
-    let consent = document.getElementById("nextButton");
+    let consent = document.getElementById("load");
     if (intake.style.display === "none") {
       intake.style.display = "block";
     } else {
@@ -70,7 +70,7 @@ function validateBrightness() {
 }
 
 function sexFinder() {
-    // document.getElementById("sex").value = sex;
+    document.getElementById("sex").value = sex;
     if (document.getElementById("male").checked === true) {
         sexAtBirth = "M";
     } else if (document.getElementById("female").checked === true) {
@@ -91,10 +91,10 @@ function validateHandedness() {
 }
 
 function submitIntake() {
-    let subjectID = document.getElementById("subjectid").value;
+    // let subjectID = document.getElementById("subjectid").value;
     let rightHandedness = document.getElementById("rightHanded").checked;
     let leftHandedness = document.getElementById("leftHanded").checked;
-    let siteID = document.getElementById("siteid");
+    // let siteID = document.getElementById("siteid");
 
     if (rightHandedness === true) {
         handedness = "right";
@@ -102,35 +102,35 @@ function submitIntake() {
         handedness = "left";
     }
 
-    const zeroPad = (num, places) => String(num).padStart(places, '0');
-    switch(siteID.options[siteID.selectedIndex].value){
-        case "Maryland":
-            // siteNumber = zeroPad(1,2);
-            siteNumber = 1;
-            break;
-        case "Northwestern":
-            // siteNumber = zeroPad(2,2);
-            siteNumber = 2;
-            break;
-        case "Temple":
-            // siteNumber = zeroPad(3,2);
-            siteNumber = 3;
-            break;
-        case "Georgia":
-            // siteNumber = zeroPad(4,2);
-            siteNumber = 4;
-            break;
-        case "Yale":
-            // siteNumber = zeroPad(5,2);
-            siteNumber = 5;
-            break;
-        case "Emory":
-            // siteNumber = zeroPad(6,2);
-            siteNumber = 6;
-            break;
-        default:
-            // siteNumber = zeroPad(0,2);
-    }
+    // const zeroPad = (num, places) => String(num).padStart(places, '0');
+    // switch(siteID.options[siteID.selectedIndex].value){
+    //     case "Maryland":
+    //         // siteNumber = zeroPad(1,2);
+    //         siteNumber = 1;
+    //         break;
+    //     case "Northwestern":
+    //         // siteNumber = zeroPad(2,2);
+    //         siteNumber = 2;
+    //         break;
+    //     case "Temple":
+    //         // siteNumber = zeroPad(3,2);
+    //         siteNumber = 3;
+    //         break;
+    //     case "Georgia":
+    //         // siteNumber = zeroPad(4,2);
+    //         siteNumber = 4;
+    //         break;
+    //     case "Yale":
+    //         // siteNumber = zeroPad(5,2);
+    //         siteNumber = 5;
+    //         break;
+    //     case "Emory":
+    //         // siteNumber = zeroPad(6,2);
+    //         siteNumber = 6;
+    //         break;
+    //     default:
+    //         // siteNumber = zeroPad(0,2);
+    // }
 
   
 
