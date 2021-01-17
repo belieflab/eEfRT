@@ -1,30 +1,6 @@
 <?php
-$post_data = json_decode(file_get_contents('php://input'), true); 
-// the directory "data" must be writable by the server
-$name = "data/".$post_data['filename'].".csv"; 
-$data = $post_data['filedata'];
-// write the file to disk
-file_put_contents($name, $data);
-
-include_once ("db/config.php");
-
-$studyId = $_GET["studyId"];
-$candidateId = $_GET["candidateId"];
-if (isset($candidateId)) {
-  $query = "SELECT GUID from phi where sub_id = $candidateId";
-  $prepare = $db_connection->prepare($query);
-  $prepare->execute();
-  $result = $prepare->get_result();
-  $row = $result->fetch_assoc();
-  $guid = $row["GUID"];
-  $prepare->close();
-  } else {
-}
-$subjectKey = $_GET["subjectkey"];
-$consortId = $_GET["src_subject_id"];
-$sexAtBirth = $_GET["sex"];
-$institutionAlias = $_GET["site"];
-$ageInMonths = $_GET["interview_age"];
+  require_once 'db/data.php';
+  require_once 'db/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -57,13 +33,30 @@ $ageInMonths = $_GET["interview_age"];
   <footer> 
   <script src="exp/conf.js" type="text/javascript" ></script>
   <script src="exp/fn.js" type="text/javascript" ></script>
-    <script type="text/javascript">
-    let feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/eefrt.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
-    let GUID = "<?php echo $subjectKey?>";
-    let subjectID = "<?php echo $consortId?>";
-    let sexAtBirth = "<?php echo $sexAtBirth?>";
-    let siteNumber = "<?php echo $institutionAlias?>";
-    let ageAtAssessment = "<?php echo $ageInMonths?>";
+  <script type="text/javascript">
+      // declare NDA required variables
+      let GUID;
+      let subjectID;
+      let sexAtBirth;
+      let siteNumber;
+      let ageAtAssessment;
+      let feedbackLink;
+
+      if (db_connection === false) {
+        GUID = "";
+        subjectID = "";
+        sexAtBirth = "";
+        siteNumber = "";
+        ageAtAssessment = "";
+        feedbackLink = "";
+      } else if (db_connection === true) {
+        GUID = "<?php echo $subjectKey?>";
+        subjectID = "<?php echo $consortId?>";
+        sexAtBirth = "<?php echo $sexAtBirth?>";
+        siteNumber = "<?php echo $institutionAlias?>";
+        ageAtAssessment = "<?php echo $ageInMonths?>";
+        feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/kamin.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
+      }
     </script>
   </footer>
 </html>
