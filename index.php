@@ -40,6 +40,7 @@
       let sexAtBirth;
       let siteNumber;
       let ageAtAssessment;
+      let phenotype;
       let feedbackLink;
 
       if (db_connection === false) {
@@ -49,12 +50,14 @@
         siteNumber = "";
         ageAtAssessment = "";
         feedbackLink = "";
+        phenotype = "";
       } else if (db_connection === true) {
         GUID = "<?php echo $subjectKey?>";
         subjectID = "<?php echo $consortId?>";
         sexAtBirth = "<?php echo $sexAtBirth?>";
         siteNumber = "<?php echo $institutionAlias?>";
         ageAtAssessment = "<?php echo $ageInMonths?>";
+        phenotype = "<?php echo $phenotype?>";
         feedbackLink = "https://belieflab.yale.edu/omnibus/eCRFs/feedback/tasks/kamin.php?candidateId=<?php echo $candidateId?>&studyId=<?php echo $studyId?>";
       }
     </script>

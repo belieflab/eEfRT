@@ -13,6 +13,14 @@ if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/config.php')) {
     $row = $result->fetch_assoc();
     $guid = $row["GUID"];
     $prepare->close();
+
+    $query = "SELECT group_status from phi where sub_id = $candidateId";
+    $prepare = $db_connection->prepare($query);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    $row = $result->fetch_assoc();
+    $phenotype = $row["group_status"];
+    $prepare->close();
   }
   $subjectKey = $_GET["subjectkey"];
   $consortId = $_GET["src_subject_id"];
@@ -29,6 +37,7 @@ if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/config.php')) {
     $institutionAlias = '';
     $ageInMonths = '';
     $guid = '';
+    $phenotype = '';
     $candidateId = '';
     $studyId = '';
   }

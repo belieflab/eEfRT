@@ -117,6 +117,14 @@ function validateGUID() {
     }
 }
 
+function validatePhenotype() {
+    if (document.getElementById("phenotype").value !== '') {
+        phenotype = guid.value;
+    } else {
+        alert("Please enter the phenotype provided to you by the researcher.");
+    }
+}
+
 function validateAge() {
     if (document.getElementById("dob").value !== '') {
         let DOB = dob.value;
