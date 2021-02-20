@@ -14,13 +14,13 @@ if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/config.php')) {
     $guid = $row["GUID"];
     $prepare->close();
 
-    // $query = "SELECT group_status from phi where sub_id = $candidateId";
-    // $prepare = $db_connection->prepare($query);
-    // $prepare->execute();
-    // $result = $prepare->get_result();
-    // $row = $result->fetch_assoc();
-    // $phenotype = $row["group_status"];
-    // $prepare->close();
+    $query = "SELECT group_status from phi where sub_id = $candidateId";
+    $prepare = $db_connection->prepare($query);
+    $prepare->execute();
+    $result = $prepare->get_result();
+    $row = $result->fetch_assoc();
+    $groupStatus = $row["group_status"];
+    $prepare->close();
   }
   $subjectKey = $_GET["subjectkey"];
   $consortId = $_GET["src_subject_id"];
