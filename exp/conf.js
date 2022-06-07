@@ -3,7 +3,7 @@
 //******************************************/
 
 // hard code playtime to 20 minutes (default)
-const MinutesToPlay = 15;
+const MinutesToPlay = 20;
 
 // select version disabled; randomization handled by submit.js
 // const version = 'points';

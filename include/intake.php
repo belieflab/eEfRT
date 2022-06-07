@@ -87,7 +87,7 @@
   </label>
 </form>
 <br> -->
-<button id="submitButton" class="loadMain" onclick="validateSite(), validateSubject(), validateGUID(), validatePhenotype(), validateAge(), validateSex(), validateHandedness(), validateBrightness(), /*validateHeadphones(), validateVolume(),*/ submitIntake()" type="button">SUBMIT</button>
+<button id="submitButton" class="loadMain" onclick="validateSite(), validateSubject(), validateGUID(), /*validatePhenotype(),*/ validateAge(), validateSex(), validateHandedness(), validateBrightness(), /*validateHeadphones(), validateVolume(),*/ submitIntake()" type="button">SUBMIT</button>
 </div>
 <div id="validation" style="display: none">
     <br>
