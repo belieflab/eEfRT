@@ -19,6 +19,46 @@ let yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
 let todayStandard = yyyy + '-' + mm + '-' + dd;
 
+/* Get the documentElement (<html>) to display the page in fullscreen */
+const elem = document.documentElement;
+const screenResolutionHeight = screen.height
+
+/* View in fullscreen */
+function openFullscreen() {
+  if (elem.requestFullscreen) { /* Chrome, Firefox */
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+/* Close fullscreen */
+function closeFullscreen() {
+    if (document.exitFullscreen) { /* Chrome, Firefox */
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) { /* Safari */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { /* IE11 */
+      document.msExitFullscreen();
+    }
+  }
+
+// detect userAGENT
+
+let ua = navigator.userAgent.toLowerCase();
+let browser;
+if (ua.indexOf('safari') != -1) { 
+  if (ua.indexOf('chrome') > -1) {
+    browser = 'chrome';
+  } else {
+    browser = 'safari';
+  }
+} else {
+    browser = 'firefox';
+}
+
 // these functions are called when db_connection === true (e.g. omnibus.local or omnibus.yale) && db_connection === true
 
 function validateIntake() {
@@ -143,6 +183,14 @@ function validateAge() {
 
 function submitIntake() {
 
+    if (browser === 'safari') {
+
+        // protect against Safari data saving issues
+        alert("Safari broswer detected. Please switch to Chrome or Firefox.");
+
+    } else if (screenResolutionHeight >= 768) {
+        openFullscreen();
+
     let rightHandedness = document.getElementById("rightHanded").checked;
     let leftHandedness = document.getElementById("leftHanded").checked;
 
@@ -172,4 +220,5 @@ function submitIntake() {
         checkHandedness();
         versionRandomization();
     }
+}
 }

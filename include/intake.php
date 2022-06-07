@@ -5,14 +5,14 @@
   <div id="intake">
     <p><b>Research Site:</b></p>
     <select name="facility" id="siteid">
-        <!-- <option value="none">---</option>
+        <option value="none">---</option>
         <option value="Maryland">UMBC</option>
         <option value="Northwestern">NU</option>
         <option value="Temple">Temple</option>
         <option value="Georgia">UGA</option>
         <option value="Yale">Yale</option>
-        <option value="Emory">Emory</option> -->
-        <option value="Vanderbilt">Vanderbilt</option>
+        <option value="Emory">Emory</option>
+        <!-- <option value="Vanderbilt">Vanderbilt</option> -->
 
     </select>
     <label for="facility"></label>
