@@ -43,7 +43,7 @@ function closeFullscreen() {
     } else if (document.msExitFullscreen) { /* IE11 */
       document.msExitFullscreen();
     }
-  }
+}
 
 // detect userAGENT
 
@@ -191,34 +191,34 @@ function submitIntake() {
     } else if (screenResolutionHeight >= 768) {
         openFullscreen();
 
-    let rightHandedness = document.getElementById("rightHanded").checked;
-    let leftHandedness = document.getElementById("leftHanded").checked;
+        let rightHandedness = document.getElementById("rightHanded").checked;
+        let leftHandedness = document.getElementById("leftHanded").checked;
 
 
-    if (rightHandedness === true) {
-        handedness = "right";
-        antihandedness = "left";
-    } else if (leftHandedness === true) {
-        handedness = "left";
-        antihandedness = "right";
+        if (rightHandedness === true) {
+            handedness = "right";
+            antihandedness = "left";
+        } else if (leftHandedness === true) {
+            handedness = "left";
+            antihandedness = "right";
+        }
+
+        if (document.getElementById("brightness").checked === false /*|| document.getElementById("headphones").checked === false || document.getElementById("volume").checked === false*/) {
+            // do nothing
+        } else {
+            // alert("your subjectid is " + subjectID);
+            workerId = parseInt(subjectID);
+            switch(workerId%2){
+                case 0:
+                version = 'money';
+                break;
+                case 1:
+                version = 'points';
+                break;
+            }  
+            validateIntake();
+            checkHandedness();
+            versionRandomization();
+        }
     }
-
-    if (document.getElementById("brightness").checked === false /*|| document.getElementById("headphones").checked === false || document.getElementById("volume").checked === false*/) {
-        // do nothing
-    } else {
-        // alert("your subjectid is " + subjectID);
-        workerId = parseInt(subjectID);
-        switch(workerId%2){
-            case 0:
-            version = 'money';
-            break;
-            case 1:
-            version = 'points';
-            break;
-        }  
-        validateIntake();
-        checkHandedness();
-        versionRandomization();
-    }
-}
 }
