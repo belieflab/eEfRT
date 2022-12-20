@@ -48,7 +48,7 @@ function moveEasy() { // function definition
     let feedback = document.getElementById("feedbackGenerator");
     var width = document.getElementById("keyBar").style.width; // variable assignment of width property of keyBar
     width = parseFloat(width.slice(0, -1)); // variable reassignment
-        if (width >= 96.57) { // set to record 30 taps
+        if (width >=96.57) { // set to record 30 taps
         feedbackLogic = 'You completed the task!';
         console.log('complete');
         trialComplete = 1;
@@ -58,7 +58,7 @@ function moveEasy() { // function definition
         } else {
         width+=3.33;
         console.log(width);
-        tapTotal = width;
+        tapTotal = width/3.33;
         trialComplete = 0;
         width = document.getElementById("keyBar").style.width=String(width)+"%";
         return (event.charCode == EasyKey_ASCII)
