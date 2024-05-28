@@ -1,28 +1,29 @@
 <?php
 // check for configuration file on server; if does not exist, set db_connection_status to false.
-if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/config.php')) {
-  include_once ($_SERVER["DOCUMENT_ROOT"] . '/config.php');
-  // echo$_SERVER["DOCUMENT_ROOT"] . '/config.php';
-  $studyId = $_GET["studyId"];
-  $candidateId = $_GET["candidateId"];
+if ($_GET["src_subject_id"]) {
+ // these are omnibus data base variables which will get passed from participant portal
+ $studyId = $_GET["studyId"];
+ $candidateId = $_GET["candidateId"];
+ // these are NDA required variables which will get passed from participant portal
+ $subjectKey = $_GET["subjectkey"];
+ $consortId = $_GET["src_subject_id"];
+ $sexAtBirth = $_GET["sex"];
+ $institutionAlias = $_GET["site"];
+ $ageInMonths = $_GET["interview_age"];
+ $groupStatus = $_GET["phenotype"];
+ $visit = $_GET["visit"];
+}
 
-  $subjectKey = $_GET["subjectkey"];
-  $consortId = $_GET["src_subject_id"];
-  $sexAtBirth = $_GET["sex"];
-  $institutionAlias = $_GET["site"];
-  $ageInMonths = $_GET["interview_age"];
-  //$groupStatus = openssl_decrypt($_GET["phenotype"],$encryptionMethod, $secretHash);
-$groupStatus = $_GET["phenotype"];
+/**
+ * Get the hash of the current git HEAD
+ * @param str $branch The git branch to check
+ * @return mixed Either the hash or a boolean false
+ */
+function get_current_git_commit( $branch='master' ) {
+  if ( $hash = file_get_contents( sprintf( '.git/refs/heads/%s', $branch ) ) ) {
+    return "version: ".strval(substr(trim($hash),-7));
   } else {
-    $db_connection_status = null;
-    // echo$db_connection_status;
-    echo '<script type="text/javascript">let db_connection = false</script>';
-    $subjectKey = '';
-    $consortId = '';
-    $sexAtBirth = '';
-    $institutionAlias = '';
-    $ageInMonths = '';
-    $groupStatus = '';
-    $candidateId = '';
-    $studyId = '';
+    return false;
   }
+}
+
