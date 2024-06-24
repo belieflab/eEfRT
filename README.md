@@ -1,5 +1,16 @@
-# eEfRT
-description
+# Effort Expenditure for Rewards Task (EEFRT)
+In this task participants must choose between completing the Hard Task or the Easy Task. 
+
+**Easy Task:** Press the L key with your right index finger as fast as you can until the bar on the screen fills up.
+
+**Hard Task:** Press the S key with your left pinky finger as fast as you can until the bar on the screen fills up.
+
+The participant wins 100 points for completing the Easy Task and anywhere from 120-400 points for the hard task. However, completing the task alone will not guarantee points. Some trials have an 88% chance of winning points, some have a 50% chance of winning points, and some only have a 12% chance of winning points.
+
+Participants are shown this information and are required to choose if they want to complete the easy or hard task. Participants will do this task for exactly 20 minutes. 
+
+**Approx run time w/ practice: 25 minutes**
+
 
 ## Development Guide
 
